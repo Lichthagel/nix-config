@@ -138,6 +138,7 @@ style = "bg:lavender fg:base"
 Arch = " "
 Debian = " "
 Fedora = " "
+NixOS = " "
 Ubuntu = " "
 Windows = " "
 
