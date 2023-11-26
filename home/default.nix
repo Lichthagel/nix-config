@@ -74,58 +74,6 @@
   };
 
   programs = {
-    tealdeer.enable = true;
-
-    zoxide.enable = true;
-
-    fzf = {
-      enable = true;
-      defaultCommand = "fd --type f --hidden --follow --exclude .git";
-      colors = {
-        "bg+" = "#363a4f";
-        bg = "#24273a";
-        spinner = "#f4dbd6";
-        hl = "#ed8796";
-        fg = "#cad3f5";
-        header = "#ed8796";
-        info = "#c6a0f6";
-        pointer = "#f4dbd6";
-        marker = "#f4dbd6";
-        "fg+" = "#cad3f5";
-        prompt = "#c6a0f6";
-        "hl+" = "#ed8796";
-      };
-    };
-
-    skim = {
-      enable = true;
-      defaultCommand = "fd --type f --hidden --follow --exclude .git";
-      defaultOptions = ["--color=fg:#cdd6f4,bg:#1e1e2e,matched:#313244,matched_bg:#f2cdcd,current:#cdd6f4,current_bg:#45475a,current_match:#1e1e2e,current_match_bg:#f5e0dc,spinner:#a6e3a1,info:#cba6f7,prompt:#89b4fa,cursor:#f38ba8,selected:#eba0ac,header:#94e2d5,border:#6c7086"];
-    };
-
-    eza = {
-      enable = true;
-      enableAliases = true;
-      icons = true;
-    };
-
-    bat = {
-      enable = true;
-      themes = let
-        ctpsrc = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "bat";
-          rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
-          sha256 = "sha256-6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
-        };
-      in {
-        "catppuccin-mocha" = {
-          src = ctpsrc;
-          file = "Catppuccin-mocha.tmTheme";
-        };
-      };
-    };
-
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
   };
@@ -134,8 +82,6 @@
     ./wezterm
     ./vscode.nix
     ./gh.nix
-    ./starship
-    ./atuin.nix
-    ./zsh.nix
+    ./shell
   ];
 }
