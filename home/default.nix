@@ -78,6 +78,8 @@
     home-manager.enable = true;
   };
 
+  services.syncthing.enable = true;
+
   imports = [
     ./wezterm
     ./vscode.nix
