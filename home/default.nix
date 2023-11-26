@@ -107,8 +107,6 @@
       };
     };
 
-    starship.enable = true;
-
     tealdeer.enable = true;
 
     zoxide.enable = true;
@@ -169,5 +167,6 @@
     ./wezterm
     ./vscode.nix
     ./gh.nix
+    ./starship
   ];
 }
