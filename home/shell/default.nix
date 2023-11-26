@@ -21,6 +21,14 @@
           file = "Catppuccin-mocha.tmTheme";
         };
       };
+      extraPackages = with pkgs.bat-extras; [
+        batdiff
+        batgrep
+        prettybat
+      ];
+      config = {
+        theme = "catppuccin-mocha";
+      };
     };
 
     eza = {
@@ -46,6 +54,10 @@
         prompt = "#c6a0f6";
         "hl+" = "#ed8796";
       };
+    };
+
+    ripgrep = {
+      enable = true;
     };
 
     skim = {
