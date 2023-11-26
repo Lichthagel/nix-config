@@ -9,6 +9,7 @@
 }: {
   imports = [
     ../../nixos/base.nix
+    ../../nixos/unbound.nix
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
