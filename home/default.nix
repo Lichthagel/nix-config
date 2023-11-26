@@ -83,5 +83,6 @@
     ./vscode.nix
     ./gh.nix
     ./shell
+    ./discord.nix
   ];
 }
