@@ -71,7 +71,6 @@
   #  /etc/profiles/per-user/jens/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    #EDITOR = "code";
   };
 
   programs = {

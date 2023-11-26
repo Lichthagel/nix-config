@@ -19,5 +19,10 @@
     pkgs.rnix-lsp
   ];
 
+  home.sessionVariables = {
+    EDITOR = "code";
+    VISUAL = "code";
+  };
+
   xdg.mimeApps.defaultApplications."text/plain" = "code.desktop";
 }
