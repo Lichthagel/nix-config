@@ -102,7 +102,6 @@
           "ohmyzsh/ohmyzsh path:plugins/pipenv"
           "ohmyzsh/ohmyzsh path:plugins/podman"
           "ohmyzsh/ohmyzsh path:plugins/pylint"
-          "atuinsh/atuin"
         ];
       };
     };
@@ -168,5 +167,6 @@
     ./vscode.nix
     ./gh.nix
     ./starship
+    ./atuin.nix
   ];
 }
