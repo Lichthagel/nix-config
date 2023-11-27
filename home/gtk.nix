@@ -25,7 +25,7 @@ in {
       };
     };
     cursorTheme = {
-      name = "Capitaine Cursors - White";
+      name = "capitaine-cursors-white";
       package = pkgs.capitaine-cursors;
     };
     font = {
