@@ -82,11 +82,6 @@
     description = "Jens";
     extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-      firefox
-      kate
-      #  thunderbird
-    ];
   };
 
   # Allow unfree packages
