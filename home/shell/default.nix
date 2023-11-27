@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  ctp,
+  ...
+}: {
   imports = [
     ./atuin.nix
     ./starship
@@ -21,9 +25,9 @@
           sha256 = "sha256-6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
         };
       in {
-        "catppuccin-mocha" = {
+        "catppuccin-${ctp.flavor}" = {
           src = ctpsrc;
-          file = "Catppuccin-mocha.tmTheme";
+          file = "Catppuccin-${ctp.flavor}.tmTheme";
         };
       };
       extraPackages = with pkgs.bat-extras; [
@@ -32,7 +36,7 @@
         prettybat
       ];
       config = {
-        theme = "catppuccin-mocha";
+        theme = "catppuccin-${ctp.flavor}";
       };
     };
 

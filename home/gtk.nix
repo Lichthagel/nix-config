@@ -1,11 +1,27 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ctp,
+  ...
+}: let
+  # is there a better way?
+  capitalize = s:
+    lib.strings.concatStrings (
+      lib.lists.imap0
+      (i: v:
+        if i == 0
+        then lib.strings.toUpper v
+        else v)
+      (lib.strings.stringToCharacters s)
+    );
+in {
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Mocha-Standard-Pink-Dark";
+      name = "Catppuccin-${capitalize ctp.flavor}-Standard-${capitalize ctp.accent}-Dark";
       package = pkgs.catppuccin-gtk.override {
-        variant = "mocha";
-        accents = ["pink"];
+        variant = ctp.flavor;
+        accents = [ctp.accent];
       };
     };
     cursorTheme = {
@@ -16,6 +32,13 @@
       name = "Outfit";
       package = pkgs.google-fonts.override {
         fonts = ["Outfit"];
+      };
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.catppuccin-papirus-folders.override {
+        flavor = ctp.flavor;
+        accent = ctp.accent;
       };
     };
   };

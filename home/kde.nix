@@ -1,8 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  ctp,
+  ...
+}: {
   home.packages = [
     (pkgs.catppuccin-kde.override {
-      flavour = ["mocha"];
-      accents = ["pink"];
+      flavour = [ctp.flavor];
+      accents = [ctp.accent];
+    })
+    (pkgs.catppuccin-papirus-folders.override {
+      inherit (ctp) flavor accent;
     })
     pkgs.capitaine-cursors
     (pkgs.google-fonts.override {
