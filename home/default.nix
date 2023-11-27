@@ -90,5 +90,6 @@
     ./discord.nix
     ./kde.nix
     ./firefox.nix
+    ./gtk.nix
   ];
 }

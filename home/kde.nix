@@ -5,6 +5,11 @@
       accents = ["pink"];
     })
     pkgs.capitaine-cursors
+    (pkgs.google-fonts.override {
+      fonts = [
+        "Outfit"
+      ];
+    })
   ];
 
   home.pointerCursor = {
