@@ -86,5 +86,6 @@
     ./gh.nix
     ./shell
     ./discord.nix
+    ./kde.nix
   ];
 }
