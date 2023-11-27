@@ -1,12 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  config,
-  pkgs,
-  helix,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ../../nixos/base.nix
     ../../nixos/unbound.nix
@@ -60,6 +55,8 @@
     layout = "de";
     xkbVariant = "";
   };
+
+  programs.dconf.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
