@@ -15,5 +15,17 @@ end
 -- For example, changing the color scheme:
 config.color_scheme = 'Catppuccin Mocha'
 
+config.font = wezterm.font_with_fallback({
+  "Cascadia Code",
+  "Symbols Nerd Font",
+})
+
+-- config.font_size = 12.0
+config.front_end = "WebGpu"
+
+config.harfbuzz_features = { "calt=1", "ss01=1" }
+
+config.use_fancy_tab_bar = false
+
 -- and finally, return the configuration to wezterm
 return config
