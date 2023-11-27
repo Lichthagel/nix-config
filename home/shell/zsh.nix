@@ -6,14 +6,10 @@
     defaultKeymap = "emacs";
     shellAliases = {
       cat = "bat";
-      #hx = "helix";
     };
     antidote = {
       enable = true;
       plugins = [
-        "zsh-users/zsh-autosuggestions"
-        "zsh-users/zsh-history-substring-search"
-        "zsh-users/zsh-completions"
         "MichaelAquilina/zsh-you-should-use"
         "zdharma-continuum/fast-syntax-highlighting"
         "chrissicool/zsh-256color"
