@@ -10,7 +10,7 @@
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  ];
 
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
@@ -19,16 +19,16 @@
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/a69c045e-1d7a-41e2-8f9d-06634c8c9897";
-      fsType = "btrfs";
+    fsType = "btrfs";
     options = ["subvol=@"];
-    };
+  };
 
   boot.initrd.luks.devices."luks-52aa4081-bd8b-47c2-a48d-c8d4ab7e31a1".device = "/dev/disk/by-uuid/52aa4081-bd8b-47c2-a48d-c8d4ab7e31a1";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/CD09-BD50";
-      fsType = "vfat";
-    };
+    fsType = "vfat";
+  };
 
   swapDevices = [];
 
@@ -38,6 +38,8 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
+
+  hardware.bluetooth.enable = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
