@@ -19,14 +19,6 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
-
-    pkgs = import nixpkgs {
-      inherit system;
-
-      config = {
-        allowUnfree = true;
-      };
-    };
   in {
     nixosConfigurations = {
       jnbnixos = nixpkgs.lib.nixosSystem {
@@ -47,19 +39,34 @@
       };
     };
 
-    nixConfig = {
-      experimental-features = ["nix-command" "flakes"];
-      substituters = [
-        "https://cache.nixos.org/"
-      ];
+    devShells."${system}".default = let
+      pkgs = import nixpkgs {
+        inherit system;
+      };
+    in
+      pkgs.mkShell {
+        packages = with pkgs; [
+          alejandra
+          just
+          nil
+          nix-output-monitor
+          nvd
+        ];
+      };
+  };
 
-      extra-substituters = [
-        "https://nix-community.cachix.org"
-      ];
+  nixConfig = {
+    experimental-features = ["nix-command" "flakes"];
+    substituters = [
+      "https://cache.nixos.org/"
+    ];
 
-      extra-trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-    };
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
 }

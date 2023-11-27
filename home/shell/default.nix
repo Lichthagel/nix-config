@@ -6,6 +6,11 @@
   ];
 
   programs = {
+    bash = {
+      enable = true;
+      enableCompletion = true;
+    };
+
     bat = {
       enable = true;
       themes = let
@@ -29,6 +34,11 @@
       config = {
         theme = "catppuccin-mocha";
       };
+    };
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
     };
 
     eza = {

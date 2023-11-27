@@ -29,6 +29,7 @@ $python\
 $rust\
 $zig\
 $jobs\
+$nix_shell\
 $cmd_duration\
 $status\
 $line_break\
@@ -124,6 +125,11 @@ format = "[$symbol($version )]($style)"
 style = "fg:blue"
 symbol = "⬢ "
 format = "[$symbol$project]($style) "
+
+[nix_shell]
+style = "fg:blue"
+symbol = " "
+format = '[$symbol$state( \($name\))]($style) '
 
 [nodejs]
 style = "fg:green"
