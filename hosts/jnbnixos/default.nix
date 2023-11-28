@@ -1,7 +1,28 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{pkgs, ...}: {
+{pkgs, ...}: let
+  catppuccin-sddm = pkgs.stdenvNoCC.mkDerivation {
+    name = "catppuccin-sddm";
+    src = pkgs.fetchFromGitHub {
+      owner = "catppuccin";
+      repo = "sddm";
+      rev = "529ec0f994c0e2527f118d17b143892f4d214575";
+      sha256 = "sha256-gXUi6rBUr8ZGbUbo1/rMYIvbluKkyqqe+PMP3Xwf/kI=";
+    };
+    propagatedBuildInputs = with pkgs.libsForQt5.qt5; [
+      qtgraphicaleffects
+      qtsvg
+      qtquickcontrols2
+    ];
+    phases = ["buildPhase"];
+    buildPhase = ''
+      mkdir -p $out/share/sddm/themes
+      ls $src/src
+      cp -r $src/src/* $out/share/sddm/themes/
+    '';
+  };
+in {
   imports = [
     ../../nixos/base.nix
     ../../nixos/unbound.nix
@@ -38,7 +59,11 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    theme = "catppuccin-mocha";
+  };
   services.xserver.displayManager.defaultSession = "plasmawayland";
   services.xserver.desktopManager.plasma5.enable = true;
 
@@ -101,6 +126,7 @@
     #  wget
     pkgs.wezterm
     pkgs.helix
+    catppuccin-sddm
   ];
 
   virtualisation.podman = {
