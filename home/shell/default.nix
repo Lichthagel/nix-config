@@ -9,6 +9,10 @@
     ./zsh.nix
   ];
 
+  home.packages = with pkgs; [
+    fd
+  ];
+
   programs = {
     bash = {
       enable = true;
