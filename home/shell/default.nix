@@ -86,6 +86,13 @@
 
     tealdeer.enable = true;
 
+    zellij = {
+      enable = true;
+      settings = {
+        theme = "catppuccin-${ctp.flavor}";
+      };
+    };
+
     zoxide.enable = true;
   };
 }
