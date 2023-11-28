@@ -108,6 +108,9 @@ in {
 
   services.pcscd.enable = true;
 
+  services.power-profiles-daemon.enable = false;
+  services.tlp.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.licht = {
     isNormalUser = true;
