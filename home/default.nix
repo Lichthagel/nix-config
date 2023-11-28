@@ -84,5 +84,6 @@
     ./kde.nix
     ./firefox.nix
     # ./gtk.nix
+    ./git.nix
   ];
 }
