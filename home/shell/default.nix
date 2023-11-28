@@ -44,6 +44,10 @@
       };
     };
 
+    btop = {
+      enable = true;
+    };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -94,5 +98,16 @@
     };
 
     zoxide.enable = true;
+  };
+
+  xdg.configFile = let
+    catppuccin-btop = pkgs.fetchFromGitHub {
+      owner = "catppuccin";
+      repo = "btop";
+      rev = "1.0.0";
+      sha256 = "sha256-J3UezOQMDdxpflGax0rGBF/XMiKqdqZXuX4KMVGTxFk=";
+    };
+  in {
+    "btop/themes/catppuccin_${ctp.flavor}.theme".source = "${catppuccin-btop}/themes/catppuccin_${ctp.flavor}.theme";
   };
 }
