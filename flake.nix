@@ -1,6 +1,66 @@
 {
   description = "My NixOS configuration";
 
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    flake-parts,
+    flake-utils,
+    ...
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;}
+    {
+      flake = {
+        nixosConfigurations = {
+          jnbnixos = nixpkgs.lib.nixosSystem {
+            system = flake-utils.lib.system.x86_64-linux;
+
+            specialArgs = inputs;
+
+            modules = [
+              ./hosts/jnbnixos
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.licht = import ./home;
+                home-manager.extraSpecialArgs =
+                  inputs
+                  // {
+                    ctp = {
+                      flavor = "mocha";
+                      accent = "pink";
+                    };
+                  };
+              }
+            ];
+          };
+        };
+      };
+
+      systems = flake-utils.lib.defaultSystems;
+
+      perSystem = {
+        config,
+        pkgs,
+        system,
+        ...
+      }: {
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            alejandra
+            just
+            nil
+            nix-output-monitor
+            nvd
+          ];
+        };
+
+        formatter = pkgs.alejandra;
+      };
+    };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -10,56 +70,10 @@
     };
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-  };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-  in {
-    nixosConfigurations = {
-      jnbnixos = nixpkgs.lib.nixosSystem {
-        inherit system;
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
-        specialArgs = inputs;
-
-        modules = [
-          ./hosts/jnbnixos
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.licht = import ./home;
-            home-manager.extraSpecialArgs =
-              inputs
-              // {
-                ctp = {
-                  flavor = "mocha";
-                  accent = "pink";
-                };
-              };
-          }
-        ];
-      };
-    };
-
-    devShells."${system}".default = let
-      pkgs = import nixpkgs {
-        inherit system;
-      };
-    in
-      pkgs.mkShell {
-        packages = with pkgs; [
-          alejandra
-          just
-          nil
-          nix-output-monitor
-          nvd
-        ];
-      };
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   nixConfig = {
