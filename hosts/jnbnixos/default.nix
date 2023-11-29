@@ -106,6 +106,8 @@ in {
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  services.auto-cpufreq.enable = true;
+
   hardware.bluetooth.enable = true;
 
   services.pcscd.enable = true;
