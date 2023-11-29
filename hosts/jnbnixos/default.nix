@@ -5,7 +5,9 @@
   imports = [
     ../../nixos/base.nix
     ../../nixos/unbound.nix
-    ../../nixos/sddm.nix
+    ../../nixos/graphical/base.nix
+    ../../nixos/graphical/sddm.nix
+    ../../nixos/graphical/plasma.nix
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -34,29 +36,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.defaultSession = "plasmawayland";
-  services.xserver.desktopManager.plasma5.enable = true;
-
-  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
-    elisa
-    kate
-    khelpcenter
-    kwrited
-    plasma-browser-integration
-  ];
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "de";
-    xkbVariant = "";
-  };
-
-  programs.dconf.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -94,9 +73,6 @@
     extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
   };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
