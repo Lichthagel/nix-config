@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  ctp,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "licht";
@@ -71,6 +75,24 @@
   programs = {
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
+
+    helix = {
+      enable = true;
+      settings = {
+        theme = "catppuccin_${ctp.flavor}";
+        editor = {
+          line-number = "relative";
+          cursorline = true;
+          color-modes = true;
+          cursor-shape = {
+            insert = "bar";
+            normal = "block";
+            select = "underline";
+          };
+          indent-guides.render = true;
+        };
+      };
+    };
   };
 
   services.syncthing.enable = true;
