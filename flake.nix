@@ -8,7 +8,12 @@
     flake-parts,
     flake-utils,
     ...
-  } @ inputs:
+  } @ inputs: let
+    ctp = {
+      flavor = "mocha";
+      accent = "pink";
+    };
+  in
     flake-parts.lib.mkFlake {inherit inputs;}
     {
       flake = {
@@ -28,10 +33,28 @@
                 home-manager.extraSpecialArgs =
                   inputs
                   // {
-                    ctp = {
-                      flavor = "mocha";
-                      accent = "pink";
-                    };
+                    inherit ctp;
+                  };
+              }
+            ];
+          };
+
+          jdnixos = nixpkgs.lib.nixosSystem {
+            system = flake-utils.lib.system.x86_64-linux;
+
+            specialArgs = inputs;
+
+            modules = [
+              ./hosts/jdnixos
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.licht = import ./home;
+                home-manager.extraSpecialArgs =
+                  inputs
+                  // {
+                    inherit ctp;
                   };
               }
             ];
