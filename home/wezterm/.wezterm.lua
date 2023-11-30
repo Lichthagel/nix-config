@@ -21,7 +21,7 @@ config.font = wezterm.font_with_fallback({
 })
 
 -- config.font_size = 12.0
-config.front_end = "WebGpu"
+-- config.front_end = "WebGpu"
 
 config.harfbuzz_features = { "calt=1", "ss01=1" }
 
