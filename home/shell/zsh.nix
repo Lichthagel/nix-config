@@ -47,11 +47,6 @@ in {
         file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
       }
       {
-        name = "git-commit";
-        src = ohmyzsh-src;
-        file = "plugins/git-commit/git-commit.plugin.zsh";
-      }
-      {
         name = "gitfast";
         src = ohmyzsh-src;
         file = "plugins/gitfast/gitfast.plugin.zsh";
