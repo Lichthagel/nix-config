@@ -246,6 +246,8 @@
 
         "media.hardwaremediakeys.enabled" = false;
 
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+
         # visit https://github.com/yokoffing/Betterfox/wiki/Common-Overrides
         # visit https://github.com/yokoffing/Betterfox/wiki/Optional-Hardening
         # Enter your personal overrides below this line:
@@ -262,5 +264,10 @@
         # ****************************************************************************
       };
     };
+  };
+
+  home.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
+    MOZ_USE_XINPUT2 = "1";
   };
 }
