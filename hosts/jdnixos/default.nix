@@ -40,6 +40,8 @@
 
   services.pcscd.enable = true;
 
+  boot.kernelModules = ["sg"];
+
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
