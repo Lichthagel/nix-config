@@ -36,6 +36,21 @@
 
   services.pcscd.enable = true;
 
+  boot.kernelModules = ["amdgpu"];
+
+  services.xserver.videoDrivers = ["amdgpu"];
+
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      rocm-opencl-icd
+      rocm-opencl-runtime
+      amdvlk
+    ];
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.licht = {
     isNormalUser = true;
