@@ -38,6 +38,8 @@
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
+  programs.ssh.startAgent = true;
+
   environment.systemPackages = [
     pkgs.neovim
     pkgs.git
