@@ -45,8 +45,18 @@
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
     driSupport = true;
     driSupport32Bit = true;
+  };
+
+  environment.variables = {
+    VDPAU_DRIVER = "va_gl";
+    LIBVA_DRIVER_NAME = "nvidia";
+    NIXOS_OZONE_WL = "1";
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -69,7 +79,7 @@
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
+    open = true;
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
