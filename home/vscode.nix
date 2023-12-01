@@ -1,22 +1,13 @@
-{
-  lib,
-  pkgs,
-  nix-vscode-extensions,
-  ...
-}: {
+{pkgs, ...}: {
   programs.vscode = {
     enable = true;
-    extensions = with nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
-      github.copilot
-      jnoortheen.nix-ide
-      kamadorueda.alejandra
-    ];
     mutableExtensionsDir = true;
   };
 
   home.packages = [
     pkgs.alejandra
     pkgs.rnix-lsp
+    pkgs.nil
   ];
 
   home.sessionVariables = {
