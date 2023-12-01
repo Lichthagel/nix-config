@@ -1,24 +1,12 @@
 {
-  lib,
   pkgs,
   ctp,
   ...
-}: let
-  # is there a better way?
-  capitalize = s:
-    lib.strings.concatStrings (
-      lib.lists.imap0
-      (i: v:
-        if i == 0
-        then lib.strings.toUpper v
-        else v)
-      (lib.strings.stringToCharacters s)
-    );
-in {
+}: {
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-${capitalize ctp.flavor}-Standard-${capitalize ctp.accent}-Dark";
+      name = "Catppuccin-${ctp.flavorCapitalized}-Standard-${ctp.accentCapitalized}-Dark";
       package = pkgs.catppuccin-gtk.override {
         variant = ctp.flavor;
         accents = [ctp.accent];

@@ -11,7 +11,9 @@
   } @ inputs: let
     ctp = {
       flavor = "mocha";
+      flavorCapitalized = "Mocha";
       accent = "pink";
+      accentCapitalized = "Pink";
     };
   in
     flake-parts.lib.mkFlake {inherit inputs;}
