@@ -36,6 +36,12 @@
     options = ["rw" "uid=1000" "gid=1000" "umask=022" "fmask=133" "dmask=022" "prealloc" "windows_names"];
   };
 
+  fileSystems."/mnt/e" = {
+    device = "/dev/disk/by-uuid/7ED6852DD684E72D";
+    fsType = "ntfs-3g";
+    options = ["rw" "uid=1000" "gid=1000" "umask=022" "fmask=133" "dmask=022" "prealloc" "windows_names"];
+  };
+
   swapDevices = [];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
