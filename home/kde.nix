@@ -13,11 +13,6 @@
       inherit (ctp) flavor accent;
     })
     pkgs.capitaine-cursors
-    (pkgs.google-fonts.override {
-      fonts = [
-        "Outfit"
-      ];
-    })
     (pkgs.catppuccin-gtk.override {
       variant = ctp.flavor;
       accents = [ctp.accent];

@@ -108,5 +108,6 @@
     ./firefox.nix
     # ./gtk.nix
     ./git.nix
+    ./fonts.nix
   ];
 }
