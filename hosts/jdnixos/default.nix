@@ -13,6 +13,7 @@
     ../../nixos/graphical/sddm.nix
     ../../nixos/graphical/plasma.nix
     ../../nixos/sound.nix
+    ./gitea.nix
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -96,7 +97,7 @@
   users.users.licht = {
     isNormalUser = true;
     description = "Jens";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "input"];
     shell = pkgs.zsh;
   };
 
@@ -108,6 +109,12 @@
     pkgs.wezterm
     pkgs.helix
   ];
+
+  programs.hyprland = {
+    enable = true;
+    enableNvidiaPatches = true;
+    xwayland.enable = true;
+  };
 
   virtualisation.podman = {
     enable = true;
@@ -144,11 +151,11 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [3030 22000];
+  networking.firewall.allowedUDPPorts = [21027 22000];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
