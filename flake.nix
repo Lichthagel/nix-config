@@ -72,6 +72,10 @@
         system,
         ...
       }: {
+        packages = {
+          lilex = import ./packages/lilex.nix {inherit pkgs;};
+        };
+
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             alejandra
