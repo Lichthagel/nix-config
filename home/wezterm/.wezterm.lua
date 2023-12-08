@@ -27,5 +27,7 @@ config.harfbuzz_features = { "calt=1", "ss01=1" }
 
 config.use_fancy_tab_bar = false
 
+config.enable_wayland = false
+
 -- and finally, return the configuration to wezterm
 return config
