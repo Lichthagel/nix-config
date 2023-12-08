@@ -5,6 +5,6 @@
   # Configure keymap in X11
   services.xserver = {
     layout = "de";
-    xkbVariant = "";
+    xkbVariant = "neo_qwertz";
   };
 }

@@ -32,7 +32,7 @@
   };
 
   # Configure console keymap
-  console.keyMap = "de";
+  console.keyMap = "neoqwertz";
 
   environment.shells = [pkgs.zsh];
   users.defaultUserShell = pkgs.zsh;
