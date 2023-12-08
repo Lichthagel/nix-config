@@ -72,10 +72,14 @@
         system,
         ...
       }: {
-        packages = {
+        packages = rec {
           catppuccin-sddm = import ./packages/catppuccin-sddm.nix {inherit pkgs;};
           lilex = import ./packages/lilex.nix {inherit pkgs;};
           monolisa = import ./packages/monolisa.nix {inherit pkgs;};
+          monolisa-nerdfont = import ./packages/nerdfont.nix {
+            inherit pkgs;
+            font = monolisa;
+          };
           vimix-cursors = import ./packages/vimix-cursors.nix {inherit pkgs;};
         };
 
