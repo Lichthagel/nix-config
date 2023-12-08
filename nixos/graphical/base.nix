@@ -1,4 +1,4 @@
-{...}: {
+{pkgs,...}: {
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -7,4 +7,8 @@
     layout = "de";
     xkbVariant = "neo_qwertz";
   };
+
+  environment.systemPackages = with pkgs; [
+    wl-clipboard
+  ];
 }
