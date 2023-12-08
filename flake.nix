@@ -74,6 +74,7 @@
       }: {
         packages = {
           lilex = import ./packages/lilex.nix {inherit pkgs;};
+          vimix-cursors = import ./packages/vimix-cursors.nix {inherit pkgs;};
         };
 
         devShells.default = pkgs.mkShell {
