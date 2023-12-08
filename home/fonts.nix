@@ -1,5 +1,6 @@
 {pkgs, ...}: let
   lilex = import ../packages/lilex.nix {inherit pkgs;};
+  monolisa = import ../packages/monolisa.nix {inherit pkgs;};
 in {
   home.packages = with pkgs; [
     (google-fonts.override {
@@ -16,6 +17,7 @@ in {
     fira-code
     jetbrains-mono
     lilex
+    monolisa
     (pkgs.nerdfonts.override {
       fonts = [
         "CascadiaCode"
