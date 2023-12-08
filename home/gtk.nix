@@ -2,7 +2,9 @@
   pkgs,
   ctp,
   ...
-}: {
+}: let
+  vimix-cursors = import ../packages/vimix-cursors.nix {inherit pkgs;};
+in {
   gtk = {
     enable = true;
     theme = {
@@ -13,8 +15,8 @@
       };
     };
     cursorTheme = {
-      name = "capitaine-cursors-white";
-      package = pkgs.capitaine-cursors;
+      name = "Vimix-white-cursors";
+      package = vimix-cursors;
     };
     font = {
       name = "Outfit";
