@@ -120,5 +120,6 @@
     # ./gtk.nix
     ./git.nix
     ./fonts.nix
+    ./hyprland
   ];
 }
