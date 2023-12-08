@@ -73,6 +73,7 @@
         ...
       }: {
         packages = {
+          catppuccin-sddm = import ./packages/catppuccin-sddm.nix {inherit pkgs;};
           lilex = import ./packages/lilex.nix {inherit pkgs;};
           vimix-cursors = import ./packages/vimix-cursors.nix {inherit pkgs;};
         };
