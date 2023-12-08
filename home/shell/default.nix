@@ -94,6 +94,7 @@
       enable = true;
       settings = {
         theme = "catppuccin-${ctp.flavor}";
+        copy_command = "wl-copy";
       };
     };
 
