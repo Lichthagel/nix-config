@@ -73,14 +73,11 @@
         ...
       }: {
         packages = rec {
-          catppuccin-sddm = import ./packages/catppuccin-sddm.nix {inherit pkgs;};
-          lilex = import ./packages/lilex.nix {inherit pkgs;};
-          monolisa = import ./packages/monolisa.nix {inherit pkgs;};
-          monolisa-nerdfont = import ./packages/nerdfont.nix {
-            inherit pkgs;
-            font = monolisa;
-          };
-          vimix-cursors = import ./packages/vimix-cursors.nix {inherit pkgs;};
+          catppuccin-sddm = pkgs.callPackage ./packages/catppuccin-sddm.nix {};
+          lilex = pkgs.callPackage ./packages/lilex.nix {};
+          monolisa = pkgs.callPackage ./packages/monolisa.nix {};
+          monolisa-nerdfont = pkgs.callPackage ./packages/nerdfont.nix {font = monolisa;};
+          vimix-cursors = pkgs.callPackage ./packages/vimix-cursors.nix {};
         };
 
         devShells.default = pkgs.mkShell {
