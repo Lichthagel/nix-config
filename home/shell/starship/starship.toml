@@ -82,7 +82,7 @@ style = "fg:green"
 format = "[$symbol($version )]($style)"
 
 [directory]
-style = "bg:pink fg:base"
+style = "bg:pink fg:base italic"
 format = "[ $path ]($style)"
 
 [directory.substitutions]
