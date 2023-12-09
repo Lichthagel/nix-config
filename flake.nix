@@ -73,7 +73,9 @@
         ...
       }: {
         packages = rec {
+          afacad = pkgs.callPackage ./packages/afacad.nix {};
           catppuccin-sddm = pkgs.callPackage ./packages/catppuccin-sddm.nix {};
+          gabarito = pkgs.callPackage ./packages/gabarito.nix {};
           lilex = pkgs.callPackage ./packages/lilex.nix {};
           monolisa = pkgs.callPackage ./packages/monolisa.nix {};
           monolisa-nerdfont = pkgs.callPackage ./packages/nerdfont.nix {font = monolisa;};
