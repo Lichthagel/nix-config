@@ -27,7 +27,6 @@
     keepassxc
     yubioath-flutter
     tutanota-desktop
-    spotify
     obsidian
     thunderbird
 
@@ -114,5 +113,6 @@
     ./git.nix
     ./fonts.nix
     ./hyprland
+    ./spotify.nix
   ];
 }
