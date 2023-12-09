@@ -3,6 +3,7 @@
 palette = "catppuccin_mocha"
 
 format = """
+[╭](surface2)\
 [\ue0b2](lavender)\
 $os\
 $username\
@@ -10,12 +11,13 @@ $hostname\
 $docker_context\
 [\ue0b0](bg:pink fg:lavender)\
 $directory\
-[\ue0b0](fg:pink) \
-([\ue0b2](fg:surface0)\
+[\ue0b0](fg:pink)\
+([─](surface2)\
+[\ue0b2](fg:surface0)\
 $git_branch\
 $git_status\
 $vcsh\
-[\ue0b0 ](fg:surface0))\
+[\ue0b0](fg:surface0)) \
 $package\
 $bun\
 $c\
@@ -35,6 +37,8 @@ $nix_shell\
 $cmd_duration\
 $status\
 $line_break\
+\
+[╰](surface2)\
 $conda\
 $container\
 $character\
