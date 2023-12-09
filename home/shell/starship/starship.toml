@@ -135,7 +135,9 @@ format = "[$symbol$project]($style) "
 [nix_shell]
 style = "fg:blue"
 symbol = " "
-format = '[$symbol$state( \($name\))]($style) '
+impure_msg = ""
+pure_msg = "pure "
+format = '[$symbol$state($name)]($style) '
 
 [nodejs]
 style = "fg:green"
