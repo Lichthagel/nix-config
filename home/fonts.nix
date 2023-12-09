@@ -6,30 +6,31 @@
   monolisa-nerdfont = pkgs.callPackage ../packages/nerdfont.nix {font = monolisa;};
 in {
   home.packages = with pkgs; [
+    # sans-serif
     (google-fonts.override {
       fonts = [
-        "M PLUS 1"
-        "Outfit"
-        "Sora"
         "Josefin Sans"
+        "M PLUS 1"
+        "Nunito"
+        "Outfit"
+        "Plus Jakarta Sans"
+        "Rubik"
+        "Sora"
       ];
     })
     afacad
     gabarito
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
-    overpass
     ibm-plex
     inter
     jost
+    lexend
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
     open-sans
-    cascadia-code
-    fira-code
-    jetbrains-mono
-    lilex
-    monolisa
-    monolisa-nerdfont
+    overpass
+
+    # code
     (pkgs.nerdfonts.override {
       fonts = [
         "CascadiaCode"
@@ -38,6 +39,12 @@ in {
         "NerdFontsSymbolsOnly"
       ];
     })
+    cascadia-code
+    fira-code
+    jetbrains-mono
+    lilex
+    monolisa
+    monolisa-nerdfont
   ];
 
   fonts.fontconfig.enable = true;
