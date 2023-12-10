@@ -15,6 +15,7 @@ in {
         "Outfit"
         "Plus Jakarta Sans"
         "Rubik"
+        "Sen"
         "Sora"
       ];
     })
