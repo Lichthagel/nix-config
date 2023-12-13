@@ -95,6 +95,11 @@
       settings = {
         theme = "catppuccin-${ctp.flavor}";
         copy_command = "wl-copy";
+        pane_frames = false;
+        ui.pane_frames = {
+          rounded_corners = true;
+          hide_session_name = true;
+        };
       };
     };
 
