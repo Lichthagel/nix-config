@@ -4,7 +4,7 @@
     mutableExtensionsDir = true;
     package =
       (pkgs.vscode.overrideAttrs rec {
-        version = "1.85.0";
+        version = "1.85.1";
 
         src = pkgs.fetchurl (
           let
@@ -26,7 +26,7 @@
           in {
             name = "VSCode_${version}_${plat}.${archive_fmt}";
             url = "https://update.code.visualstudio.com/${version}/${plat}/stable";
-            sha256 = "sha256-ri5t3CLDLn+GX6oGoA0XEZQdzx2ykHlMbtZZ1aFBOXc";
+            sha256 = "sha256-AWadaeVnpSkDNrHS97Lw8YFunXCZAEuBom+PQO4Xyfw=";
           }
         );
       })
