@@ -19,6 +19,10 @@
     flake-parts.lib.mkFlake {inherit inputs;}
     {
       flake = {
+        homeModules = {
+          full = ./home;
+        };
+
         nixosConfigurations = {
           jnbnixos = nixpkgs.lib.nixosSystem {
             system = flake-utils.lib.system.x86_64-linux;
@@ -31,7 +35,7 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.licht = import ./home;
+                home-manager.users.licht = self.homeModules.full;
                 home-manager.extraSpecialArgs =
                   inputs
                   // {
@@ -52,7 +56,7 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.licht = import ./home;
+                home-manager.users.licht = ./hosts/jdnixos/home.nix;
                 home-manager.extraSpecialArgs =
                   inputs
                   // {
