@@ -80,6 +80,7 @@
       }: {
         packages = rec {
           afacad = pkgs.callPackage ./packages/afacad.nix {};
+          catppuccin-fcitx5 = pkgs.callPackage ./packages/catppuccin-fcitx5.nix {};
           catppuccin-sddm = pkgs.callPackage ./packages/catppuccin-sddm.nix {};
           gabarito = pkgs.callPackage ./packages/gabarito.nix {};
           lilex = pkgs.callPackage ./packages/lilex.nix {};

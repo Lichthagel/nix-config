@@ -10,6 +10,7 @@
     ../../nixos/base.nix
     ../../nixos/unbound.nix
     ../../nixos/graphical/base.nix
+    ../../nixos/graphical/fcitx5.nix
     ../../nixos/graphical/sddm.nix
     ../../nixos/graphical/plasma.nix
     ../../nixos/sound.nix
