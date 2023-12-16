@@ -9,6 +9,7 @@
       fonts = [
         "Josefin Sans"
         "M PLUS 1"
+        "M PLUS 1 Code"
         "Nunito"
         "Outfit"
         "Plus Jakarta Sans"
