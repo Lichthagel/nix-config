@@ -10,6 +10,7 @@
         "Josefin Sans"
         "M PLUS 1"
         "M PLUS 1 Code"
+        "M PLUS 2"
         "Nunito"
         "Outfit"
         "Plus Jakarta Sans"
