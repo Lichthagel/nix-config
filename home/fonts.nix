@@ -1,10 +1,8 @@
-{pkgs, ...}: let
-  afacad = pkgs.callPackage ../packages/afacad.nix {};
-  gabarito = pkgs.callPackage ../packages/gabarito.nix {};
-  lilex = pkgs.callPackage ../packages/lilex.nix {};
-  monolisa = pkgs.callPackage ../packages/monolisa.nix {};
-  monolisa-nerdfont = pkgs.callPackage ../packages/nerdfont.nix {font = monolisa;};
-in {
+{
+  pkgs,
+  selfPkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     # sans-serif
     (google-fonts.override {
@@ -19,8 +17,8 @@ in {
         "Sora"
       ];
     })
-    afacad
-    gabarito
+    selfPkgs.afacad
+    selfPkgs.gabarito
     ibm-plex
     inter
     jost
@@ -32,7 +30,7 @@ in {
     overpass
 
     # code
-    (pkgs.nerdfonts.override {
+    (nerdfonts.override {
       fonts = [
         "CascadiaCode"
         "FiraCode"
@@ -43,9 +41,9 @@ in {
     cascadia-code
     fira-code
     jetbrains-mono
-    lilex
-    monolisa
-    monolisa-nerdfont
+    selfPkgs.lilex
+    selfPkgs.monolisa
+    selfPkgs.monolisa-nerdfont
   ];
 
   fonts.fontconfig.enable = true;

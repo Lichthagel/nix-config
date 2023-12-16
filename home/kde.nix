@@ -1,10 +1,9 @@
 {
   pkgs,
+  selfPkgs,
   ctp,
   ...
-}: let
-  vimix-cursors = import ../packages/vimix-cursors.nix {inherit pkgs;};
-in {
+}: {
   home.packages = [
     (pkgs.catppuccin-kde.override {
       flavour = [ctp.flavor];
@@ -15,7 +14,7 @@ in {
       inherit (ctp) flavor accent;
     })
     pkgs.capitaine-cursors
-    vimix-cursors
+    selfPkgs.vimix-cursors
     (pkgs.catppuccin-gtk.override {
       variant = ctp.flavor;
       accents = [ctp.accent];
@@ -25,7 +24,7 @@ in {
   home.pointerCursor = {
     name = "Vimix Cursors - White";
     # size = 32;
-    package = vimix-cursors;
+    package = selfPkgs.vimix-cursors;
     gtk.enable = true;
     x11.enable = true;
   };

@@ -1,6 +1,4 @@
-{pkgs, ...}: let
-  catppuccin-sddm = import ../../packages/catppuccin-sddm.nix {inherit pkgs;};
-in {
+{selfPkgs, ...}: {
   services.xserver.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
@@ -8,6 +6,6 @@ in {
   };
 
   environment.systemPackages = [
-    catppuccin-sddm
+    selfPkgs.catppuccin-sddm
   ];
 }

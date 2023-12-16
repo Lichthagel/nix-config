@@ -24,10 +24,10 @@
         };
 
         nixosConfigurations = {
-          jnbnixos = nixpkgs.lib.nixosSystem {
+          jnbnixos = nixpkgs.lib.nixosSystem rec {
             system = flake-utils.lib.system.x86_64-linux;
 
-            specialArgs = inputs;
+            specialArgs = inputs // {selfPkgs = self.packages.${system};};
 
             modules = [
               ./hosts/jnbnixos
@@ -40,15 +40,16 @@
                   inputs
                   // {
                     inherit ctp;
+                    selfPkgs = self.packages.${system};
                   };
               }
             ];
           };
 
-          jdnixos = nixpkgs.lib.nixosSystem {
+          jdnixos = nixpkgs.lib.nixosSystem rec {
             system = flake-utils.lib.system.x86_64-linux;
 
-            specialArgs = inputs;
+            specialArgs = inputs // {selfPkgs = self.packages.${system};};
 
             modules = [
               ./hosts/jdnixos
@@ -61,6 +62,7 @@
                   inputs
                   // {
                     inherit ctp;
+                    selfPkgs = self.packages.${system};
                   };
               }
             ];
