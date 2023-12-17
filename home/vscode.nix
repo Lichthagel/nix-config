@@ -1,5 +1,5 @@
 {
-  config,
+  osConfig,
   lib,
   pkgs,
   flake-utils,
@@ -13,7 +13,7 @@
       if pkgs.system == flake-utils.lib.system.x86_64-linux
       then
         ((pkgs.vscode.override
-            (lib.optionalAttrs (config.i18n.inputMethod == "fcitx5") {
+            (lib.optionalAttrs (osConfig.i18n.inputMethod.enabled == "fcitx5") {
               commandLineArgs = [
                 "--enable-wayland-ime"
               ];

@@ -1,5 +1,5 @@
 {
-  config,
+  osConfig,
   lib,
   pkgs,
   ...
@@ -10,7 +10,7 @@
         withVencord = true;
       })
       .overrideAttrs (oldAttrs:
-        lib.optionalAttrs (config.i18n.inputMethod == "fcitx5") {
+        lib.optionalAttrs (osConfig.i18n.inputMethod.enabled == "fcitx5") {
           installPhase =
             builtins.replaceStrings
             [''--add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland --enable-features=WaylandWindowDecorations}}"'']
