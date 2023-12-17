@@ -1,4 +1,6 @@
 {
+  osConfig,
+  lib,
   pkgs,
   ctp,
   ...
@@ -27,7 +29,14 @@
     keepassxc
     yubioath-flutter
     tutanota-desktop
-    obsidian
+    (obsidian.overrideAttrs (oldAttrs:
+      lib.optionalAttrs (osConfig.i18n.inputMethod.enabled == "fcitx5") {
+        installPhase =
+          builtins.replaceStrings
+          [''--add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}"'']
+          [''--add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}" --add-flags --enable-wayland-ime'']
+          oldAttrs.installPhase;
+      }))
     thunderbird
 
     # # You can also create simple shell scripts directly inside your
