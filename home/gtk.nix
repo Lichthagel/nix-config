@@ -1,6 +1,6 @@
 {
   pkgs,
-  selfPkgs,
+  unstablePkgs,
   ctp,
   ...
 }: {
@@ -15,7 +15,7 @@
     };
     cursorTheme = {
       name = "Vimix-white-cursors";
-      package = selfPkgs.vimix-cursors;
+      package = unstablePkgs.vimix-cursors;
     };
     font = {
       name = "Outfit";

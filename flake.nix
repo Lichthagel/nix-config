@@ -4,6 +4,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     flake-parts,
     flake-utils,
@@ -27,7 +28,12 @@
           jnbnixos = nixpkgs.lib.nixosSystem rec {
             system = flake-utils.lib.system.x86_64-linux;
 
-            specialArgs = inputs // {selfPkgs = self.packages.${system};};
+            specialArgs =
+              inputs
+              // {
+                selfPkgs = self.packages.${system};
+                unstablePkgs = nixpkgs-unstable.legacyPackages.${system};
+              };
 
             modules = [
               ./hosts/jnbnixos
@@ -41,6 +47,7 @@
                   // {
                     inherit ctp;
                     selfPkgs = self.packages.${system};
+                    unstablePkgs = nixpkgs-unstable.legacyPackages.${system};
                   };
               }
             ];
@@ -49,7 +56,12 @@
           jdnixos = nixpkgs.lib.nixosSystem rec {
             system = flake-utils.lib.system.x86_64-linux;
 
-            specialArgs = inputs // {selfPkgs = self.packages.${system};};
+            specialArgs =
+              inputs
+              // {
+                selfPkgs = self.packages.${system};
+                unstablePkgs = nixpkgs-unstable.legacyPackages.${system};
+              };
 
             modules = [
               ./hosts/jdnixos
@@ -63,6 +75,7 @@
                   // {
                     inherit ctp;
                     selfPkgs = self.packages.${system};
+                    unstablePkgs = nixpkgs-unstable.legacyPackages.${system};
                   };
               }
             ];
@@ -86,7 +99,6 @@
           lilex = pkgs.callPackage ./packages/lilex.nix {};
           monolisa = pkgs.callPackage ./packages/monolisa.nix {};
           monolisa-nerdfont = pkgs.callPackage ./packages/nerdfont.nix {font = monolisa;};
-          vimix-cursors = pkgs.callPackage ./packages/vimix-cursors.nix {};
         };
 
         devShells.default = pkgs.mkShell {
@@ -106,6 +118,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
