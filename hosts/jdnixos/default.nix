@@ -58,10 +58,6 @@
   environment.variables = {
     VDPAU_DRIVER = "va_gl";
     LIBVA_DRIVER_NAME = "nvidia";
-    NIXOS_OZONE_WL = "1";
-    XDG_SESSION_TYPE = "wayland";
-    QT_QPA_PLATFORM = "wayland";
-    SDL_VIDEODRIVER = "wayland";
   };
 
   # Load nvidia driver for Xorg and Wayland
