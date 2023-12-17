@@ -35,7 +35,7 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.licht = self.homeModules.full;
+                home-manager.users.licht = ./hosts/jnbnixos/home.nix;
                 home-manager.extraSpecialArgs =
                   inputs
                   // {
