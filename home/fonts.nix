@@ -40,6 +40,7 @@
         "FiraCode"
         "JetBrainsMono"
         "NerdFontsSymbolsOnly"
+        "VictorMono"
       ];
     })
     cascadia-code
@@ -48,6 +49,7 @@
     selfPkgs.lilex
     selfPkgs.monolisa
     selfPkgs.monolisa-nerdfont
+    victor-mono
   ];
 
   fonts.fontconfig.enable = true;
