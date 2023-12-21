@@ -18,68 +18,19 @@
     };
   in
     flake-parts.lib.mkFlake {inherit inputs;}
-    {
+    ({withSystem, ...}: {
+      imports = [
+        {config._module.args._inputs = inputs // {inherit self;};}
+      ];
+
       flake = {
         homeModules = {
           full = ./home;
         };
 
-        nixosConfigurations = {
-          jnbnixos = nixpkgs.lib.nixosSystem rec {
-            system = flake-utils.lib.system.x86_64-linux;
-
-            specialArgs =
-              inputs
-              // {
-                selfPkgs = self.packages.${system};
-                unstablePkgs = nixpkgs-unstable.legacyPackages.${system};
-              };
-
-            modules = [
-              ./hosts/jnbnixos
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.licht = ./hosts/jnbnixos/home.nix;
-                home-manager.extraSpecialArgs =
-                  inputs
-                  // {
-                    inherit ctp;
-                    selfPkgs = self.packages.${system};
-                    unstablePkgs = nixpkgs-unstable.legacyPackages.${system};
-                  };
-              }
-            ];
-          };
-
-          jdnixos = nixpkgs.lib.nixosSystem rec {
-            system = flake-utils.lib.system.x86_64-linux;
-
-            specialArgs =
-              inputs
-              // {
-                selfPkgs = self.packages.${system};
-                unstablePkgs = nixpkgs-unstable.legacyPackages.${system};
-              };
-
-            modules = [
-              ./hosts/jdnixos
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.licht = ./hosts/jdnixos/home.nix;
-                home-manager.extraSpecialArgs =
-                  inputs
-                  // {
-                    inherit ctp;
-                    selfPkgs = self.packages.${system};
-                    unstablePkgs = nixpkgs-unstable.legacyPackages.${system};
-                  };
-              }
-            ];
-          };
+        nixosConfigurations = import ./hosts {
+          inherit inputs self ctp;
+          inherit (nixpkgs) lib;
         };
       };
 
@@ -109,12 +60,14 @@
             rnix-lsp
             nix-output-monitor
             nvd
+            sops
+            age
           ];
         };
 
         formatter = pkgs.alejandra;
       };
-    };
+    });
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
@@ -135,6 +88,12 @@
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
     };
 
     flake-parts.url = "github:hercules-ci/flake-parts";

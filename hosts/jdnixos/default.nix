@@ -8,6 +8,7 @@
 }: {
   imports = [
     ../../nixos/base.nix
+    ../../nixos/sops.nix
     # ../../nixos/unbound.nix
     ../../nixos/adguardhome.nix
     ../../nixos/graphical/base.nix
@@ -15,6 +16,7 @@
     ../../nixos/graphical/sddm.nix
     ../../nixos/graphical/plasma.nix
     ../../nixos/sound.nix
+    ../../nixos/wireguard.nix
     ./gitea.nix
 
     # Include the results of the hardware scan.
