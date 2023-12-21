@@ -59,6 +59,7 @@
             unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${system};
           };
       }
+      inputs.sops-nix.nixosModules.sops
     ];
   };
 }

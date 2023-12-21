@@ -4,6 +4,7 @@
 {pkgs, ...}: {
   imports = [
     ../../nixos/base.nix
+    ../../nixos/sops.nix
     # ../../nixos/unbound.nix
     ../../nixos/adguardhome.nix
     ../../nixos/graphical/base.nix
@@ -11,6 +12,7 @@
     ../../nixos/graphical/plasma.nix
     ../../nixos/graphical/hyprland.nix
     ../../nixos/sound.nix
+    ../../nixos/wireguard.nix
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
