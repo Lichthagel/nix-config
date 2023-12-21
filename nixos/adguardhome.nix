@@ -1,4 +1,23 @@
 {
+  pkgs,
+  flake-utils,
+  ...
+}: let
+  sources = {
+    ${flake-utils.lib.system.x86_64-linux} = pkgs.fetchurl {
+      sha256 = "sha256-Ck4+7HTKVuLykwVEX1rAWWJE+6bT/oIWQ1LTB7Qkls8=";
+      url = "https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.107.43/AdGuardHome_linux_amd64.tar.gz";
+    };
+  };
+in {
+  nixpkgs.overlays = [
+    (final: prev: {
+      adguardhome = prev.adguardhome.overrideAttrs (oldAttrs: {
+        src = sources.${prev.system};
+      });
+    })
+  ];
+
   services.adguardhome = {
     enable = true;
     settings = {
