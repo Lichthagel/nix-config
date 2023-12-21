@@ -10,7 +10,6 @@
     ../../nixos/graphical/base.nix
     ../../nixos/graphical/sddm.nix
     ../../nixos/graphical/plasma.nix
-    ../../nixos/graphical/hyprland.nix
     ../../nixos/sound.nix
     ../../nixos/wireguard.nix
 

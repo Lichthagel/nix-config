@@ -121,7 +121,6 @@
     # ./gtk.nix
     ./git.nix
     ./fonts.nix
-    ./hyprland
     ./spotify.nix
   ];
 }

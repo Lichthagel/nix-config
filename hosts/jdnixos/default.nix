@@ -110,12 +110,6 @@
     pkgs.helix
   ];
 
-  programs.hyprland = {
-    enable = true;
-    enableNvidiaPatches = true;
-    xwayland.enable = true;
-  };
-
   virtualisation.podman = {
     enable = true;
 
