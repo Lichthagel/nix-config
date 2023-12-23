@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   pkgs,
   flake-utils,
   ...
@@ -9,6 +11,8 @@
       url = "https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.107.43/AdGuardHome_linux_amd64.tar.gz";
     };
   };
+
+  use_unbound = config.services.unbound.enable;
 in {
   nixpkgs.overlays = [
     (final: prev: {
@@ -34,22 +38,28 @@ in {
         protection_enabled = true;
         blocking_mode = "default";
         ratelimit = 0;
-        upstream_dns = [
-          "tls://dns3.digitalcourage.de"
-          "tls://fdns1.dismail.de"
-          "tls://fdns2.dismail.de"
-          "tls://dnsforge.de"
-          "https://dnsforge.de/dns-query"
-          "quic://dnsforge.de:853"
-          "tls://dns.adguard-dns.com"
-          "https://dns.adguard-dns.com/dns-query"
-          "tls://unfiltered.adguard-dns.com"
-          "https://unfiltered.adguard-dns.com/dns-query"
-          "tls://adblock.dns.mullvad.net"
-          "https://adblock.dns.mullvad.net/dns-query"
-          "tls://dns.mullvad.net"
-          "https://dns.mullvad.net/dns-query"
-        ];
+        upstream_dns =
+          if use_unbound
+          then [
+            "127.0.0.1:5353"
+            "[::1]:5353"
+          ]
+          else [
+            "tls://dns3.digitalcourage.de"
+            "tls://fdns1.dismail.de"
+            "tls://fdns2.dismail.de"
+            "tls://dnsforge.de"
+            "https://dnsforge.de/dns-query"
+            "quic://dnsforge.de:853"
+            "tls://dns.adguard-dns.com"
+            "https://dns.adguard-dns.com/dns-query"
+            "tls://unfiltered.adguard-dns.com"
+            "https://unfiltered.adguard-dns.com/dns-query"
+            "tls://adblock.dns.mullvad.net"
+            "https://adblock.dns.mullvad.net/dns-query"
+            "tls://dns.mullvad.net"
+            "https://dns.mullvad.net/dns-query"
+          ];
         enable_dnssec = true;
         filtering_enabled = true;
         safe_search.enabled = true;
@@ -63,6 +73,13 @@ in {
         }
       ];
     };
+  };
+
+  services.unbound = lib.mkIf use_unbound {
+    settings = {
+      server.port = 5353;
+    };
+    resolveLocalQueries = false;
   };
 
   networking = {
