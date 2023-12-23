@@ -101,15 +101,6 @@
     shell = pkgs.zsh;
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
-    pkgs.wezterm
-    pkgs.helix
-  ];
-
   virtualisation.podman = {
     enable = true;
 

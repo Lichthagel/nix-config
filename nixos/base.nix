@@ -49,9 +49,10 @@
 
   programs.ssh.startAgent = true;
 
-  environment.systemPackages = [
-    pkgs.neovim
-    pkgs.git
+  environment.systemPackages = with pkgs; [
+    neovim
+    helix
+    git
   ];
 
   nixpkgs.config = {
