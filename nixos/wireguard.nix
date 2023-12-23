@@ -25,21 +25,39 @@ in {
     allowedUDPPorts = [51820];
   };
 
-  networking.wireguard.interfaces = {
-    wg0 = {
-      inherit (hosts.${config.networking.hostName}) ips;
-      privateKeyFile = "/run/secrets/wireguard/private/${hostName}";
-      listenPort = 51820;
+  networking.networkmanager.ensureProfiles = {
+    environmentFiles = [
+      config.sops.secrets."wireguard/${hostName}.env".path
+    ];
 
-      peers = [
-        {
-          inherit allowedIPs;
-          presharedKeyFile = "/run/secrets/wireguard/preshared/${hostName}";
-          publicKey = "J8RuxFxhXRcQl/FlSzN5ori4KVY7RhHBOx4o4/bmPkc=";
+    profiles = {
+      "wg0" = {
+        connection = {
+          id = "wg0";
+          type = "wireguard";
+          interface-name = "wg0";
+        };
+        wireguard = {
+          listen-port = 51820;
+          private-key = "$PRIVATE_KEY";
+        };
+        "wireguard-peer.J8RuxFxhXRcQl/FlSzN5ori4KVY7RhHBOx4o4/bmPkc=" = {
           endpoint = "box.lichthagel.de:51820";
-          persistentKeepalive = 25;
-        }
-      ];
+          preshared-key = "$PRESHARED_KEY";
+          preshared-key-flags = 0;
+          persistent-keepalive = 25;
+          allowed-ips = builtins.concatStringsSep ";" allowedIPs;
+        };
+        ipv4 = {
+          address1 = builtins.elemAt hosts.${config.networking.hostName}.ips 0;
+          method = "manual";
+        };
+        ipv6 = {
+          addr-gen-mode = "default";
+          address1 = builtins.elemAt hosts.${config.networking.hostName}.ips 1;
+          method = "manual";
+        };
+      };
     };
   };
 

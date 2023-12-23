@@ -17,8 +17,7 @@ in {
     age.keyFile = "${homeDir}/.config/sops/age/keys.txt";
 
     secrets = {
-      "wireguard/private/${hostName}" = {};
-      "wireguard/preshared/${hostName}" = {};
+      "wireguard/${hostName}.env" = {};
     };
   };
 }
