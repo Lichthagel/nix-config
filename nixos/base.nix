@@ -54,8 +54,13 @@
     pkgs.git
   ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    # Allow unfree packages
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "electron-25.9.0"
+    ];
+  };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 }
