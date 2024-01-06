@@ -137,8 +137,8 @@
         "browser.safebrowsing.downloads.remote.enabled" = false;
 
         # MOZILLA
-        "permissions.default.desktop-notification" = 2;
-        "permissions.default.geo" = 2;
+        "permissions.default.desktop-notification" = 0;
+        "permissions.default.geo" = 0;
         "geo.provider.network.url" = "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%";
         "permissions.manager.defaultsUrl" = "";
         "webchannel.allowObject.urlWhitelist" = "";
