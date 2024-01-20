@@ -4,8 +4,8 @@ pkgs.stdenvNoCC.mkDerivation {
   src = pkgs.fetchFromGitHub {
     owner = "catppuccin";
     repo = "sddm";
-    rev = "529ec0f994c0e2527f118d17b143892f4d214575";
-    sha256 = "sha256-gXUi6rBUr8ZGbUbo1/rMYIvbluKkyqqe+PMP3Xwf/kI=";
+    rev = "95bfcba80a3b0cb5d9a6fad422a28f11a5064991";
+    sha256 = "sha256-Jf4xfgJEzLM7WiVsERVkj5k80Fhh1edUl6zsSBbQi6Y=";
   };
   propagatedBuildInputs = with pkgs.libsForQt5.qt5; [
     qtgraphicaleffects
