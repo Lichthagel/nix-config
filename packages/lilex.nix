@@ -1,12 +1,12 @@
 {pkgs ? import <nixpkgs> {}, ...}:
 pkgs.stdenvNoCC.mkDerivation rec {
   pname = "lilex";
-  version = "2.300";
+  version = "2.400";
 
   src = pkgs.fetchzip {
     url = "https://github.com/mishamyrt/Lilex/releases/download/${version}/Lilex.zip";
     stripRoot = false;
-    sha256 = "sha256-kr/aXrKo5cqhjrpNO+WFXUQxJOqUU9Tjz+Hdf61XSn0=";
+    sha256 = "sha256-7ZPLWJNVlnEZwWN1l5FsWDdYxKBq01GYrlLTmcjCQ9Y=";
   };
 
   installPhase = ''
