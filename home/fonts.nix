@@ -51,7 +51,9 @@
     selfPkgs.lilex
     monaspace
     selfPkgs.monolisa
+    selfPkgs.monolisa-custom
     selfPkgs.monolisa-nerdfont
+    selfPkgs.monolisa-custom-nerdfont
     victor-mono
   ];
 
