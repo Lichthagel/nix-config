@@ -13,8 +13,8 @@
     ctp = {
       flavor = "mocha";
       flavorCapitalized = "Mocha";
-      accent = "pink";
-      accentCapitalized = "Pink";
+      accent = "teal";
+      accentCapitalized = "Teal";
     };
   in
     flake-parts.lib.mkFlake {inherit inputs;}
