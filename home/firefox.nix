@@ -2,9 +2,6 @@
   programs.firefox = {
     enable = true;
     profiles.default = {
-      search.default = "DuckDuckGo";
-      search.privateDefault = "DuckDuckGo";
-      search.force = true;
       # mostly taken from Betterfox (https://github.com/yokoffing/Betterfox)
       settings = {
         # ****************************************************************************
@@ -94,7 +91,7 @@
         # SEARCH / URL BAR
         "browser.search.separatePrivateDefault.ui.enabled" = true;
         "browser.urlbar.update2.engineAliasRefresh" = true;
-        "browser.search.suggest.enabled" = false;
+        # "browser.search.suggest.enabled" = false;
         "browser.urlbar.suggest.quicksuggest.sponsored" = false;
         "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
         "browser.formfill.enable" = false;
