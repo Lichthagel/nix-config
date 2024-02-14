@@ -91,6 +91,16 @@ style = "fg:peach"
 format = "[ $symbol$branch ]($style)"
 
 [git_status]
+ahead = '󰁝 '
+behind = '󰁅 '
+conflicted = '󰅖 '
+deleted = '󰆴 '
+diverged = '󱡷 '
+modified = '󰏪 '
+renamed = '󰑕 '
+untracked = '󰡯 '
+staged = '󰄬 '
+stashed = '󱊖 '
 style = "fg:peach"
 format = "[$all_status$ahead_behind]($style)"
 
