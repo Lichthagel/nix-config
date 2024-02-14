@@ -12,7 +12,9 @@
       inputs
       // {
         selfPkgs = self.packages.${system};
-        unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${system};
+        unstablePkgs = import inputs.nixpkgs-unstable {
+          inherit system;
+        };
       };
 
     modules = [
@@ -27,7 +29,9 @@
           // {
             inherit ctp;
             selfPkgs = self.packages.${system};
-            unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${system};
+            unstablePkgs = import inputs.nixpkgs-unstable {
+              inherit system;
+            };
           };
       }
       inputs.sops-nix.nixosModules.sops
