@@ -10,7 +10,9 @@ $hostname\
 $docker_context\
 $directory\
 $git_branch\
+$git_commit\
 $git_status\
+$git_state\
 $vcsh\
 $package\
 $bun\
@@ -89,6 +91,14 @@ symbol = " "
 ignore_branches = ["main", "master"]
 style = "fg:peach"
 format = "[ $symbol$branch ]($style)"
+
+[git_commit]
+format = "[$hash$tag]($style) "
+style = "fg:peach"
+
+[git_state]
+format = "[$state( $progress_current/$progress_total)]($style) "
+style = "fg:peach"
 
 [git_status]
 ahead = '󰁝 '
