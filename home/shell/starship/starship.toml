@@ -86,6 +86,7 @@ format = "[ $path ]($style)"
 
 [git_branch]
 symbol = " "
+ignore_branches = ["main", "master"]
 style = "fg:peach"
 format = "[ $symbol$branch ]($style)"
 
