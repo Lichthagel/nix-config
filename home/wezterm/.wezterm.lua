@@ -28,38 +28,7 @@ config.font_size = 11.0
 -- config.line_height = 0.9
 -- config.front_end = "WebGpu"
 
-wezterm.plugin.require("https://github.com/nekowinston/wezterm-bar").apply_to_config(config, {
-  position = "bottom",
-  max_width = 32,
-  dividers = "slant_right",
-  indicator = {
-    leader = {
-      enabled = false,
-      off = " ",
-      on = " ",
-    },
-    mode = {
-      enabled = true,
-      names = {
-        resize_mode = "RESIZE",
-        copy_mode = "VISUAL",
-        search_mode = "SEARCH",
-      },
-    },
-  },
-  tabs = {
-    numerals = "arabic",        -- or "roman"
-    pane_count = "superscript", -- or "subscript", false
-    brackets = {
-      active = { "", ":" },
-      inactive = { "", ":" },
-    },
-  },
-  clock = {           -- note that this overrides the whole set_right_status
-    enabled = false,
-    format = "%H:%M", -- use https://wezfurlong.org/wezterm/config/lua/wezterm.time/Time/format.html
-  },
-})
+config.use_fancy_tab_bar = false
 
 config.enable_wayland = false
 
