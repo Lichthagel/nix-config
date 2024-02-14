@@ -4,20 +4,14 @@ palette = "catppuccin_mocha"
 
 format = """
 [╭](overlay0)\
-[\ue0b2](lavender)\
 $os\
 $username\
 $hostname\
 $docker_context\
-[\ue0b0](bg:pink fg:lavender)\
 $directory\
-[\ue0b0](fg:pink)\
-([─](overlay0)\
-[\ue0b2](fg:surface0)\
 $git_branch\
 $git_status\
 $vcsh\
-[\ue0b0](fg:surface0)) \
 $package\
 $bun\
 $c\
@@ -82,7 +76,7 @@ style = "fg:green"
 format = "[$symbol($version )]($style)"
 
 [directory]
-style = "bg:pink fg:base italic"
+style = "fg:pink italic"
 format = "[ $path ]($style)"
 
 [directory.substitutions]
@@ -92,12 +86,12 @@ format = "[ $path ]($style)"
 
 [git_branch]
 symbol = " "
-style = "bg:surface0 fg:text"
+style = "fg:peach"
 format = "[ $symbol$branch ]($style)"
 
 [git_status]
-style = "bg:surface0 fg:text"
-format = "[$all_status$ahead_behind ]($style)"
+style = "fg:peach"
+format = "[$all_status$ahead_behind]($style)"
 
 [golang]
 style = "fg:teal"
@@ -146,7 +140,7 @@ format = "[$symbol($version )]($style)"
 
 [os]
 disabled = false
-style = "bg:lavender fg:base"
+style = "fg:lavender"
 
 [os.symbols]
 Arch = " "
