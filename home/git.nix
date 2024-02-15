@@ -7,6 +7,8 @@
       credential.credentialStore = "secretservice";
 
       init.defaultBranch = "main";
+
+      core.fsmonitor = true;
     };
   };
 }
