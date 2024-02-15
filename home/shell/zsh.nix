@@ -29,6 +29,7 @@ in {
     defaultKeymap = "emacs";
     shellAliases = {
       cat = "bat";
+      zh = "z $PWD";
     };
     plugins = [
       {
