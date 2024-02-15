@@ -79,7 +79,7 @@ format = "[$symbol($version )]($style)"
 
 [directory]
 style = "fg:pink italic"
-format = "[ $path ]($style)"
+format = "[$path]($style) "
 
 [directory.substitutions]
 "/mnt/d/Projects" = " "
@@ -125,9 +125,9 @@ symbol = " "
 format = "[$symbol($version )]($style)"
 
 [hostname]
-style = "bg:lavender fg:base"
-format = "[@$hostname$ssh_symbol]($style)"
-ssh_symbol = " 󰢹 "
+style = "fg:flamingo"
+format = "[$ssh_symbol$hostname]($style) "
+ssh_symbol = "󰢹 "
 
 [java]
 style = "fg:maroon"
@@ -162,6 +162,7 @@ format = "[$symbol($version )]($style)"
 [os]
 disabled = false
 style = "fg:lavender"
+format = "[$symbol]($style) "
 
 [os.symbols]
 Arch = " "
@@ -187,12 +188,12 @@ symbol = " "
 format = "[$symbol($version )]($style)"
 
 [username]
-style_user = "bg:lavender fg:base"
-style_root = "bg:lavender fg:base"
-format = "[$user]($style)"
+style_user = "fg:rosewater bg:base dimmed"
+style_root = "fg:yellow bg:base"
+format = "[$user]($style) "
 
 [vcsh]
-style = "bg:surface0 fg:text"
+style = "fg:peach"
 symbol = " "
 format = "[$symbol$repo ]($style)"
 
