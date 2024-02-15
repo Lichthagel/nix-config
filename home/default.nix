@@ -123,5 +123,6 @@
     ./fonts.nix
     ./spotify.nix
     ./gpg.nix
+    ./mpv
   ];
 }
