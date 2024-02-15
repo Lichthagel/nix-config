@@ -19,12 +19,12 @@
               ];
             }))
           .overrideAttrs rec {
-            version = "1.86.1";
+            version = "1.86.2";
 
             src = pkgs.fetchurl {
               name = "VSCode_${version}_linux-x64.tar.gz";
               url = "https://update.code.visualstudio.com/${version}/linux-x64/stable";
-              sha256 = "sha256-joPyv5uhSBRy7C9x5jUuIU7NnK3zhoj18TaGinv6zlk=";
+              sha256 = "sha256-zz1Kx+u9QWEoTH+j/5EyyUtpBSrYojdhJD2eSwjG350=";
             };
           })
         .fhs
