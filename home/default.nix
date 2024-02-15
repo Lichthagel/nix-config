@@ -122,5 +122,6 @@
     ./git.nix
     ./fonts.nix
     ./spotify.nix
+    ./gpg.nix
   ];
 }
