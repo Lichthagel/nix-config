@@ -60,6 +60,7 @@
           });
           monolisa-nerdfont = pkgs.callPackage ./packages/nerdfont.nix {font = monolisa;};
           monolisa-custom-nerdfont = pkgs.callPackage ./packages/nerdfont.nix {font = monolisa-custom;};
+          recursive-nerdfont = pkgs.callPackage ./packages/nerdfont.nix {font = pkgs.recursive;};
         };
 
         devShells.default = pkgs.mkShell {

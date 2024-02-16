@@ -53,6 +53,8 @@
     selfPkgs.monolisa-custom
     selfPkgs.monolisa-nerdfont
     selfPkgs.monolisa-custom-nerdfont
+    recursive
+    selfPkgs.recursive-nerdfont
     victor-mono
   ];
 
