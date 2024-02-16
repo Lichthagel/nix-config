@@ -17,6 +17,7 @@
     ../../nixos/graphical/plasma.nix
     ../../nixos/sound.nix
     ../../nixos/wireguard.nix
+    ../../nixos/ssh.nix
     ./gitea.nix
 
     # Include the results of the hardware scan.
