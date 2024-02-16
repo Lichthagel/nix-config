@@ -121,9 +121,16 @@
       "https://hyprland.cachix.org"
     ];
 
+    trusted-substituters = [
+      "ssh-ng://192.168.1.178"
+      "ssh-ng://10.200.200.2"
+      "ssh-ng://desktop.licht"
+    ];
+
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "jdnixos:Hij0WitMIbRrp5zUXc70y9VvzIuBroTp1l8hmguEbjQ="
     ];
   };
 }

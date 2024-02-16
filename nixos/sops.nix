@@ -24,6 +24,7 @@ in {
         mode = "0600";
         path = "${homeDir}/.ssh/id_ed25519_shared";
       };
+      "nix_cache/${hostName}/private" = {};
     };
   };
 }

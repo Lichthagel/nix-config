@@ -141,6 +141,10 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  sops.secrets."nix_cache/${config.networking.hostName}/private" = {};
+
+  nix.settings.secret-key-files = config.sops.secrets."nix_cache/${config.networking.hostName}/private".path;
+
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [3030 22000];
   networking.firewall.allowedUDPPorts = [21027 22000];
