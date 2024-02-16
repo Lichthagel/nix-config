@@ -20,7 +20,7 @@ jobs:
           logger: pretty
       
       - name: Nix Magic Cache
-        uses: DeterminateSystems/nix-magic-cache-action@main
+        uses: DeterminateSystems/magic-nix-cache-action@main
       
       - name: Update Lockfile
         uses: DeterminateSystems/update-flake-lock@main
