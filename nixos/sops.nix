@@ -18,6 +18,12 @@ in {
 
     secrets = {
       "wireguard/${hostName}.env" = {};
+      "ssh/shared/private" = {
+        owner = config.users.users.licht.name;
+        group = config.users.users.licht.group;
+        mode = "0600";
+        path = "${homeDir}/.ssh/id_ed25519_shared";
+      };
     };
   };
 }
