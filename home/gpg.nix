@@ -1,4 +1,8 @@
-{...}: {
+{
+  osConfig,
+  pkgs,
+  ...
+}: {
   programs.gpg = {
     enable = true;
     settings = {
@@ -11,5 +15,17 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
+    pinentryFlavor =
+      if osConfig.services.xserver.enable
+      then "qt"
+      else "curses";
   };
+
+  home.packages = with pkgs; [
+    (
+      if osConfig.services.xserver.enable
+      then pinentry.qt
+      else pinentry.curses
+    )
+  ];
 }
