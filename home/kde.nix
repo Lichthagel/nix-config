@@ -1,6 +1,5 @@
 {
   pkgs,
-  unstablePkgs,
   ctp,
   ...
 }: {
@@ -14,7 +13,7 @@
       inherit (ctp) flavor accent;
     })
     pkgs.capitaine-cursors
-    unstablePkgs.vimix-cursors
+    pkgs.vimix-cursors
     (pkgs.catppuccin-gtk.override {
       variant = ctp.flavor;
       accents = [ctp.accent];
@@ -24,7 +23,7 @@
   home.pointerCursor = {
     name = "Vimix Cursors - White";
     # size = 32;
-    package = unstablePkgs.vimix-cursors;
+    package = pkgs.vimix-cursors;
     gtk.enable = true;
     x11.enable = true;
   };

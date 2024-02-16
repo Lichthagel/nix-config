@@ -3,9 +3,9 @@
   services.xserver.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "de";
-    xkbVariant = "neo_qwertz";
+    variant = "neo_qwertz";
   };
 
   environment.systemPackages = with pkgs; [

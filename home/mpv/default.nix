@@ -1,8 +1,4 @@
-{
-  pkgs,
-  unstablePkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.mpv = {
     enable = true;
     config = {
@@ -34,7 +30,7 @@
       volume = 70;
     };
     scripts = with pkgs.mpvScripts; [
-      (unstablePkgs.mpvScripts.uosc.overrideAttrs (finalAttrs: {
+      (pkgs.mpvScripts.uosc.overrideAttrs (finalAttrs: {
         version = "5.2.0";
 
         src = pkgs.fetchFromGitHub {
