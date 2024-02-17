@@ -5,14 +5,6 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 1w";
-  };
-
-  nix.settings.auto-optimise-store = true;
-
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -63,5 +55,12 @@
     ];
   };
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 1w";
+    };
+    settings = (import ../flake.nix).nixConfig;
+  };
 }
