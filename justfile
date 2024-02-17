@@ -1,6 +1,9 @@
 deploy:
     nixos-rebuild switch --flake . --use-remote-sudo
 
+substitute:
+    nixos-rebuild switch --flake . --use-remote-sudo --option extra-substituters ssh-ng://192.168.1.178
+
 debug:
     nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose
 
