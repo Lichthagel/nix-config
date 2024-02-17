@@ -113,6 +113,7 @@
   imports = [
     ./wezterm
     ./vscode.nix
+    ./neovim.nix
     ./gh.nix
     ./shell
     ./discord.nix
