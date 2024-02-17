@@ -10,5 +10,8 @@
 
       core.fsmonitor = true;
     };
+    aliases = {
+      co = "checkout";
+    };
   };
 }
