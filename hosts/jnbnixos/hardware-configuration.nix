@@ -31,8 +31,8 @@
 
   swapDevices = [
     {
-      device = "/var/lib/swapfile";
-      size = 16 * 1024;
+      device = "/dev/disk/by-partuuid/1cd51d10-9780-49aa-a98e-1621440a37bc";
+      randomEncryption.enable = true;
     }
   ];
 
