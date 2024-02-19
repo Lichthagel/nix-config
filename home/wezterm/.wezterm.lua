@@ -32,5 +32,8 @@ config.use_fancy_tab_bar = false
 
 config.enable_wayland = false
 
+config.initial_cols = 120
+config.initial_rows = 30
+
 -- and finally, return the configuration to wezterm
 return config
