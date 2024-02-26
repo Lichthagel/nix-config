@@ -30,8 +30,6 @@ config.font_size = 11.0
 
 config.use_fancy_tab_bar = false
 
-config.enable_wayland = false
-
 config.initial_cols = 120
 config.initial_rows = 30
 
