@@ -12,6 +12,8 @@
   home.packages = with pkgs; [
     fd
     du-dust
+    glow
+    skate
   ];
 
   programs = {
