@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  nixpkgs,
+  ...
+}: {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
@@ -62,5 +66,9 @@
       options = "--delete-older-than 1w";
     };
     settings = (import ../flake.nix).nixConfig;
+    registry = {
+      nixpkgs.flake = nixpkgs;
+      n.flake = nixpkgs;
+    };
   };
 }
