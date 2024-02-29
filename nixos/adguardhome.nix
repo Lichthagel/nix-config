@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  sources = {
+  sources = version: {
     "x86_64-linux" = pkgs.fetchurl {
-      sha256 = "sha256-Ck4+7HTKVuLykwVEX1rAWWJE+6bT/oIWQ1LTB7Qkls8=";
-      url = "https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.107.43/AdGuardHome_linux_amd64.tar.gz";
+      url = "https://github.com/AdguardTeam/AdGuardHome/releases/download/v${version}/AdGuardHome_linux_amd64.tar.gz";
+      sha256 = "sha256-vRn5PEeoqJNjnk7ygWHhYXCHZ8iYzBBHH/P++8NaOnY=";
     };
   };
 
@@ -15,8 +15,10 @@
 in {
   nixpkgs.overlays = [
     (final: prev: {
-      adguardhome = prev.adguardhome.overrideAttrs (oldAttrs: {
-        src = sources.${prev.system};
+      adguardhome = prev.adguardhome.overrideAttrs (oldAttrs: rec {
+        version = "0.107.44";
+
+        src = (sources version).${final.system} or (throw "Source for ${final.pname} is not available for ${final.system}");
       });
     })
   ];
