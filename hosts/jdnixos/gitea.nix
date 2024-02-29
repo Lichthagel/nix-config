@@ -1,7 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  unstablePkgs,
+  ...
+}: {
   services.gitea = {
     enable = true;
-    package = pkgs.gitea.overrideAttrs rec {
+    package = unstablePkgs.gitea.overrideAttrs rec {
       version = "1.21.1";
       src = pkgs.fetchurl {
         url = "https://dl.gitea.com/gitea/${version}/gitea-src-${version}.tar.gz";

@@ -4,58 +4,67 @@
   inputs,
   ctp,
   ...
-}: {
-  jdnixos = lib.nixosSystem rec {
-    system = inputs.flake-utils.lib.system.x86_64-linux;
-
-    specialArgs =
-      inputs
-      // {
-        selfPkgs = self.packages.${system};
-      };
-
-    modules = [
-      ./jdnixos
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.licht = ./jdnixos/home.nix;
-        home-manager.extraSpecialArgs =
-          inputs
-          // {
-            inherit ctp;
-            selfPkgs = self.packages.${system};
-          };
-      }
-      inputs.sops-nix.nixosModules.sops
-    ];
+}: let
+  mkArgs = system: {
+    inherit self inputs ctp;
+    selfPkgs = self.packages.${system};
+    unstablePkgs = import inputs.nixpkgs-unstable {
+      inherit system;
+    };
   };
+  mkHost = {
+    hostName,
+    system,
+    nixosModules,
+    homeConfig,
+  }:
+    lib.nixosSystem {
+      inherit system;
 
-  jnbnixos = lib.nixosSystem rec {
-    system = inputs.flake-utils.lib.system.x86_64-linux;
+      specialArgs = mkArgs system;
 
-    specialArgs =
-      inputs
-      // {
-        selfPkgs = self.packages.${system};
-      };
+      modules =
+        [
+          {
+            networking.hostName = hostName;
+          }
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.licht = homeConfig;
+            home-manager.extraSpecialArgs = mkArgs system;
+          }
+          inputs.sops-nix.nixosModules.sops
+        ]
+        ++ nixosModules;
+    };
+  mkHosts = hosts:
+    builtins.listToAttrs (map (host: {
+        name = host.hostName;
+        value = mkHost host;
+      })
+      hosts);
+in
+  mkHosts [
+    {
+      hostName = "jdnixos";
+      system = "x86_64-linux";
 
-    modules = [
-      ./jnbnixos
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.licht = ./jnbnixos/home.nix;
-        home-manager.extraSpecialArgs =
-          inputs
-          // {
-            inherit ctp;
-            selfPkgs = self.packages.${system};
-          };
-      }
-      inputs.sops-nix.nixosModules.sops
-    ];
-  };
-}
+      nixosModules = [
+        ./jdnixos
+      ];
+
+      homeConfig = ./jdnixos/home.nix;
+    }
+    {
+      hostName = "jnbnixos";
+      system = "x86_64-linux";
+
+      nixosModules = [
+        ./jnbnixos
+      ];
+
+      homeConfig = ./jnbnixos/home.nix;
+    }
+  ]

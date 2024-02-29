@@ -1,10 +1,10 @@
 {
   ctp,
   pkgs,
-  spicetify-nix,
+  inputs,
   ...
 }: let
-  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
+  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
 in {
   home.packages = with pkgs; [
     # spotify
@@ -14,7 +14,7 @@ in {
   ];
 
   imports = [
-    spicetify-nix.homeManagerModule
+    inputs.spicetify-nix.homeManagerModule
   ];
 
   programs.spicetify = {

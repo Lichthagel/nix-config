@@ -1,6 +1,7 @@
 {
   pkgs,
   selfPkgs,
+  unstablePkgs,
   ...
 }: {
   home.packages = with pkgs; [
@@ -34,7 +35,7 @@
     overpass
 
     # code
-    (pkgs.nerdfonts.override {
+    (unstablePkgs.nerdfonts.override {
       fonts = [
         "CascadiaCode"
         "FiraCode"

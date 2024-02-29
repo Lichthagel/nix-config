@@ -1,6 +1,6 @@
 {
   pkgs,
-  nixpkgs,
+  inputs,
   ...
 }: {
   # Bootloader.
@@ -67,8 +67,8 @@
     };
     settings = (import ../flake.nix).nixConfig;
     registry = {
-      nixpkgs.flake = nixpkgs;
-      n.flake = nixpkgs;
+      nixpkgs.flake = inputs.nixpkgs;
+      n.flake = inputs.nixpkgs;
     };
   };
 }
