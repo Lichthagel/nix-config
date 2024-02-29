@@ -2,7 +2,6 @@
   osConfig,
   lib,
   pkgs,
-  flake-utils,
   ...
 }: {
   programs.vscode = {
@@ -10,7 +9,7 @@
     mutableExtensionsDir = true;
     package =
       # I don't really use other systems, so I only override the x86_64-linux package.
-      if pkgs.system == flake-utils.lib.system.x86_64-linux
+      if pkgs.system == "x86_64-linux"
       then
         ((pkgs.vscode.override
             (lib.optionalAttrs (osConfig.i18n.inputMethod.enabled == "fcitx5") {

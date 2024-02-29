@@ -2,11 +2,10 @@
   config,
   lib,
   pkgs,
-  flake-utils,
   ...
 }: let
   sources = {
-    ${flake-utils.lib.system.x86_64-linux} = pkgs.fetchurl {
+    "x86_64-linux" = pkgs.fetchurl {
       sha256 = "sha256-Ck4+7HTKVuLykwVEX1rAWWJE+6bT/oIWQ1LTB7Qkls8=";
       url = "https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.107.43/AdGuardHome_linux_amd64.tar.gz";
     };

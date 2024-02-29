@@ -6,7 +6,6 @@
     nixpkgs,
     home-manager,
     flake-parts,
-    flake-utils,
     ...
   } @ inputs: let
     ctp = {
@@ -33,7 +32,10 @@
         };
       };
 
-      systems = flake-utils.lib.defaultSystems;
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
 
       perSystem = {
         config,
@@ -81,10 +83,12 @@
     });
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -96,7 +100,6 @@
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     sops-nix = {
@@ -105,9 +108,10 @@
       inputs.nixpkgs-stable.follows = "nixpkgs";
     };
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
