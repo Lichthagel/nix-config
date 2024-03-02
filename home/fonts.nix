@@ -43,6 +43,7 @@
         "CascadiaCode"
         "FiraCode"
         "GeistMono"
+        "Iosevka"
         "JetBrainsMono"
         "MartianMono"
         "Monaspace"
@@ -52,6 +53,7 @@
     })
     cascadia-code
     fira-code
+    iosevka-bin
     jetbrains-mono
     selfPkgs.lilex
     martian-mono
