@@ -5,7 +5,10 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # sans-serif
+    # sans & mono
+    unstablePkgs.geist-font
+
+    # sans
     (google-fonts.override {
       fonts = [
         "Josefin Sans"
@@ -34,11 +37,12 @@
     open-sans
     overpass
 
-    # code
+    # mono
     (unstablePkgs.nerdfonts.override {
       fonts = [
         "CascadiaCode"
         "FiraCode"
+        "GeistMono"
         "JetBrainsMono"
         "MartianMono"
         "Monaspace"
