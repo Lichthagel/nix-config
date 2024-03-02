@@ -40,6 +40,7 @@
         "CascadiaCode"
         "FiraCode"
         "JetBrainsMono"
+        "MartianMono"
         "Monaspace"
         "NerdFontsSymbolsOnly"
         "VictorMono"
@@ -49,6 +50,7 @@
     fira-code
     jetbrains-mono
     selfPkgs.lilex
+    martian-mono
     monaspace
     selfPkgs.monolisa
     selfPkgs.monolisa-custom
