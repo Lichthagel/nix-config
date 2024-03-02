@@ -68,7 +68,8 @@
     settings = (import ../flake.nix).nixConfig;
     registry = {
       nixpkgs.flake = inputs.nixpkgs;
-      n.flake = inputs.nixpkgs;
+      nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
+      unstable.flake = inputs.nixpkgs-unstable;
     };
   };
 }
