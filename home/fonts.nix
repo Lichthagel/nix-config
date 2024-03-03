@@ -58,6 +58,8 @@
     fira-code
     iosevka-bin
     jetbrains-mono
+    unstablePkgs.kode-mono
+    selfPkgs.kode-mono-nerdfont
     selfPkgs.lilex
     martian-mono
     monaspace

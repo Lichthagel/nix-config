@@ -41,13 +41,19 @@
         config,
         pkgs,
         system,
+        inputs',
         ...
-      }: {
+      }: let
+        unstablePkgs = import inputs.nixpkgs-unstable {
+          inherit system;
+        };
+      in {
         packages = rec {
           afacad = pkgs.callPackage ./packages/afacad.nix {};
           catppuccin-fcitx5 = pkgs.callPackage ./packages/catppuccin-fcitx5.nix {};
           catppuccin-sddm = pkgs.callPackage ./packages/catppuccin-sddm.nix {};
           gabarito = pkgs.callPackage ./packages/gabarito.nix {};
+          kode-mono-nerdfont = pkgs.callPackage ./packages/nerdfont.nix {font = unstablePkgs.kode-mono;};
           lilex = pkgs.callPackage ./packages/lilex.nix {};
           monolisa = pkgs.callPackage ./packages/monolisa.nix {};
           monolisa-custom = monolisa.overrideAttrs (oldAttrs: {
