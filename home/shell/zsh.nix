@@ -17,8 +17,8 @@
   ohmyzsh-src = pkgs.fetchFromGitHub {
     owner = "ohmyzsh";
     repo = "ohmyzsh";
-    rev = "7e3fdf33ec53821e574b8d6df43bec7264c507ee";
-    sha256 = "sha256-GYM0VIIFdJJOV6Nu3ZuaiNkTlbuLOs7cX9665oVsTq4=";
+    rev = "12cd3b3e399d39b2b458fdd8f1f6286250253476";
+    sha256 = "sha256-G8Hf+FocHEEjguk8C6Hf97PSDl6msWUOx+dzMjveYYI=";
   };
 in {
   programs.zsh = {
