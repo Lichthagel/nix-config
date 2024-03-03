@@ -49,6 +49,7 @@
         "MartianMono"
         "Monaspace"
         "NerdFontsSymbolsOnly"
+        "SourceCodePro"
         "VictorMono"
       ];
     })
@@ -66,6 +67,7 @@
     selfPkgs.monolisa-custom-nerdfont
     recursive
     selfPkgs.recursive-nerdfont
+    source-code-pro
     victor-mono
   ];
 
