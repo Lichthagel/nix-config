@@ -41,6 +41,7 @@
     (unstablePkgs.nerdfonts.override {
       fonts = [
         "CascadiaCode"
+        "FantasqueSansMono"
         "FiraCode"
         "GeistMono"
         "Iosevka"
@@ -52,6 +53,7 @@
       ];
     })
     cascadia-code
+    fantasque-sans-mono
     fira-code
     iosevka-bin
     jetbrains-mono
