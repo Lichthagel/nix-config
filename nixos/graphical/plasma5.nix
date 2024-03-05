@@ -9,4 +9,6 @@
     kwrited
     plasma-browser-integration
   ];
+
+  services.xserver.displayManager.defaultSession = "plasmawayland";
 }
