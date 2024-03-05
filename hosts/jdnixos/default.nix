@@ -14,7 +14,7 @@
     ../../nixos/graphical/base.nix
     ../../nixos/graphical/fcitx5.nix
     ../../nixos/graphical/sddm.nix
-    ../../nixos/graphical/plasma.nix
+    ../../nixos/graphical/plasma5.nix
     ../../nixos/sound.nix
     ../../nixos/wireguard.nix
     ../../nixos/ssh.nix
