@@ -13,7 +13,7 @@
     ../../nixos/adguardhome.nix
     ../../nixos/graphical/base.nix
     ../../nixos/graphical/sddm.nix
-    ../../nixos/graphical/plasma6.nix
+    ../../nixos/graphical/plasma5.nix
     ../../nixos/sound.nix
     ../../nixos/wireguard.nix
     ../../nixos/ssh.nix
