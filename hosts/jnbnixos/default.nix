@@ -1,7 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ../../nixos/base.nix
     ../../nixos/sops.nix
@@ -14,11 +18,15 @@
     ../../nixos/wireguard.nix
     ../../nixos/ssh.nix
 
+    inputs.nixos-hardware.nixosModules.asus-battery
+
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  hardware.asus.battery.chargeUpto = 80;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
