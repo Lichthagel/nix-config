@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
+  inputs,
   pkgs,
   ...
 }: {
@@ -19,6 +20,9 @@
     ../../nixos/wireguard.nix
     ../../nixos/ssh.nix
     ./gitea.nix
+
+    inputs.nixos-hardware.nixosModules.common-cpu-amd
+    inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
