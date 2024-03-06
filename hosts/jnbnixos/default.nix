@@ -19,6 +19,9 @@
     ../../nixos/ssh.nix
 
     inputs.nixos-hardware.nixosModules.asus-battery
+    inputs.nixos-hardware.nixosModules.common-cpu-amd
+    inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+    inputs.nixos-hardware.nixosModules.common-gpu-amd
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -47,19 +50,8 @@
 
   services.pcscd.enable = true;
 
-  boot.kernelModules = ["amdgpu"];
-
-  services.xserver.videoDrivers = ["amdgpu"];
-
   hardware.opengl = {
     enable = true;
-    extraPackages = with pkgs; [
-      rocm-opencl-icd
-      rocm-opencl-runtime
-      amdvlk
-    ];
-    driSupport = true;
-    driSupport32Bit = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
