@@ -28,13 +28,13 @@
         ctpsrc = pkgs.fetchFromGitHub {
           owner = "catppuccin";
           repo = "bat";
-          rev = "0ce3d34921ba1b544a4d82aa01352abd553d51ef";
-          sha256 = "sha256-PLbTLj0qhsDj+xm+OML/AQsfRQVPXLYQNEPllgKcEx4=";
+          rev = "e5c2f64eab91deb1750233cd64356b26cb985a21";
+          sha256 = "sha256-zWRk6HaQl+2M9LuFTjz56jGzHQ8nuG7w1JXYe3cLxH4=";
         };
       in {
-        "catppuccin-${ctp.flavor}" = {
+        "Catppuccin ${ctp.flavorCapitalized}" = {
           src = ctpsrc;
-          file = "Catppuccin-${ctp.flavor}.tmTheme";
+          file = "themes/Catppuccin ${ctp.flavorCapitalized}.tmTheme";
         };
       };
       extraPackages = with pkgs.bat-extras; [
@@ -43,7 +43,7 @@
         prettybat
       ];
       config = {
-        theme = "catppuccin-${ctp.flavor}";
+        theme = "Catppuccin ${ctp.flavorCapitalized}";
       };
     };
 
