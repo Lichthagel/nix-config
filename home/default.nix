@@ -126,5 +126,6 @@
     ./spotify.nix
     ./gpg.nix
     ./mpv
+    ./ssh.nix
   ];
 }
