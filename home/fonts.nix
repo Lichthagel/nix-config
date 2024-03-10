@@ -54,6 +54,8 @@
       ];
     })
     cascadia-code
+    selfPkgs.cartograph-cf
+    selfPkgs.cartograph-cf-nerdfont
     fantasque-sans-mono
     fira-code
     iosevka-bin

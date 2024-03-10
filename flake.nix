@@ -50,6 +50,8 @@
       in {
         packages = rec {
           afacad = pkgs.callPackage ./packages/afacad.nix {};
+          cartograph-cf = pkgs.callPackage ./packages/cartograph-cf.nix {};
+          cartograph-cf-nerdfont = pkgs.callPackage ./packages/nerdfont.nix {font = cartograph-cf;};
           catppuccin-fcitx5 = pkgs.callPackage ./packages/catppuccin-fcitx5.nix {};
           catppuccin-sddm = pkgs.callPackage ./packages/catppuccin-sddm.nix {};
           gabarito = pkgs.callPackage ./packages/gabarito.nix {};
