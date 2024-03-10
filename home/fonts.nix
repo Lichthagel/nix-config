@@ -12,10 +12,10 @@
     (google-fonts.override {
       fonts = [
         "Josefin Sans"
+        "Josefin Slab"
         "M PLUS 1"
         "M PLUS 1 Code"
         "M PLUS 2"
-        "Nunito"
         "Outfit"
         "Plus Jakarta Sans"
         "Rubik"
@@ -25,7 +25,6 @@
     })
     selfPkgs.afacad
     selfPkgs.gabarito
-    ibm-plex
     inter
     jost
     lexend
@@ -34,7 +33,6 @@
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
     noto-fonts-monochrome-emoji
-    open-sans
     overpass
 
     # mono
@@ -44,13 +42,13 @@
         "FantasqueSansMono"
         "FiraCode"
         "GeistMono"
-        "Iosevka"
+        # "Iosevka"
         "JetBrainsMono"
         "MartianMono"
         "Monaspace"
         "NerdFontsSymbolsOnly"
         "SourceCodePro"
-        "VictorMono"
+        # "VictorMono"
       ];
     })
     cascadia-code
@@ -58,7 +56,7 @@
     selfPkgs.cartograph-cf-nerdfont
     fantasque-sans-mono
     fira-code
-    iosevka-bin
+    # iosevka-bin
     jetbrains-mono
     unstablePkgs.kode-mono
     selfPkgs.kode-mono-nerdfont
@@ -69,10 +67,10 @@
     selfPkgs.monolisa-custom
     selfPkgs.monolisa-nerdfont
     selfPkgs.monolisa-custom-nerdfont
-    recursive
-    selfPkgs.recursive-nerdfont
+    # recursive
+    # selfPkgs.recursive-nerdfont
     source-code-pro
-    victor-mono
+    # victor-mono
   ];
 
   fonts.fontconfig.enable = true;
