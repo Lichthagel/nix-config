@@ -50,6 +50,11 @@
 
   services.pcscd.enable = true;
 
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
   hardware.opengl = {
     enable = true;
   };
