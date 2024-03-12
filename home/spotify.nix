@@ -6,13 +6,6 @@
 }: let
   spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
 in {
-  home.packages = with pkgs; [
-    # spotify
-    spotifyd
-    spotify-tui
-    # spicetify-cli
-  ];
-
   imports = [
     inputs.spicetify-nix.homeManagerModule
   ];
