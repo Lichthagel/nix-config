@@ -78,7 +78,6 @@
             alejandra
             just
             nil
-            rnix-lsp
             nix-output-monitor
             nvd
             sops

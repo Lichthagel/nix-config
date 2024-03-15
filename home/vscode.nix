@@ -32,7 +32,6 @@
 
   home.packages = [
     pkgs.alejandra
-    pkgs.rnix-lsp
     pkgs.nil
   ];
 
