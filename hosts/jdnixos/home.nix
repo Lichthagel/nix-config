@@ -11,5 +11,6 @@
     calibre
     anki
     qbittorrent
+    libreoffice-qt
   ];
 }
