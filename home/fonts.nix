@@ -70,6 +70,8 @@
     # recursive
     # selfPkgs.recursive-nerdfont
     source-code-pro
+    selfPkgs.twilio-sans-mono
+    selfPkgs.twilio-sans-mono-nerdfont
     # victor-mono
   ];
 

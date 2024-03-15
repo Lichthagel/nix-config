@@ -71,6 +71,8 @@
           monolisa-nerdfont = pkgs.callPackage ./packages/nerdfont.nix {font = monolisa;};
           monolisa-custom-nerdfont = pkgs.callPackage ./packages/nerdfont.nix {font = monolisa-custom;};
           recursive-nerdfont = pkgs.callPackage ./packages/nerdfont.nix {font = pkgs.recursive;};
+          twilio-sans-mono = pkgs.callPackage ./packages/twilio-sans-mono.nix {};
+          twilio-sans-mono-nerdfont = pkgs.callPackage ./packages/nerdfont.nix {font = twilio-sans-mono;};
         };
 
         devShells.default = pkgs.mkShell {
