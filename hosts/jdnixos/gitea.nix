@@ -1,17 +1,7 @@
-{
-  pkgs,
-  unstablePkgs,
-  ...
-}: {
+{unstablePkgs, ...}: {
   services.gitea = {
     enable = true;
-    package = unstablePkgs.gitea.overrideAttrs rec {
-      version = "1.21.1";
-      src = pkgs.fetchurl {
-        url = "https://dl.gitea.com/gitea/${version}/gitea-src-${version}.tar.gz";
-        hash = "sha256-5WEHUMQsQNgrglS+xJ4IWHUl0a6RLLPyx0l+ECJ4R9g=";
-      };
-    };
+    package = unstablePkgs.gitea;
     appName = "lichtGitea";
     # repositoryRoot = "/mnt/d/gitea-data/gitea-repositories";
     lfs = {
