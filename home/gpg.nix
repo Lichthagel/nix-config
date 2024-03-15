@@ -15,10 +15,10 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    pinentryFlavor =
+    pinentryPackage =
       if osConfig.services.xserver.enable
-      then "qt"
-      else "curses";
+      then pkgs.pinentry-qt
+      else pkgs.pinentry-curses;
   };
 
   home.packages = with pkgs; [
