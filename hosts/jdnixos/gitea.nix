@@ -1,4 +1,5 @@
-{unstablePkgs, ...}: {
+{ unstablePkgs, ... }:
+{
   services.gitea = {
     enable = true;
     package = unstablePkgs.gitea;
@@ -38,8 +39,6 @@
         ensureDBOwnership = true;
       }
     ];
-    ensureDatabases = [
-      "gitea"
-    ];
+    ensureDatabases = [ "gitea" ];
   };
 }

@@ -18,4 +18,4 @@ gc:
     sudo nix store gc --debug
 
 format:
-    alejandra .
+    nixfmt ./**/*.nix

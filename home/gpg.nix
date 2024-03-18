@@ -1,8 +1,5 @@
+{ osConfig, pkgs, ... }:
 {
-  osConfig,
-  pkgs,
-  ...
-}: {
   programs.gpg = {
     enable = true;
     settings = {
@@ -16,16 +13,10 @@
     enable = true;
     enableSshSupport = true;
     pinentryPackage =
-      if osConfig.services.xserver.enable
-      then pkgs.pinentry-qt
-      else pkgs.pinentry-curses;
+      if osConfig.services.xserver.enable then pkgs.pinentry-qt else pkgs.pinentry-curses;
   };
 
   home.packages = with pkgs; [
-    (
-      if osConfig.services.xserver.enable
-      then pinentry.qt
-      else pinentry.curses
-    )
+    (if osConfig.services.xserver.enable then pinentry.qt else pinentry.curses)
   ];
 }

@@ -4,7 +4,8 @@
   pkgs,
   ctp,
   ...
-}: {
+}:
+{
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "licht";
@@ -29,14 +30,18 @@
     keepassxc
     yubioath-flutter
     tutanota-desktop
-    (obsidian.overrideAttrs (oldAttrs:
+    (obsidian.overrideAttrs (
+      oldAttrs:
       lib.optionalAttrs (osConfig.i18n.inputMethod.enabled == "fcitx5") {
         installPhase =
           builtins.replaceStrings
-          [''--add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}"'']
-          [''--add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}" --add-flags --enable-wayland-ime'']
-          oldAttrs.installPhase;
-      }))
+            [ ''--add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}"'' ]
+            [
+              ''--add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}" --add-flags --enable-wayland-ime''
+            ]
+            oldAttrs.installPhase;
+      }
+    ))
     thunderbird
     zoom-us
 

@@ -3,7 +3,8 @@
   selfPkgs,
   unstablePkgs,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     # sans & mono
     unstablePkgs.geist-font

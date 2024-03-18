@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -8,9 +9,7 @@
     variant = "neo_qwertz";
   };
 
-  environment.systemPackages = with pkgs; [
-    wl-clipboard
-  ];
+  environment.systemPackages = with pkgs; [ wl-clipboard ];
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";

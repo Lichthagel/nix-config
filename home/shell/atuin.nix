@@ -1,4 +1,5 @@
-{unstablePkgs, ...}: {
+{ unstablePkgs, ... }:
+{
   programs.atuin = {
     enable = true;
     settings = {

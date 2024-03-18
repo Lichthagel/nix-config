@@ -1,25 +1,22 @@
 {
-  pkgs ? import <nixpkgs> {},
+  pkgs ? import <nixpkgs> { },
   font,
   ...
 }:
 pkgs.stdenvNoCC.mkDerivation (
   (
-    if (font ? pname) && (font ? version)
-    then {
-      pname = "${font.pname}-nerdfont";
-      version = font.version;
-    }
-    else {
-      name = "${font.name}-nerdfont";
-    }
+    if (font ? pname) && (font ? version) then
+      {
+        pname = "${font.pname}-nerdfont";
+        version = font.version;
+      }
+    else
+      { name = "${font.name}-nerdfont"; }
   )
   // {
     src = font;
 
-    nativeBuildInputs = with pkgs; [
-      nerd-font-patcher
-    ];
+    nativeBuildInputs = with pkgs; [ nerd-font-patcher ];
 
     buildPhase = ''
       runHook preBuild

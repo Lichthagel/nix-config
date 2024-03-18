@@ -1,11 +1,6 @@
+{ pkgs, hyprland, ... }:
 {
-  pkgs,
-  hyprland,
-  ...
-}: {
-  imports = [
-    hyprland.homeManagerModules.default
-  ];
+  imports = [ hyprland.homeManagerModules.default ];
 
   home.packages = with pkgs; [
     kitty

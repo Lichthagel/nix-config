@@ -1,11 +1,8 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
+{ pkgs, inputs, ... }:
 {
-  pkgs,
-  inputs,
-  ...
-}: {
   imports = [
     ../../nixos/base.nix
     ../../nixos/sops.nix
@@ -63,7 +60,10 @@
   users.users.licht = {
     isNormalUser = true;
     description = "Jens";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.zsh;
   };
 
@@ -89,8 +89,11 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [22000];
-  networking.firewall.allowedUDPPorts = [21027 22000];
+  networking.firewall.allowedTCPPorts = [ 22000 ];
+  networking.firewall.allowedUDPPorts = [
+    21027
+    22000
+  ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

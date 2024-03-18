@@ -1,8 +1,5 @@
+{ pkgs, hyprland, ... }:
 {
-  pkgs,
-  hyprland,
-  ...
-}: {
   environment.systemPackages = with pkgs; [
     libsForQt5.polkit-kde-agent
     libsForQt5.qtwayland

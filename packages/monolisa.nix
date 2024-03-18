@@ -1,4 +1,7 @@
-{pkgs ? import <nixpkgs> {}, ...}:
+{
+  pkgs ? import <nixpkgs> { },
+  ...
+}:
 pkgs.stdenvNoCC.mkDerivation rec {
   pname = "monolisa";
   version = "2.012";
@@ -9,9 +12,7 @@ pkgs.stdenvNoCC.mkDerivation rec {
     sha256 = "sha256:a241f30e49f373f672a99271e25923df2eedd51e1ebab33fc14dc451972274ab";
   };
 
-  nativeBuildInputs = with pkgs; [
-    unzip
-  ];
+  nativeBuildInputs = with pkgs; [ unzip ];
 
   unpackPhase = ''
     unzip $src

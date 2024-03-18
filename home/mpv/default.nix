@@ -1,8 +1,5 @@
+{ pkgs, unstablePkgs, ... }:
 {
-  pkgs,
-  unstablePkgs,
-  ...
-}: {
   programs.mpv = {
     enable = true;
     config = {

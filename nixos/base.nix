@@ -1,8 +1,5 @@
+{ pkgs, inputs, ... }:
 {
-  pkgs,
-  inputs,
-  ...
-}: {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
@@ -37,7 +34,7 @@
   # Configure console keymap
   console.keyMap = "neoqwertz";
 
-  environment.shells = [pkgs.zsh];
+  environment.shells = [ pkgs.zsh ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
@@ -54,9 +51,7 @@
   nixpkgs.config = {
     # Allow unfree packages
     allowUnfree = true;
-    permittedInsecurePackages = [
-      "electron-25.9.0"
-    ];
+    permittedInsecurePackages = [ "electron-25.9.0" ];
   };
 
   nix = {

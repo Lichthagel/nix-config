@@ -6,7 +6,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ../../nixos/base.nix
     ../../nixos/sops.nix
@@ -56,7 +57,7 @@
     package = pkgs.mullvad-vpn;
   };
 
-  boot.kernelModules = ["sg"];
+  boot.kernelModules = [ "sg" ];
 
   # Enable OpenGL
   hardware.opengl = {
@@ -75,7 +76,7 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     # Modesetting is required.
@@ -108,7 +109,11 @@
   users.users.licht = {
     isNormalUser = true;
     description = "Jens";
-    extraGroups = ["networkmanager" "wheel" "input"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "input"
+    ];
     shell = pkgs.zsh;
   };
 
@@ -149,13 +154,20 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  sops.secrets."nix_cache/${config.networking.hostName}/private" = {};
+  sops.secrets."nix_cache/${config.networking.hostName}/private" = { };
 
-  nix.settings.secret-key-files = config.sops.secrets."nix_cache/${config.networking.hostName}/private".path;
+  nix.settings.secret-key-files =
+    config.sops.secrets."nix_cache/${config.networking.hostName}/private".path;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [3030 22000];
-  networking.firewall.allowedUDPPorts = [21027 22000];
+  networking.firewall.allowedTCPPorts = [
+    3030
+    22000
+  ];
+  networking.firewall.allowedUDPPorts = [
+    21027
+    22000
+  ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

@@ -1,15 +1,12 @@
+{ pkgs, ctp, ... }:
 {
-  pkgs,
-  ctp,
-  ...
-}: {
   gtk = {
     enable = true;
     theme = {
       name = "Catppuccin-${ctp.flavorCapitalized}-Standard-${ctp.accentCapitalized}-Dark";
       package = pkgs.catppuccin-gtk.override {
         variant = ctp.flavor;
-        accents = [ctp.accent];
+        accents = [ ctp.accent ];
       };
     };
     cursorTheme = {
@@ -18,9 +15,7 @@
     };
     font = {
       name = "Outfit";
-      package = pkgs.google-fonts.override {
-        fonts = ["Outfit"];
-      };
+      package = pkgs.google-fonts.override { fonts = [ "Outfit" ]; };
     };
     iconTheme = {
       name = "Papirus-Dark";

@@ -1,4 +1,7 @@
-{pkgs ? import <nixpkgs> {}, ...}:
+{
+  pkgs ? import <nixpkgs> { },
+  ...
+}:
 pkgs.stdenvNoCC.mkDerivation {
   name = "catppuccin-sddm";
   src = pkgs.fetchFromGitHub {
@@ -12,7 +15,7 @@ pkgs.stdenvNoCC.mkDerivation {
     qtsvg
     qtquickcontrols2
   ];
-  phases = ["installPhase"];
+  phases = [ "installPhase" ];
   installPhase = ''
     mkdir -p $out/share/sddm/themes
     ls $src/src

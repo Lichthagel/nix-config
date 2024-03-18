@@ -3,10 +3,12 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   hostName = config.networking.hostName;
   homeDir = config.home-manager.users.licht.home.homeDirectory;
-in {
+in
+{
   environment.systemPackages = with pkgs; [
     sops
     age
@@ -17,7 +19,7 @@ in {
     age.keyFile = "${homeDir}/.config/sops/age/keys.txt";
 
     secrets = {
-      "wireguard/${hostName}.env" = {};
+      "wireguard/${hostName}.env" = { };
       "ssh/shared/private" = {
         owner = config.users.users.licht.name;
         group = config.users.users.licht.group;

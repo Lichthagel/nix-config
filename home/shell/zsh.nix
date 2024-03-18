@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   catppuccin-zsh-fsh = pkgs.stdenvNoCC.mkDerivation {
     name = "catppuccin-zsh-fsh";
     src = pkgs.fetchFromGitHub {
@@ -7,7 +8,7 @@
       rev = "7cdab58bddafe0565f84f6eaf2d7dd109bd6fc18";
       sha256 = "sha256-31lh+LpXGe7BMZBhRWvvbOTkwjOM77FPNaGy6d26hIA=";
     };
-    phases = ["buildPhase"];
+    phases = [ "buildPhase" ];
     buildPhase = ''
       mkdir -p $out/share/zsh/site-functions/themes
       ls $src/themes
@@ -20,7 +21,8 @@
     rev = "12cd3b3e399d39b2b458fdd8f1f6286250253476";
     sha256 = "sha256-G8Hf+FocHEEjguk8C6Hf97PSDl6msWUOx+dzMjveYYI=";
   };
-in {
+in
+{
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";

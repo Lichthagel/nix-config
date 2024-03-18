@@ -1,4 +1,7 @@
-{pkgs ? import <nixpkgs> {}, ...}:
+{
+  pkgs ? import <nixpkgs> { },
+  ...
+}:
 pkgs.stdenvNoCC.mkDerivation {
   name = "catppuccin-fcitx5";
 
@@ -9,7 +12,7 @@ pkgs.stdenvNoCC.mkDerivation {
     sha256 = "sha256-uFaCbyrEjv4oiKUzLVFzw+UY54/h7wh2cntqeyYwGps=";
   };
 
-  phases = ["installPhase"];
+  phases = [ "installPhase" ];
 
   installPhase = ''
     mkdir -p $out/share/fcitx5/themes

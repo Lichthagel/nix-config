@@ -1,11 +1,8 @@
+{ pkgs, selfPkgs, ... }:
 {
-  pkgs,
-  selfPkgs,
-  ...
-}: {
   i18n = {
     # probably not needed, but might fix some quirks
-    supportedLocales = ["ja_JP.UTF-8/UTF-8"];
+    supportedLocales = [ "ja_JP.UTF-8/UTF-8" ];
 
     inputMethod = {
       enabled = "fcitx5";

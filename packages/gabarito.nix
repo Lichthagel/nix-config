@@ -1,4 +1,7 @@
-{pkgs ? import <nixpkgs> {}, ...}:
+{
+  pkgs ? import <nixpkgs> { },
+  ...
+}:
 pkgs.stdenvNoCC.mkDerivation rec {
   pname = "gabarito";
   version = "1.000";

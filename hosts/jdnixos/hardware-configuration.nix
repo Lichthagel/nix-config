@@ -6,21 +6,28 @@
   lib,
   modulesPath,
   ...
-}: {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+}:
+{
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [];
-  boot.supportedFilesystems = ["ntfs"];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "xhci_pci"
+    "ahci"
+    "usb_storage"
+    "usbhid"
+    "sd_mod"
+    "sr_mod"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/d2144a34-ef9f-4969-baf6-efc62c7a0818";
     fsType = "btrfs";
-    options = ["subvol=@"];
+    options = [ "subvol=@" ];
   };
 
   boot.initrd.luks.devices."luks-aef8453d-65b8-4ade-bd05-948bfcd87b57".device = "/dev/disk/by-uuid/aef8453d-65b8-4ade-bd05-948bfcd87b57";
@@ -33,13 +40,31 @@
   fileSystems."/mnt/d" = {
     device = "/dev/disk/by-uuid/62EE524EEE521A9D";
     fsType = "ntfs-3g";
-    options = ["rw" "uid=1000" "gid=1000" "umask=022" "fmask=133" "dmask=022" "prealloc" "windows_names"];
+    options = [
+      "rw"
+      "uid=1000"
+      "gid=1000"
+      "umask=022"
+      "fmask=133"
+      "dmask=022"
+      "prealloc"
+      "windows_names"
+    ];
   };
 
   fileSystems."/mnt/e" = {
     device = "/dev/disk/by-uuid/7ED6852DD684E72D";
     fsType = "ntfs-3g";
-    options = ["rw" "uid=1000" "gid=1000" "umask=022" "fmask=133" "dmask=022" "prealloc" "windows_names"];
+    options = [
+      "rw"
+      "uid=1000"
+      "gid=1000"
+      "umask=022"
+      "fmask=133"
+      "dmask=022"
+      "prealloc"
+      "windows_names"
+    ];
   };
 
   swapDevices = [
