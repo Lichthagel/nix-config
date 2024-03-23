@@ -87,6 +87,29 @@
         passthru.scriptName = "copyTime.lua";
       })
       # mpv-discordRPC (requires status-line)
+      (pkgs.stdenvNoCC.mkDerivation {
+        name = "blur-edges";
+
+        src = pkgs.fetchFromGitHub {
+          owner = "occivink";
+          repo = "mpv-scripts";
+          rev = "master";
+          sha256 = "sha256-pc2aaO7lZaoYMEXv5M0WI7PtmqgkNbdtNiLZZwVzppM=";
+        };
+
+        patches = [ ./blur-edges.patch ];
+
+        installPhase = ''
+          runHook preInstall
+
+          mkdir -p $out/share/mpv/scripts
+          cp scripts/blur-edges.lua $out/share/mpv/scripts
+
+          runHook postInstall
+        '';
+
+        passthru.scriptName = "blur-edges.lua";
+      })
     ];
     scriptOpts = {
       blur_edges = {
