@@ -1,4 +1,9 @@
-{ pkgs, unstablePkgs, ... }:
+{
+  pkgs,
+  unstablePkgs,
+  ctp,
+  ...
+}:
 {
   programs.mpv = {
     enable = true;
@@ -279,7 +284,9 @@
         # A comma delimited list of color overrides in RGB HEX format.
         # Defaults: foreground=ffffff,foreground_text=000000,background=000000,background_text=ffffff,curtain=111111,
         #           success=a5e075,error=ff616e
-        color = "foreground=a6e3a1,foreground_text=313244,background=1e1e2e,background_text=cdd6f4,curtain=181825,success=a6e3a1,error=f38ba8";
+        color = "foreground=${
+          builtins.replaceStrings [ "#" ] [ "" ] ctp.palette.${ctp.flavor}.colors.pink.hex
+        },foreground_text=313244,background=1e1e2e,background_text=cdd6f4,curtain=181825,success=a6e3a1,error=f38ba8"; # TODO use ctp parameters
         # A comma delimited list of opacity overrides for various UI element backgrounds and shapes.
         # This does not affect any text, which is always rendered fully opaque.
         # Defaults: timeline=0.9,position=1,chapters=0.8,slider=0.9,slider_gauge=1,speed=0.6,menu=1,submenu=0.4,
