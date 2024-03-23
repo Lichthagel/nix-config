@@ -119,6 +119,8 @@
     };
   };
 
+  xdg.enable = osConfig.services.xserver.enable;
+
   catppuccin = {
     accent = ctp.accent;
     flavour = ctp.flavor;
