@@ -132,6 +132,8 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+
+    catppuccin.url = "github:Stonks3141/ctp-nix";
   };
 
   nixConfig = {

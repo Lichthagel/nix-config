@@ -3,6 +3,7 @@
   lib,
   pkgs,
   ctp,
+  inputs,
   ...
 }:
 {
@@ -118,7 +119,14 @@
     };
   };
 
+  catppuccin = {
+    accent = ctp.accent;
+    flavour = ctp.flavor;
+  };
+
   imports = [
+    inputs.catppuccin.homeManagerModules.catppuccin
+
     ./wezterm
     ./vscode.nix
     ./neovim.nix

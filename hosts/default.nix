@@ -25,6 +25,13 @@ let
 
       modules = [
         { networking.hostName = hostName; }
+        inputs.catppuccin.nixosModules.catppuccin
+        {
+          catppuccin = {
+            # accent = ctp.accent;
+            flavour = ctp.flavor;
+          };
+        }
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
