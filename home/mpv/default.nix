@@ -3,7 +3,7 @@
   programs.mpv = {
     enable = true;
     config = {
-      border = false;
+      border = true;
       cscale = "ewa_lanczossharp";
       deband = true;
       demuxer-max-bytes = "256m";
