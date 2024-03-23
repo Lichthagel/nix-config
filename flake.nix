@@ -92,6 +92,7 @@
                 nvd
                 sops
                 age
+                statix
               ];
             };
 
