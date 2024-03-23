@@ -7,7 +7,9 @@
       cscale = "ewa_lanczossharp";
       deband = true;
       demuxer-max-bytes = "256m";
+      fbo-format = "rgba16hf";
       geometry = "50%+50%+50%";
+      gpu-api = "vulkan";
       interpolation = true;
       keep-open = true;
       osc = false;
