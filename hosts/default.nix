@@ -6,11 +6,38 @@
   ...
 }:
 let
-  mkArgs = system: {
-    inherit self inputs ctp;
-    selfPkgs = self.packages.${system};
-    unstablePkgs = import inputs.nixpkgs-unstable { inherit system; };
-  };
+  mkArgs =
+    system:
+    let
+      ctpBase = ctp;
+    in
+    rec {
+      inherit self inputs;
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+        };
+      };
+      selfPkgs = self.packages.${system};
+      unstablePkgs = import inputs.nixpkgs-unstable { inherit system; };
+      ctp = {
+        inherit (ctpBase)
+          accent
+          flavor
+          accentCapitalized
+          flavorCapitalized
+          ;
+        palette = lib.importJSON "${
+          pkgs.fetchFromGitHub {
+            owner = "catppuccin";
+            repo = "palette";
+            rev = "e44233ceae6809d50cba3c0c95332cc87ffff022";
+            sha256 = "sha256-96ZO0LBN9z0+sIg3mdFI6kNSgX3R2x3bND9KzyYpFy4=";
+          }
+        }/palette.json";
+      };
+    };
   mkHost =
     {
       hostName,
