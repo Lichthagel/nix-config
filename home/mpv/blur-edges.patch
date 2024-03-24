@@ -1,5 +1,5 @@
 diff --git a/scripts/blur-edges.lua b/scripts/blur-edges.lua
-index 57ffe09..9b2b27b 100644
+index 57ffe09..9e54cff 100644
 --- a/scripts/blur-edges.lua
 +++ b/scripts/blur-edges.lua
 @@ -1,3 +1,4 @@
@@ -112,7 +112,7 @@ index 57ffe09..9b2b27b 100644
 +    if opts.prepend_subs then
 +        mp.command(string.format("no-osd vf add '@%s:sub'", labels.sub))
 +    end
-+    mp.command(string.format("no-osd vf add '@%s:lavfi=\"%s\":o=\"threads=8,thread_type=slice\"'", labels.blur, filter))
++    mp.command(string.format("no-osd vf add '@%s:lavfi=\"%s\"'", labels.blur, filter))
  end
  
  function unset_blur()
