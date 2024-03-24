@@ -31,7 +31,7 @@
         osd-bar = false;
         osd-duration = 2000;
         osd-font-size = 25;
-        osd-font = "Roboto";
+        osd-font = "Gabarito";
         profile = "gpu-hq";
         scale = "ewa_lanczos";
         scale-blur = 0.981251;
@@ -40,7 +40,7 @@
         screenshot-template = "%tY-%tm/%tY-%tm-%td_%tH-%tM-%tS";
         screenshot-webp-compression = 6;
         screenshot-webp-lossless = true;
-        sub-font = "Readex Pro Medium";
+        sub-font = "Lexend";
         sub-font-size = 43;
         tscale = "oversample";
         video-sync = "display-resample";
