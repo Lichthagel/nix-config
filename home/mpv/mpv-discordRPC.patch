@@ -1,0 +1,31 @@
+diff --git a/mpv-discordRPC/main.lua b/mpv-discordRPC/main.lua
+index 3e47fa1..b85488e 100755
+--- a/mpv-discordRPC/main.lua
++++ b/mpv-discordRPC/main.lua
+@@ -62,6 +62,9 @@ local function main()
+ 	if metadataTitle ~= nil then
+ 		details = metadataTitle
+ 	end
++	if details ~= nil then
++		details = details:gsub("%[([^%[%]]-)%]", ""):gsub("%((.*)%)", ""):gsub(".mkv", ""):gsub("_", " ")
++	end
+ 	if metadataArtist ~= nil then
+ 		details = ("%s\nby %s"):format(details, metadataArtist)
+ 	end
+@@ -91,7 +94,7 @@ local function main()
+ 		smallImageText = "Paused"
+ 		smallImageKey = "player_pause"
+ 	elseif play then
+-		state = "(Playing) "
++		state = ""
+ 		smallImageKey = "player_play"
+ 		smallImageText = "Playing"
+ 	end
+@@ -229,6 +232,7 @@ local function main()
+ 		RPC.initialize(appId, true)
+ 		if o.active == "yes" then
+ 			presence.details = presence.details:len() > 127 and presence.details:sub(1, 127) or presence.details
++			presence.largeImageText = presence.largeImageText:len() > 127 and nil or presence.largeImageText
+ 			RPC.updatePresence(presence)
+ 		else
+ 			RPC.shutdown()
