@@ -1,0 +1,38 @@
+diff --git a/main.go b/main.go
+index d4ab501..5662551 100644
+--- a/main.go
++++ b/main.go
+@@ -8,6 +8,7 @@ import (
+ 	"os"
+ 	"syscall"
+ 	"time"
++	"regexp"
+ 
+ 	"github.com/tnychn/mpv-discord/discordrpc"
+ 	"github.com/tnychn/mpv-discord/mpvrpc"
+@@ -16,6 +17,7 @@ import (
+ var (
+ 	client   *mpvrpc.Client
+ 	presence *discordrpc.Presence
++	details_re *regexp.Regexp
+ )
+ 
+ func init() {
+@@ -24,6 +26,7 @@ func init() {
+ 
+ 	client = mpvrpc.NewClient()
+ 	presence = discordrpc.NewPresence(os.Args[2])
++	details_re = regexp.MustCompile(`\[[^\]]*\]|\([^\)]*\)|\.[^\.]*$`)
+ }
+ 
+ func getActivity() (activity discordrpc.Activity, err error) {
+@@ -52,6 +55,9 @@ func getActivity() (activity discordrpc.Activity, err error) {
+ 		activity.Details = metaTitle.(string)
+ 	}
+ 
++	// remove stuff from details
++	activity.Details = details_re.ReplaceAllString(activity.Details, "")
++
+ 	// State
+ 	if metaArtist != nil {
+ 		activity.State += " by " + metaArtist.(string)
