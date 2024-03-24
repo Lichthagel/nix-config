@@ -11,14 +11,8 @@ let
     let
       ctpBase = ctp;
     in
-    rec {
+    {
       inherit self inputs;
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-        };
-      };
       selfPkgs = self.packages.${system};
       unstablePkgs = import inputs.nixpkgs-unstable { inherit system; };
       ctp = {
@@ -28,14 +22,12 @@ let
           accentCapitalized
           flavorCapitalized
           ;
-        palette = lib.importJSON "${
-          pkgs.fetchFromGitHub {
-            owner = "catppuccin";
-            repo = "palette";
-            rev = "e44233ceae6809d50cba3c0c95332cc87ffff022";
-            sha256 = "sha256-96ZO0LBN9z0+sIg3mdFI6kNSgX3R2x3bND9KzyYpFy4=";
+        palette = lib.importJSON (
+          builtins.fetchurl {
+            url = "https://raw.githubusercontent.com/catppuccin/palette/563cdbccc813ae6716ef8242391e6f9dca8d7596/palette.json";
+            sha256 = "sha256:1vzg1x2f1j869ggpsjixi4wdw58zxv8641d04vv33ijmdj1d5p8c";
           }
-        }/palette.json";
+        );
       };
     };
   mkHost =
