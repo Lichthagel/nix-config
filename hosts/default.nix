@@ -14,7 +14,7 @@ let
     {
       inherit self inputs;
       selfPkgs = self.packages.${system};
-      unstablePkgs = import inputs.nixpkgs-unstable { inherit system; };
+      unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${system};
       ctp = {
         inherit (ctpBase)
           accent

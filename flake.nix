@@ -53,7 +53,7 @@
             ...
           }:
           let
-            unstablePkgs = import inputs.nixpkgs-unstable { inherit system; };
+            unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${system};
           in
           {
             packages = rec {
