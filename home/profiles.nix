@@ -40,6 +40,7 @@ in
         programs = {
           discord.enable = true;
           firefox.enable = true;
+          wezterm.enable = true;
         };
       };
     })

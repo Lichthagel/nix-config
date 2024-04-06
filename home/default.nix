@@ -118,7 +118,6 @@
 
     ./profiles.nix
 
-    ./wezterm
     ./gh.nix
     ./shell
     ./git.nix
