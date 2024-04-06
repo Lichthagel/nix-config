@@ -55,6 +55,8 @@ I recently started using NixOS and my configuration is still in its early stages
 
 [MyNixOS](https://mynixos.com/): A search for packages, NixOS options, as well as home-manager options
 
+[nixpkgs manual](https://ryantm.github.io/nixpkgs/): browsable version of the nixpkgs manual
+
 ## 📝 License
 
 This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.

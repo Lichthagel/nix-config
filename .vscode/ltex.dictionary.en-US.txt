@@ -6,3 +6,5 @@ MyNixOS
 nixos
 hyprland
 Hyprland
+nixpkgs
+ryantm
