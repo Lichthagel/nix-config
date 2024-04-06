@@ -96,7 +96,10 @@
       plasma5.enable = true;
     };
 
-    services.adguardhome.enable = true;
+    services = {
+      adguardhome.enable = true;
+      openssh.enable = true;
+    };
   };
 
   # This value determines the NixOS release from which the default

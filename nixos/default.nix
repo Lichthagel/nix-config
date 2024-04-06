@@ -2,12 +2,10 @@
 {
   imports = [
     ./graphical
-    
-    ./adguardhome.nix
+    ./services
+
     ./sops.nix
     ./sound.nix
-    ./ssh.nix
-    ./unbound.nix
     ./wireguard.nix
   ];
 
