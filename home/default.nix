@@ -129,6 +129,7 @@
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
 
+    ./hyprland
     ./wezterm
     ./vscode.nix
     ./neovim.nix
