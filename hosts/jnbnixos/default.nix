@@ -4,17 +4,6 @@
 { pkgs, inputs, ... }:
 {
   imports = [
-    ../../nixos/base.nix
-    ../../nixos/sops.nix
-    # ../../nixos/unbound.nix
-    ../../nixos/adguardhome.nix
-    ../../nixos/graphical/base.nix
-    ../../nixos/graphical/sddm.nix
-    ../../nixos/graphical/plasma5.nix
-    ../../nixos/sound.nix
-    ../../nixos/wireguard.nix
-    ../../nixos/ssh.nix
-
     inputs.nixos-hardware.nixosModules.asus-battery
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
@@ -96,6 +85,19 @@
   ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  licht = {
+    sops.enable = true;
+    wireguard.enable = true;
+    sound.enable = true;
+
+    graphical = {
+      enable = true;
+      plasma5.enable = true;
+    };
+
+    services.adguardhome.enable = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

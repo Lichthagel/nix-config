@@ -35,16 +35,15 @@
             specialArgs = mkArgs system;
 
             modules = [
-              { networking.hostName = hostName; }
+              inputs.home-manager.nixosModules.home-manager
+              inputs.sops-nix.nixosModules.sops
               inputs.catppuccin.nixosModules.catppuccin
               {
+                networking.hostName = hostName;
                 catppuccin = {
                   # accent = ctpBase.accent;
                   flavour = ctpBase.flavor;
                 };
-              }
-              inputs.home-manager.nixosModules.home-manager
-              {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.licht = {
@@ -55,8 +54,9 @@
                 };
                 home-manager.extraSpecialArgs = mkArgs system;
               }
-              inputs.sops-nix.nixosModules.sops
-            ] ++ [ (self + /hosts/${hostName}) ];
+              (self + /nixos)
+              (self + /hosts/${hostName})
+            ];
           };
         mkHosts =
           hosts:

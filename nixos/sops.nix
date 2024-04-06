@@ -1,31 +1,49 @@
 {
   self,
   config,
+  lib,
   pkgs,
   ...
 }:
 let
   hostName = config.networking.hostName;
-  homeDir = config.home-manager.users.licht.home.homeDirectory;
+
+  cfg = config.licht.sops;
 in
 {
-  environment.systemPackages = with pkgs; [
-    sops
-    age
-  ];
-
-  sops = {
-    defaultSopsFile = "${self}/secrets.yaml";
-    age.keyFile = "${homeDir}/.config/sops/age/keys.txt";
-
-    secrets = {
-      "wireguard/${hostName}.env" = { };
-      "ssh/shared/private" = {
-        owner = config.users.users.licht.name;
-        group = config.users.users.licht.group;
-        mode = "0600";
-        path = "${homeDir}/.ssh/id_ed25519_shared";
-      };
+  options.licht.sops = {
+    enable = lib.mkEnableOption "sops";
+    
+    user = lib.mkOption {
+      type = lib.types.str;
+      default = "licht";
+      description = "The user to use for sops";
     };
+  };
+
+  config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      sops
+      age
+    ];
+
+    sops =
+      let
+        homeDir = config.home-manager.users.${cfg.user}.home.homeDirectory;
+      in
+      {
+        defaultSopsFile = "${self}/secrets.yaml";
+        age.keyFile = "${homeDir}/.config/sops/age/keys.txt";
+
+        secrets = {
+          "wireguard/${hostName}.env" = { };
+          "ssh/shared/private" = {
+            owner = config.users.users.${cfg.user}.name;
+            group = config.users.users.${cfg.user}.group;
+            mode = "0600";
+            path = "${homeDir}/.ssh/id_ed25519_shared";
+          };
+        };
+      };
   };
 }
