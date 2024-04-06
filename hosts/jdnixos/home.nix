@@ -6,4 +6,6 @@
     qbittorrent
     libreoffice-qt
   ];
+
+  licht.profiles.graphical = true;
 }

@@ -133,6 +133,8 @@
     ./media
     ./programs
 
+    ./profiles.nix
+
     ./wezterm
     ./vscode.nix
     ./neovim.nix
