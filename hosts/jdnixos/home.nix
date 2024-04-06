@@ -5,6 +5,7 @@
     anki
     qbittorrent
     libreoffice-qt
+    zoom-us
   ];
 
   licht.profiles.graphical = true;

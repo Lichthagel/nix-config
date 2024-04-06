@@ -1,7 +1,5 @@
 {
   osConfig,
-  lib,
-  pkgs,
   ctp,
   inputs,
   ...
@@ -20,39 +18,6 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
-
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-    nix-tree
-    keepassxc
-    yubioath-flutter
-    tutanota-desktop
-    (obsidian.overrideAttrs (
-      oldAttrs:
-      lib.optionalAttrs (osConfig.i18n.inputMethod.enabled == "fcitx5") {
-        installPhase =
-          builtins.replaceStrings
-            [ ''--add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}"'' ]
-            [
-              ''--add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}" --add-flags --enable-wayland-ime''
-            ]
-            oldAttrs.installPhase;
-      }
-    ))
-    thunderbird
-    zoom-us
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

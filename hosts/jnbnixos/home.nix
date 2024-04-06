@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ rnote ];
+  home.packages = with pkgs; [
+    rnote
+    zoom-us
+  ];
 
   licht.profiles.graphical = true;
 }

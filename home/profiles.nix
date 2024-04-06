@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.licht.profiles;
 in
@@ -42,6 +47,26 @@ in
           firefox.enable = true;
           wezterm.enable = true;
         };
+      };
+
+      home = {
+        packages = with pkgs; [
+          keepassxc
+          yubioath-flutter
+          (obsidian.overrideAttrs (
+            oldAttrs:
+            lib.optionalAttrs (osConfig.i18n.inputMethod.enabled == "fcitx5") {
+              installPhase =
+                builtins.replaceStrings
+                  [ ''--add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}"'' ]
+                  [
+                    ''--add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform=wayland}}" --add-flags --enable-wayland-ime''
+                  ]
+                  oldAttrs.installPhase;
+            }
+          ))
+          thunderbird
+        ];
       };
     })
   ];
