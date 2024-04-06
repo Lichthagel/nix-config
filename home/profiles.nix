@@ -28,6 +28,13 @@ in
           neovim.enable = true;
         };
       };
+
+      home = {
+        sessionVariables = lib.mkIf config.licht.editors.helix.enable {
+          EDITOR = "hx";
+          VISUAL = "hx";
+        };
+      };
     })
     (lib.mkIf cfg.graphical {
       licht = lib.mkDefault {
