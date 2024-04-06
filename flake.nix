@@ -16,11 +16,11 @@
       {
 
         imports = [
-          ./modules/flake/unstable.nix
-          ./modules/flake/self.nix
+          ./flake/unstable.nix
+          ./flake/self.nix
 
-          ./modules/flake/packages.nix
-          ./modules/flake/dev.nix
+          ./flake/packages.nix
+          ./flake/dev.nix
         ];
 
         flake = {
