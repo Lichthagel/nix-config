@@ -12,7 +12,7 @@
     settings = {
       # log.ROOT_PATH = "/mnt/d/gitea-data/log";
       server = {
-        DOMAIN = "localhost";
+        DOMAIN = "desktop.licht";
         HTTP_ADDR = "0.0.0.0";
         HTTP_PORT = 3456;
       };

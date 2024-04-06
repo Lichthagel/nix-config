@@ -162,6 +162,7 @@
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     3030
+    3456
     22000
   ];
   networking.firewall.allowedUDPPorts = [
