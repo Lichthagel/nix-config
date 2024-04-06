@@ -38,7 +38,7 @@
   };
 
   fileSystems."/mnt/d" = {
-    device = "/dev/disk/by-uuid/62EE524EEE521A9D";
+    device = "/dev/disk/by-uuid/462E9B622E9B49B7";
     fsType = "ntfs-3g";
     options = [
       "rw"
@@ -53,7 +53,7 @@
   };
 
   fileSystems."/mnt/e" = {
-    device = "/dev/disk/by-uuid/7ED6852DD684E72D";
+    device = "/dev/disk/by-uuid/66E8F3AFE8F37B9D";
     fsType = "ntfs-3g";
     options = [
       "rw"
