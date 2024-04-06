@@ -16,9 +16,7 @@
       {
 
         imports = [
-          ./flake/unstable.nix
-          ./flake/self.nix
-
+          ./flake/args.nix
           ./flake/packages.nix
           ./flake/dev.nix
         ];
