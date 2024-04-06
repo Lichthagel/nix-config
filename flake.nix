@@ -17,89 +17,75 @@
         accentCapitalized = "Pink";
       };
     in
-    flake-parts.lib.mkFlake { inherit inputs; } (
-      { withSystem, ... }:
-      {
-        imports = [
-          {
-            config._module.args._inputs = inputs // {
-              inherit self;
-            };
-          }
-        ];
+    flake-parts.lib.mkFlake { inherit inputs; } {
 
-        flake = {
-          homeModules = {
-            full = ./home;
-          };
+      imports = [
+        ./modules/flake/unstable.nix
+        ./modules/flake/self.nix
+      ];
 
-          nixosConfigurations = import ./hosts {
-            inherit inputs self ctp;
-            inherit (nixpkgs) lib;
-          };
+      flake = {
+        homeModules = {
+          full = ./home;
         };
 
-        systems = [
-          "x86_64-linux"
-          "aarch64-linux"
-        ];
+        nixosConfigurations = import ./hosts {
+          inherit inputs self ctp;
+          inherit (nixpkgs) lib;
+        };
+      };
 
-        perSystem =
-          {
-            config,
-            pkgs,
-            system,
-            inputs',
-            ...
-          }:
-          let
-            unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${system};
-          in
-          {
-            packages = rec {
-              afacad = pkgs.callPackage ./packages/afacad.nix { };
-              cartograph-cf = pkgs.callPackage ./packages/cartograph-cf.nix { };
-              cartograph-cf-nerdfont = pkgs.callPackage ./packages/nerdfont.nix { font = cartograph-cf; };
-              catppuccin-fcitx5 = pkgs.callPackage ./packages/catppuccin-fcitx5.nix { };
-              catppuccin-sddm = pkgs.callPackage ./packages/catppuccin-sddm.nix { };
-              gabarito = pkgs.callPackage ./packages/gabarito.nix { };
-              kode-mono-nerdfont = pkgs.callPackage ./packages/nerdfont.nix { font = unstablePkgs.kode-mono; };
-              lilex = pkgs.callPackage ./packages/lilex.nix { };
-              monolisa = pkgs.callPackage ./packages/monolisa.nix { };
-              monolisa-custom = monolisa.overrideAttrs (oldAttrs: {
-                pname = "monolisa-custom";
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
 
-                # enable ss02, ss04, ss08, ss11, ss12 and set suffix to "Custom"
-                src = pkgs.requireFile {
-                  name = "MonoLisa-Custom-${oldAttrs.version}.zip";
-                  url = "https://www.monolisa.dev/orders";
-                  sha256 = "sha256:0ilvvzg709l60l1cwdih729n71kdl83waaa23as94mnzln99z1rf";
-                };
-              });
-              monolisa-nerdfont = pkgs.callPackage ./packages/nerdfont.nix { font = monolisa; };
-              monolisa-custom-nerdfont = pkgs.callPackage ./packages/nerdfont.nix { font = monolisa-custom; };
-              recursive-nerdfont = pkgs.callPackage ./packages/nerdfont.nix { font = pkgs.recursive; };
-              twilio-sans-mono = pkgs.callPackage ./packages/twilio-sans-mono.nix { };
-              twilio-sans-mono-nerdfont = pkgs.callPackage ./packages/nerdfont.nix { font = twilio-sans-mono; };
-            };
+      perSystem =
+        { pkgs, unstablePkgs, ... }:
+        {
+          packages = rec {
+            afacad = pkgs.callPackage ./packages/afacad.nix { };
+            cartograph-cf = pkgs.callPackage ./packages/cartograph-cf.nix { };
+            cartograph-cf-nerdfont = pkgs.callPackage ./packages/nerdfont.nix { font = cartograph-cf; };
+            catppuccin-fcitx5 = pkgs.callPackage ./packages/catppuccin-fcitx5.nix { };
+            catppuccin-sddm = pkgs.callPackage ./packages/catppuccin-sddm.nix { };
+            gabarito = pkgs.callPackage ./packages/gabarito.nix { };
+            kode-mono-nerdfont = pkgs.callPackage ./packages/nerdfont.nix { font = unstablePkgs.kode-mono; };
+            lilex = pkgs.callPackage ./packages/lilex.nix { };
+            monolisa = pkgs.callPackage ./packages/monolisa.nix { };
+            monolisa-custom = monolisa.overrideAttrs (oldAttrs: {
+              pname = "monolisa-custom";
 
-            devShells.default = pkgs.mkShell {
-              packages = with pkgs; [
-                nixfmt-rfc-style
-                just
-                nil
-                nix-output-monitor
-                nvd
-                sops
-                age
-                statix
-              ];
-            };
-
-            formatter = pkgs.nixfmt-rfc-style;
+              # enable ss02, ss04, ss08, ss11, ss12 and set suffix to "Custom"
+              src = pkgs.requireFile {
+                name = "MonoLisa-Custom-${oldAttrs.version}.zip";
+                url = "https://www.monolisa.dev/orders";
+                sha256 = "sha256:0ilvvzg709l60l1cwdih729n71kdl83waaa23as94mnzln99z1rf";
+              };
+            });
+            monolisa-nerdfont = pkgs.callPackage ./packages/nerdfont.nix { font = monolisa; };
+            monolisa-custom-nerdfont = pkgs.callPackage ./packages/nerdfont.nix { font = monolisa-custom; };
+            recursive-nerdfont = pkgs.callPackage ./packages/nerdfont.nix { font = pkgs.recursive; };
+            twilio-sans-mono = pkgs.callPackage ./packages/twilio-sans-mono.nix { };
+            twilio-sans-mono-nerdfont = pkgs.callPackage ./packages/nerdfont.nix { font = twilio-sans-mono; };
           };
-      }
-    );
+
+          devShells.default = pkgs.mkShell {
+            packages = with pkgs; [
+              nixfmt-rfc-style
+              just
+              nil
+              nix-output-monitor
+              nvd
+              sops
+              age
+              statix
+            ];
+          };
+
+          formatter = pkgs.nixfmt-rfc-style;
+        };
+    };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
