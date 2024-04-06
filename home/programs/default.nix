@@ -1,1 +1,6 @@
-{ imports = [ ./discord.nix ]; }
+{
+  imports = [
+    ./discord.nix
+    ./firefox.nix
+  ];
+}

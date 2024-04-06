@@ -140,7 +140,6 @@
     ./neovim.nix
     ./gh.nix
     ./shell
-    ./firefox.nix
     ./git.nix
     ./fonts.nix
     ./gpg.nix
