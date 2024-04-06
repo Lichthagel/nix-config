@@ -10,10 +10,8 @@ let
   cfg = config.licht.editors.vscode;
 in
 {
-  options = {
-    licht.editors.vscode = {
-      enable = lib.mkEnableOption "my vscode configuration";
-    };
+  options.licht.editors.vscode = {
+    enable = lib.mkEnableOption "my vscode configuration";
   };
 
   config = lib.mkIf cfg.enable {
