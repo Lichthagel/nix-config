@@ -47,7 +47,12 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.licht = self + /hosts/${hostName}/home.nix;
+                home-manager.users.licht = {
+                  imports = [
+                    (self + /home)
+                    (self + /hosts/${hostName}/home.nix)
+                  ];
+                };
                 home-manager.extraSpecialArgs = mkArgs system;
               }
               inputs.sops-nix.nixosModules.sops
