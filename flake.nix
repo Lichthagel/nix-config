@@ -22,10 +22,6 @@
         ];
 
         flake = {
-          homeModules = {
-            full = ./home;
-          };
-
           nixosConfigurations = import ./hosts {
             inherit
               self

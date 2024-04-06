@@ -1,6 +1,6 @@
 { self, pkgs, ... }:
 {
-  imports = [ self.homeModules.full ];
+  imports = [ (self + /home) ];
 
   home.packages = with pkgs; [
     calibre
