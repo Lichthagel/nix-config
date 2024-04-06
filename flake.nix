@@ -3,14 +3,6 @@
 
   outputs =
     { self, flake-parts, ... }@inputs:
-    let
-      ctp = {
-        flavor = "mocha";
-        flavorCapitalized = "Mocha";
-        accent = "pink";
-        accentCapitalized = "Pink";
-      };
-    in
     flake-parts.lib.mkFlake { inherit inputs; } (
       { lib, ... }:
       {
@@ -19,18 +11,8 @@
           ./flake/args.nix
           ./flake/packages.nix
           ./flake/dev.nix
+          ./flake/nixosConfigurations.nix
         ];
-
-        flake = {
-          nixosConfigurations = import ./hosts {
-            inherit
-              self
-              inputs
-              ctp
-              lib
-              ;
-          };
-        };
 
         systems = [
           "x86_64-linux"
