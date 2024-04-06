@@ -131,13 +131,13 @@
 
     ./graphical
     ./media
+    ./programs
 
     ./wezterm
     ./vscode.nix
     ./neovim.nix
     ./gh.nix
     ./shell
-    ./discord.nix
     ./firefox.nix
     ./git.nix
     ./fonts.nix
