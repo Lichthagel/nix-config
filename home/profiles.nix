@@ -15,16 +15,16 @@ in
     };
   };
 
-  config =
-    lib.mkIf cfg.base {
+  config = lib.mkMerge [
+    (lib.mkIf cfg.base {
       licht = lib.mkDefault {
         editors = {
           helix.enable = true;
           neovim.enable = true;
         };
       };
-    }
-    // lib.mkIf cfg.graphical {
+    })
+    (lib.mkIf cfg.graphical {
       licht = lib.mkDefault {
         profiles.base = true;
 
@@ -42,5 +42,6 @@ in
           firefox.enable = true;
         };
       };
-    };
+    })
+  ];
 }
