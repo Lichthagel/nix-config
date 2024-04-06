@@ -2,6 +2,7 @@
   osConfig,
   lib,
   pkgs,
+  unstablePkgs,
   ...
 }:
 {
@@ -32,7 +33,7 @@
   };
 
   home.packages = [
-    pkgs.nixfmt-rfc-style
+    unstablePkgs.nixfmt-rfc-style
     pkgs.nil
   ];
 
