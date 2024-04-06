@@ -63,9 +63,8 @@
     ./editors
     ./graphical
     ./media
+    ./profiles
     ./programs
-
-    ./profiles.nix
 
     ./gh.nix
     ./shell
