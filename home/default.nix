@@ -129,16 +129,15 @@
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
 
-    ./hyprland
+    ./graphical
+
     ./wezterm
     ./vscode.nix
     ./neovim.nix
     ./gh.nix
     ./shell
     ./discord.nix
-    ./kde.nix
     ./firefox.nix
-    # ./gtk.nix
     ./git.nix
     ./fonts.nix
     ./spotify.nix
