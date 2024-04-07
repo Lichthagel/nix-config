@@ -173,6 +173,7 @@
 
     services = {
       adguardhome.enable = true;
+      flatpak.enable = true;
       openssh.enable = true;
     };
   };
