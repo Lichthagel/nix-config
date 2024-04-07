@@ -17,13 +17,7 @@ in
   config = lib.mkIf cfg.enable {
     gtk = {
       enable = true;
-      theme = {
-        name = "Catppuccin-${ctp.flavorCapitalized}-Standard-${ctp.accentCapitalized}-Dark";
-        package = pkgs.catppuccin-gtk.override {
-          variant = ctp.flavor;
-          accents = [ ctp.accent ];
-        };
-      };
+      catppuccin.enable = true;
       cursorTheme = {
         name = "Vimix-white-cursors";
         package = pkgs.vimix-cursors;
