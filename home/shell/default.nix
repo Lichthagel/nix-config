@@ -21,29 +21,12 @@
 
     bat = {
       enable = true;
-      themes =
-        let
-          ctpsrc = pkgs.fetchFromGitHub {
-            owner = "catppuccin";
-            repo = "bat";
-            rev = "e5c2f64eab91deb1750233cd64356b26cb985a21";
-            sha256 = "sha256-zWRk6HaQl+2M9LuFTjz56jGzHQ8nuG7w1JXYe3cLxH4=";
-          };
-        in
-        {
-          "Catppuccin ${ctp.flavorCapitalized}" = {
-            src = ctpsrc;
-            file = "themes/Catppuccin ${ctp.flavorCapitalized}.tmTheme";
-          };
-        };
+      catppuccin.enable = true;
       extraPackages = with pkgs.bat-extras; [
         batdiff
         batgrep
         prettybat
       ];
-      config = {
-        theme = "Catppuccin ${ctp.flavorCapitalized}";
-      };
     };
 
     btop = {
