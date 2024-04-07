@@ -19,3 +19,6 @@ gc:
 
 format:
     nixfmt ./**/*.nix
+
+lint:
+    statix check .

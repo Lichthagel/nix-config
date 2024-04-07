@@ -34,8 +34,7 @@ in
       iconTheme = {
         name = "Papirus-Dark";
         package = pkgs.catppuccin-papirus-folders.override {
-          flavor = ctp.flavor;
-          accent = ctp.accent;
+          inherit (ctp) flavor accent;
         };
       };
     };
