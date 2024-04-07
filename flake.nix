@@ -56,7 +56,7 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    catppuccin.url = "github:Stonks3141/ctp-nix";
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   nixConfig = {
