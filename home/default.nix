@@ -41,15 +41,6 @@
 
   services.syncthing.enable = true;
 
-  services.pueue = {
-    enable = true;
-    settings = {
-      daemon = {
-        default_parallel_tasks = 4;
-      };
-    };
-  };
-
   xdg.enable = osConfig.services.xserver.enable;
 
   catppuccin = {
