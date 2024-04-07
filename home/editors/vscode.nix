@@ -24,7 +24,8 @@ in
           (
             (pkgs.vscode.override (
               lib.optionalAttrs (osConfig.i18n.inputMethod.enabled == "fcitx5") {
-                commandLineArgs = [ "--enable-wayland-ime" ];
+                # TODO breaks code cli
+                # commandLineArgs = "--enable-wayland-ime";
               }
             )).overrideAttrs
             rec {
