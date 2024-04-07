@@ -48,8 +48,6 @@
     users.defaultUserShell = pkgs.zsh;
     programs.zsh.enable = true;
 
-    programs.dconf.enable = true;
-
     programs.ssh.startAgent = true;
 
     programs.nix-ld.enable = true;
