@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  selfPkgs,
   ctp,
   ...
 }:
@@ -28,8 +29,8 @@ in
         package = pkgs.vimix-cursors;
       };
       font = {
-        name = "Outfit";
-        package = pkgs.google-fonts.override { fonts = [ "Outfit" ]; };
+        name = "Gabarito";
+        package = selfPkgs.gabarito;
       };
       iconTheme = {
         name = "Papirus-Dark";
