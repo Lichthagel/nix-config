@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  ctp,
-  ...
-}:
+{ config, lib, ... }:
 let
   cfg = config.licht.editors.helix;
 in
@@ -17,12 +12,11 @@ in
   config = lib.mkIf cfg.enable {
     programs.helix = {
       enable = true;
+      catppuccin.enable = true;
       settings = {
-        theme = "catppuccin_${ctp.flavor}";
         editor = {
           line-number = "relative";
           cursorline = true;
-          color-modes = true;
           cursor-shape = {
             insert = "bar";
             normal = "block";
