@@ -40,6 +40,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -77,6 +82,7 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"
+      "https://anyrun.cachix.org"
     ];
 
     trusted-substituters = [
@@ -89,6 +95,7 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "jdnixos:Hij0WitMIbRrp5zUXc70y9VvzIuBroTp1l8hmguEbjQ="
+      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
     ];
   };
 }
