@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   selfPkgs,
   ...
 }:
@@ -16,6 +17,7 @@ in
 
   config = lib.mkIf cfg.enable {
     services.xserver.displayManager.sddm = {
+      package = pkgs.kdePackages.sddm;
       enable = true;
       wayland.enable = true;
       theme = "catppuccin-mocha";
