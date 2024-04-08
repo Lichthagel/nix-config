@@ -1,7 +1,9 @@
 {
   imports = [
+    ./wezterm
+
     ./discord.nix
     ./firefox.nix
-    ./wezterm
+    ./foot.nix
   ];
 }
