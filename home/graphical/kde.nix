@@ -12,7 +12,7 @@ in
 {
   options.licht.graphical.kde = {
     enable = lib.mkEnableOption "KDE Plasma configuration" // {
-      default = osConfig.licht.graphical.plasma5.enable;
+      default = osConfig.licht.graphical.plasma5.enable || osConfig.licht.graphical.plasma6.enable;
     };
   };
 
