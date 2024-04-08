@@ -10,7 +10,7 @@ in
 {
   options.licht.graphical.sddm = {
     enable = lib.mkEnableOption "sddm" // {
-      default = config.licht.graphical.plasma5.enable;
+      default = config.licht.graphical.plasma5.enable || config.licht.graphical.plasma6.enable;
     };
   };
 
