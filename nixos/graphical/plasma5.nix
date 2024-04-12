@@ -24,6 +24,6 @@ in
       plasma-browser-integration
     ];
 
-    services.xserver.displayManager.defaultSession = "plasmawayland";
+    services.displayManager.defaultSession = "plasmawayland";
   };
 }

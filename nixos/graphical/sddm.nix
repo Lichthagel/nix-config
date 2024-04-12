@@ -16,7 +16,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.xserver.displayManager.sddm = {
+    services.displayManager.sddm = {
       package = pkgs.kdePackages.sddm;
       enable = true;
       wayland.enable = true;
