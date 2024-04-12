@@ -36,7 +36,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "https://flakehub.com/f/hyprwm/Hyprland/0.38.1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
