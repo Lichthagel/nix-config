@@ -6,6 +6,7 @@
     qbittorrent
     libreoffice-qt
     zoom-us
+    rclone
   ];
 
   licht.profiles.graphical = true;
