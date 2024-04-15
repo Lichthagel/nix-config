@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs',
   ...
 }:
 let
@@ -23,10 +22,7 @@ in
       networkmanagerapplet
     ];
 
-    programs.hyprland = {
-      enable = true;
-      package = inputs'.hyprland.packages.hyprland;
-    };
+    programs.hyprland.enable = true;
 
     services.pipewire.wireplumber.enable = true;
   };

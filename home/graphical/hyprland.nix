@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   osConfig,
   lib,
@@ -10,13 +9,9 @@ let
   cfg = config.licht.graphical.hyprland;
 in
 {
-  imports = [ inputs.hyprland.homeManagerModules.default ];
-
-  options = {
-    licht.graphical.hyprland = {
-      enable = lib.mkEnableOption "my Hyprland configuration" // {
-        default = osConfig.licht.graphical.hyprland.enable;
-      };
+  options.licht.graphical.hyprland = {
+    enable = lib.mkEnableOption "my Hyprland configuration" // {
+      default = osConfig.licht.graphical.hyprland.enable;
     };
   };
 

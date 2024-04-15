@@ -35,11 +35,6 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    hyprland = {
-      url = "https://flakehub.com/f/hyprwm/Hyprland/*.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -76,7 +71,6 @@
 
     extra-substituters = [
       "https://nix-community.cachix.org"
-      "https://hyprland.cachix.org"
     ];
 
     trusted-substituters = [
@@ -87,7 +81,6 @@
 
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "jdnixos:Hij0WitMIbRrp5zUXc70y9VvzIuBroTp1l8hmguEbjQ="
     ];
   };
