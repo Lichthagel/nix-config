@@ -33,6 +33,7 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
+      catppuccin.enable = true;
 
       plugins = lib.optional cfg.perMonitorWorkspaces (
         inputs'.split-monitor-workspaces.packages.split-monitor-workspaces.overrideAttrs (oldAttrs: {
@@ -94,8 +95,8 @@ in
           gaps_in = 5;
           gaps_out = 20;
           border_size = 2;
-          "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-          "col.inactive_border" = "rgba(595959aa)";
+          "col.active_border" = "rgba($pinkAlphaee) rgba($tealAlphaee) 45deg";
+          "col.inactive_border" = "rgba($crustAlphaaa)";
 
           layout = "dwindle";
 
