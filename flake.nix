@@ -52,6 +52,25 @@
     };
 
     catppuccin.url = "github:catppuccin/nix";
+
+    hyprland = {
+      url = "http://rime.cx/v1/github/hyprwm/Hyprland.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hypridle = {
+      url = "http://rime.cx/v1/github/hyprwm/hypridle.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "hyprland/systems";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
+    };
+
+    hyprlock = {
+      url = "http://rime.cx/v1/github/hyprwm/hyprlock.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "hyprland/systems";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
+    };
   };
 
   nixConfig = {
@@ -69,9 +88,7 @@
 
     substituters = [ "https://cache.nixos.org/" ];
 
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-    ];
+    extra-substituters = [ "https://nix-community.cachix.org" ];
 
     trusted-substituters = [
       "ssh-ng://192.168.1.178"

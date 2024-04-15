@@ -25,5 +25,7 @@ in
     programs.hyprland.enable = true;
 
     services.pipewire.wireplumber.enable = true;
+
+    security.pam.services.hyprlock = {};
   };
 }
