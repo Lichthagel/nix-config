@@ -26,7 +26,6 @@ in
     home.packages = with pkgs; [
       kitty
       wofi
-      mako
       swww
       nwg-look
     ];
@@ -58,12 +57,14 @@ in
         monitor = lib.mkDefault (builtins.throw "monitor is required");
 
         # Execute your favorite apps at launch
-        exec-once = [
-          "kwalletd5"
-          "nm-applet"
-          "mako"
-          "swww init"
-        ] ++ (lib.optional config.programs.waybar.enable (lib.getExe config.programs.waybar.package));
+        exec-once =
+          [
+            "kwalletd5"
+            "nm-applet"
+            "swww init"
+          ]
+          ++ (lib.optional config.programs.waybar.enable (lib.getExe config.programs.waybar.package))
+          ++ (lib.optional config.services.mako.enable (lib.getExe config.services.mako.package));
 
         # Set programs that you use
         "$terminal" = "foot";

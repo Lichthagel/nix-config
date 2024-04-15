@@ -56,6 +56,7 @@
     ./media
     ./profiles
     ./programs
+    ./services
 
     ./gh.nix
     ./shell
