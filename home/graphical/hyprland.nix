@@ -63,8 +63,8 @@ in
             "nm-applet"
             "swww init"
           ]
-          ++ (lib.optional config.programs.waybar.enable (lib.getExe config.programs.waybar.package))
-          ++ (lib.optional config.services.mako.enable (lib.getExe config.services.mako.package));
+          ++ (lib.optional config.programs.waybar.enable "${config.programs.waybar.package}/bin/waybar")
+          ++ (lib.optional config.services.mako.enable "${config.services.mako.package}/bin/mako");
 
         # Set programs that you use
         "$terminal" = "foot";
