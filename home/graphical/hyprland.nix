@@ -26,7 +26,6 @@ in
     home.packages = with pkgs; [
       kitty
       wofi
-      waybar
       mako
       swww
       nwg-look
@@ -61,10 +60,9 @@ in
         exec-once = [
           "kwalletd5"
           "nm-applet"
-          "waybar"
           "mako"
           "swww init"
-        ];
+        ] ++ (lib.optional config.programs.waybar.enable (lib.getExe config.programs.waybar.package));
 
         # Set programs that you use
         "$terminal" = "foot";
