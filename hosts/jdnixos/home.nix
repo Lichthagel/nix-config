@@ -10,6 +10,7 @@
   ];
 
   licht.profiles.graphical = true;
+  licht.graphical.hyprland.perMonitorWorkspaces = true;
 
   wayland.windowManager.hyprland.settings = {
     env = [ "WLR_NO_HARDWARE_CURSORS,1" ];
