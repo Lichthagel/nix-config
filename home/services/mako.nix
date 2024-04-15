@@ -11,6 +11,13 @@ in
     services.mako = {
       enable = true;
       catppuccin.enable = true;
+
+      anchor = "top-center";
+      font = "Gabarito 10";
+      width = 500;
+      height = 100;
+      borderRadius = 10;
+      defaultTimeout = 10000;
     };
   };
 }
