@@ -30,6 +30,8 @@ in
       nwg-look
     ];
 
+    services.playerctld.enable = true;
+
     wayland.windowManager.hyprland = {
       enable = true;
       catppuccin.enable = true;
@@ -251,6 +253,19 @@ in
           # Move/resize windows with mainMod + LMB/RMB and dragging
           "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"
+        ];
+
+        bindl = [
+          ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ",XF86AudioStop, exec, ${pkgs.playerctl}/bin/playerctl stop"
+          ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
+          ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+          ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
+        ];
+
+        bindel = [
+          ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ];
       };
     };
