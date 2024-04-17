@@ -154,9 +154,27 @@ in
           force_default_wallpaper = 0; # Set to 0 to disable the anime mascot wallpapers
         };
 
-        windowrulev2 = [
-          "suppressevent maximize, class:.*" # You'll probably like this.
-        ];
+        windowrulev2 =
+          [
+            "suppressevent maximize,class:.*" # You'll probably like this.
+            "float,class:^org\.keepassxc\.KeePassXC$"
+          ]
+          ++ (
+            let
+              rules = lib.cartesianProductOfSets {
+                rule = [
+                  "float"
+                  "keepaspectratio"
+                  "pin"
+                ];
+                window = [
+                  "class:^firefox$,title:Bild-im-Bild"
+                  "class:^firefox$,title:Picture-in-Picture"
+                ];
+              };
+            in
+            lib.forEach rules ({ rule, window }: "${rule}, ${window}")
+          );
 
         "$mainMod" = "SUPER";
 
