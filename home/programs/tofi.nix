@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, ... }:
 let
   cfg = config.licht.programs.tofi;
 in
@@ -14,5 +9,9 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable { home.packages = with pkgs; [ tofi ]; };
+  config = lib.mkIf cfg.enable {
+    programs.tofi = {
+      enable = true;
+    };
+  };
 }
