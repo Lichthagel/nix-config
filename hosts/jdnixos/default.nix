@@ -97,6 +97,11 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  licht.unfreePackages = [
+    "nvidia-settings"
+    "nvidia-x11"
+  ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.licht = {
     isNormalUser = true;

@@ -1,9 +1,14 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     ./graphical
     ./services
 
+    ./nixpkgs.nix
     ./sops.nix
     ./sound.nix
     ./wireguard.nix
@@ -57,13 +62,6 @@
       helix
       git
     ];
-
-    nixpkgs.config = {
-      # Allow unfree packages
-      allowUnfree = true;
-
-      permittedInsecurePackages = [ "electron-25.9.0" ];
-    };
 
     nix = {
       gc = {
