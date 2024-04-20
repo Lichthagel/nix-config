@@ -25,7 +25,7 @@ in
       ];
     };
 
-    programs.zsh.shellAliases = {
+    home.shellAliases = {
       cat = "bat";
     };
   };

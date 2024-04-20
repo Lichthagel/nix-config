@@ -33,9 +33,6 @@ in
       dotDir = ".config/zsh";
       enableCompletion = true;
       defaultKeymap = "emacs";
-      shellAliases = {
-        zh = "z $PWD";
-      };
       plugins = [
         {
           name = "zsh-you-should-use";

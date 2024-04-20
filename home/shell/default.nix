@@ -69,4 +69,8 @@
 
     zoxide.enable = true;
   };
+
+  home.shellAliases = {
+    zh = "z $PWD";
+  };
 }
