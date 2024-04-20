@@ -22,10 +22,6 @@
   </div>
 </h2>
 
-## 🚧 Under Construction
-
-I recently started using NixOS and my configuration is still in its early stages.
-
 ## 🌳 Layout
 
 - [flake.nix](flake.nix): Entry point to my configuration
