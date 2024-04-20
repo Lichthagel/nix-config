@@ -15,6 +15,42 @@ in
     enable = lib.mkEnableOption "hypridle" // {
       default = config.licht.graphical.hyprland.enable;
     };
+
+    lock = {
+      enable = lib.mkEnableOption "lock" // {
+        default = true;
+      };
+
+      timeout = lib.mkOption {
+        type = lib.types.int;
+        default = 3 * 60;
+        description = "Timeout in seconds before locking the screen";
+      };
+    };
+
+    display = {
+      enable = lib.mkEnableOption "display" // {
+        default = true;
+      };
+
+      timeout = lib.mkOption {
+        type = lib.types.int;
+        default = 5 * 60;
+        description = "Timeout in seconds before turning off the display";
+      };
+    };
+
+    suspend = {
+      enable = lib.mkEnableOption "suspend" // {
+        default = true;
+      };
+
+      timeout = lib.mkOption {
+        type = lib.types.int;
+        default = 10 * 60;
+        description = "Timeout in seconds before suspending the system";
+      };
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -38,21 +74,20 @@ in
       beforeSleepCmd = "loginctl lock-session";
       afterSleepCmd = "hyprctl dispatch dpms on";
 
-      listeners = [
-        {
-          timeout = 180;
+      listeners =
+        (lib.optional cfg.lock.enable {
+          timeout = cfg.lock.timeout;
           onTimeout = "loginctl lock-session";
-        }
-        {
-          timeout = 300;
+        })
+        ++ (lib.optional cfg.display.enable {
+          timeout = cfg.display.timeout;
           onTimeout = "hyprctl dispatch dpms off";
           onResume = "hyprctl dispatch dpms on";
-        }
-        {
-          timeout = 600;
+        })
+        ++ (lib.optional cfg.suspend.enable {
+          timeout = cfg.suspend.timeout;
           onTimeout = "systemctl suspend";
-        }
-      ];
+        });
     };
   };
 }

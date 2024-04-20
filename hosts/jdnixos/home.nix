@@ -24,6 +24,7 @@
 
   licht.profiles.graphical = true;
   licht.graphical.hyprland.perMonitorWorkspaces = true;
+  licht.graphical.hypridle.suspend.timeout = 30 * 60;
 
   wayland.windowManager.hyprland.settings = {
     env = [ "WLR_NO_HARDWARE_CURSORS,1" ];
