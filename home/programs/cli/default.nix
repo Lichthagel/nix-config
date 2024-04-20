@@ -1,1 +1,6 @@
-{ imports = [ ./glow.nix ]; }
+{
+  imports = [
+    ./bat.nix
+    ./glow.nix
+  ];
+}

@@ -20,16 +20,6 @@
       enableCompletion = true;
     };
 
-    bat = {
-      enable = true;
-      catppuccin.enable = true;
-      extraPackages = with pkgs.bat-extras; [
-        batdiff
-        batgrep
-        prettybat
-      ];
-    };
-
     btop = {
       enable = true;
       catppuccin.enable = true;
