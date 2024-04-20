@@ -1,5 +1,6 @@
 {
   imports = [
+    ./cli
     ./wezterm
 
     ./discord.nix
