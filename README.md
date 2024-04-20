@@ -25,12 +25,9 @@
 ## 🌳 Layout
 
 - [flake.nix](flake.nix): Entry point to my configuration
+- [flake](flake): Flake modules (for `flake-parts`)
 - [home](home): Home-Manager modules
-  - [hyprland](home/modules/hyprland): Modules for Hyprland
-  - [shell](home/modules/shell): Modules for my shell
-- [profiles](home/profiles): Home-Manager profiles (i.e. collections of modules)
 - [nixos](nixos): NixOS modules
-  - [graphical](nixos/graphical): Modules for graphical stuff
 - [hosts](hosts): Host-specific configuration
 - [packages](packages): Nix packages used in my configuration & exported by my flake
 
