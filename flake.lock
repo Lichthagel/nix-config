@@ -272,6 +272,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-23-05": {
+      "locked": {
+        "lastModified": 1704290814,
+        "narHash": "sha256-LWvKHp7kGxk/GEtlrGYV68qIvPHkU9iToomNFGagixU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "70bdadeb94ffc8806c0570eb5c2695ad29f0e421",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-23.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1713297878,
@@ -301,7 +317,8 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
-        "split-monitor-workspaces": "split-monitor-workspaces"
+        "split-monitor-workspaces": "split-monitor-workspaces",
+        "teruko-legacy": "teruko-legacy"
       }
     },
     "sops-nix": {
@@ -397,6 +414,27 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "teruko-legacy": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-23-05": "nixpkgs-23-05"
+      },
+      "locked": {
+        "lastModified": 1713624462,
+        "narHash": "sha256-rx+R3EqsJSmmGdySFDD4JVaOKMWWytLfQ2Trw94KMSc=",
+        "owner": "Lichthagel",
+        "repo": "teruko-legacy",
+        "rev": "1b02bcbdccce3bc3339a7dbe5da910a7d55d2c94",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Lichthagel",
+        "repo": "teruko-legacy",
         "type": "github"
       }
     },

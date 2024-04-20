@@ -1,0 +1,20 @@
+{ inputs', ... }:
+{
+  systemd.user.services.teruko = {
+    Unit = {
+      Description = "Teruko";
+      After = [ "network.target" ];
+    };
+
+    Service = {
+      Type = "simple";
+      ExecStart = "${inputs'.teruko-legacy.packages.teruko}/bin/teruko";
+      Restart = "on-failure";
+      RestartSec = "5";
+      Environment = [
+        "DATABASE_URL=postgresql://teruko:1234@127.0.0.1:5432/teruko?schema=public"
+        "IMG_FOLDER=/mnt/d/teruko"
+      ];
+    };
+  };
+}

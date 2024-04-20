@@ -76,6 +76,11 @@
       url = "github:Duckonaut/split-monitor-workspaces?rev=f7a306396da163422048fd38eecd92c68ce21e58";
       inputs.hyprland.follows = "hyprland";
     };
+
+    teruko-legacy = {
+      url = "github:Lichthagel/teruko-legacy";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
