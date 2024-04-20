@@ -11,6 +11,8 @@
     du-dust
     glow
     skate
+    trashy
+    croc
   ];
 
   programs = {
