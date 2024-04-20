@@ -58,7 +58,6 @@
     ./programs
     ./services
 
-    ./gh.nix
     ./shell
     ./git.nix
     ./fonts.nix
