@@ -26,6 +26,11 @@ in
 
     services.pipewire.wireplumber.enable = true;
 
-    security.pam.services.hyprlock = {};
+    security.pam.services.hyprlock = { };
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    };
   };
 }
