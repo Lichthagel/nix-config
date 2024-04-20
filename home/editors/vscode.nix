@@ -47,5 +47,10 @@ in
       unstablePkgs.nixfmt-rfc-style
       pkgs.nil
     ];
+
+    licht.unfreePackages = map lib.getName [
+      "code"
+      config.programs.vscode.package
+    ];
   };
 }

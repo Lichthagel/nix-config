@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 {
@@ -14,23 +13,12 @@
   };
 
   config = {
-    # needed in home configuration
-    licht.unfreePackages = map lib.getName (
-      with pkgs;
-      [
-        "code"
-        discord
-        obsidian
-        spotify
-        vscode
-        zoom
-      ]
-    );
-
     nixpkgs.config = {
       allowUnfreePredicate =
         let
-          whitelist = config.licht.unfreePackages;
+          homeConfigs = lib.attrValues config.home-manager.users;
+          whitelist =
+            (lib.concatLists (map (cfg: cfg.licht.unfreePackages) homeConfigs)) ++ config.licht.unfreePackages;
         in
         pkg: builtins.elem (lib.getName pkg) whitelist;
 

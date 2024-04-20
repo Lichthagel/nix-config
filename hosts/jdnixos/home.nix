@@ -1,4 +1,9 @@
-{ pkgs, stablePkgs, ... }:
+{
+  lib,
+  pkgs,
+  stablePkgs,
+  ...
+}:
 {
   imports = [ ./teruko.nix ];
 
@@ -14,6 +19,8 @@
     zoom-us
     rclone
   ];
+
+  licht.unfreePackages = map lib.getName [ pkgs.zoom-us ];
 
   licht.profiles.graphical = true;
   licht.graphical.hyprland.perMonitorWorkspaces = true;

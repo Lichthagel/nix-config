@@ -58,6 +58,8 @@
     ./programs
     ./services
 
+    ./nixpkgs.nix
+
     ./shell
     ./git.nix
     ./fonts.nix

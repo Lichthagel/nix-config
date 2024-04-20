@@ -35,5 +35,7 @@ in
         };
       colorScheme = ctp.flavor;
     };
+
+    licht.unfreePackages = map lib.getName [ pkgs.spotify ];
   };
 }
