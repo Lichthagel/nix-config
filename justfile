@@ -1,5 +1,5 @@
 deploy:
-    nixos-rebuild switch --flake . --use-remote-sudo
+    nh os switch .
 
 substitute:
     nixos-rebuild switch --flake . --use-remote-sudo --option extra-substituters ssh-ng://192.168.1.178

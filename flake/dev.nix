@@ -12,6 +12,7 @@
           sops
           age
           statix
+          nh
         ];
       };
 
