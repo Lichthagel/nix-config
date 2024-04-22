@@ -44,6 +44,7 @@
   xdg.enable = osConfig.services.xserver.enable;
 
   catppuccin = {
+    enable = true;
     accent = ctp.accent;
     flavour = ctp.flavor;
   };

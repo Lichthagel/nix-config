@@ -15,6 +15,8 @@ in
   config = lib.mkIf cfg.enable {
     programs.neovim = {
       enable = true;
+      catppuccin.enable = false;
+
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
