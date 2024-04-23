@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./gtk.nix
@@ -7,4 +8,12 @@
     ./kde.nix
     ./waybar.nix
   ];
+
+  home.pointerCursor = {
+    name = "Vimix-white-cursors";
+    size = 32;
+    package = pkgs.vimix-cursors;
+    gtk.enable = true;
+    x11.enable = true;
+  };
 }

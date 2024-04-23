@@ -18,10 +18,6 @@ in
     gtk = {
       enable = true;
       catppuccin.enable = true;
-      cursorTheme = {
-        name = "Vimix-white-cursors";
-        package = pkgs.vimix-cursors;
-      };
       font = {
         name = "Gabarito";
         package = selfPkgs.gabarito;
