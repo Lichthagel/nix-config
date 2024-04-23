@@ -1,4 +1,4 @@
-{ pkgs, ctp, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./atuin.nix
@@ -54,8 +54,8 @@
 
     zellij = {
       enable = true;
+      catppuccin.enable = true;
       settings = {
-        theme = "catppuccin-${ctp.flavor}";
         copy_command = "wl-copy";
         pane_frames = false;
         ui.pane_frames = {
