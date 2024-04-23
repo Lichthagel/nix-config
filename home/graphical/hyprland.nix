@@ -113,8 +113,8 @@ in
 
           blur = {
             enabled = true;
-            size = 3;
-            passes = 1;
+            size = 10;
+            passes = 2;
           };
 
           drop_shadow = true;
@@ -161,6 +161,9 @@ in
           [
             "suppressevent maximize,class:.*" # You'll probably like this.
             "float,class:^org\.keepassxc\.KeePassXC$"
+            "opacity 0.85,focus:0,class:^foot$"
+            "opacity 0.9,focus:1,class:^foot$"
+            "opacity 0.9,workspace:special:magic"
           ]
           ++ (
             let
@@ -178,6 +181,11 @@ in
             in
             lib.forEach rules ({ rule, window }: "${rule}, ${window}")
           );
+
+        layerrule = [
+          "blur,waybar"
+          "blur,launcher"
+        ];
 
         "$mainMod" = "SUPER";
 
