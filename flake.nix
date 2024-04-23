@@ -38,7 +38,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     spicetify-nix = {
-      url = "github:Lichthagel/spicetify-nix?ref=fix/update-config-types";
+      url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

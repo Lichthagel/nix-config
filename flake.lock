@@ -367,16 +367,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1713879118,
-        "narHash": "sha256-rIwmwLY87oMCj8eygWJaVdxw1LGw3TktQBcVeS+cK7c=",
-        "owner": "Lichthagel",
+        "lastModified": 1713909056,
+        "narHash": "sha256-jj+nM0uFEts5zwlZ8q8nXl85JzIbViZdWIL9kpE4YJ4=",
+        "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "9a9f10eb8f4d391f9191bb99600905d0169a534f",
+        "rev": "2cff61e359aa416c782ec698380b75a916765e84",
         "type": "github"
       },
       "original": {
-        "owner": "Lichthagel",
-        "ref": "fix/update-config-types",
+        "owner": "Gerg-L",
         "repo": "spicetify-nix",
         "type": "github"
       }
