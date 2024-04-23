@@ -64,6 +64,7 @@ in
             "kwalletd5"
             "nm-applet"
             "swww init"
+            "hyprctl setcursor ${config.home.pointerCursor.name} ${builtins.toString config.home.pointerCursor.size}"
           ]
           ++ (lib.optional config.programs.waybar.enable "${config.programs.waybar.package}/bin/waybar")
           ++ (lib.optional config.services.mako.enable "${config.services.mako.package}/bin/mako");
