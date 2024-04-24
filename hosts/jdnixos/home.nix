@@ -1,18 +1,9 @@
-{
-  lib,
-  pkgs,
-  stablePkgs,
-  ...
-}:
+{ lib, pkgs, ... }:
 {
   imports = [ ./teruko.nix ];
 
   home.packages = with pkgs; [
-    (calibre.override {
-      python3Packages = pkgs.python3Packages // {
-        mechanize = stablePkgs.python3Packages.mechanize;
-      };
-    })
+    calibre
     anki
     qbittorrent
     libreoffice-qt
