@@ -92,9 +92,7 @@
   sops.secrets =
     let
       runnerConfig = {
-        owner = "gitea-runner";
-        group = "gitea-runner";
-        mode = "0600";
+        mode = "0444"; # gitea runner module uses dynamic users, so we need to make the token readable by all users :/
       };
     in
     {
