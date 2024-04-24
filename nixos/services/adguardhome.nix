@@ -51,6 +51,7 @@ in
           }
         ];
         dns = {
+          bind_hosts = [ "0.0.0.0" ];
           protection_enabled = true;
           blocking_mode = "default";
           ratelimit = 0;
