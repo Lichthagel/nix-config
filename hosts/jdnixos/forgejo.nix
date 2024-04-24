@@ -3,9 +3,9 @@
   services.forgejo = {
     enable = true;
     package = unstablePkgs.forgejo;
-    appName = "lichtForge";
     lfs.enable = true;
     settings = {
+      default.APP_NAME = "lichtForge";
       server = {
         DOMAIN = "desktop.licht";
         HTTP_ADDR = "0.0.0.0";
