@@ -9,7 +9,7 @@
 }:
 {
   imports = [
-    ./gitea.nix
+    ./forgejo.nix
 
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate

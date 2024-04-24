@@ -1,16 +1,11 @@
-{ unstablePkgs, ... }:
+{ config, unstablePkgs, ... }:
 {
-  services.gitea = {
+  services.forgejo = {
     enable = true;
-    package = unstablePkgs.gitea;
-    appName = "lichtGitea";
-    # repositoryRoot = "/mnt/d/gitea-data/gitea-repositories";
-    lfs = {
-      enable = true;
-      # contentDir = "/mnt/d/gitea-data/lfs";
-    };
+    package = unstablePkgs.forgejo;
+    appName = "lichtForge";
+    lfs.enable = true;
     settings = {
-      # log.ROOT_PATH = "/mnt/d/gitea-data/log";
       server = {
         DOMAIN = "desktop.licht";
         HTTP_ADDR = "0.0.0.0";
@@ -27,7 +22,9 @@
     };
     database = {
       createDatabase = false;
-      password = "4321";
+      name = "gitea";
+      user = "gitea";
+      passwordFile = config.sops.secrets.forge_db.path;
       type = "postgres";
     };
   };
@@ -40,5 +37,11 @@
       }
     ];
     ensureDatabases = [ "gitea" ];
+  };
+
+  sops.secrets.forge_db = {
+    owner = config.services.forgejo.user;
+    group = config.services.forgejo.group;
+    mode = "0600";
   };
 }
