@@ -21,8 +21,16 @@ in
       enable = true;
       wayland.enable = true;
       theme = "catppuccin-mocha";
+      settings = {
+        Theme = {
+          CursorTheme = "Vimix-white-cursors";
+        };
+      };
     };
 
-    environment.systemPackages = [ selfPkgs.catppuccin-sddm ];
+    environment.systemPackages = [
+      selfPkgs.catppuccin-sddm
+      pkgs.vimix-cursors
+    ];
   };
 }
