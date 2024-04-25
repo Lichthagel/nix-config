@@ -14,6 +14,10 @@ in
         helix.enable = true;
         neovim.enable = true;
       };
+
+      programs = {
+        lazygit.enable = true;
+      };
     };
 
     home = {

@@ -63,6 +63,7 @@
     ./nixpkgs.nix
 
     ./shell
+    ./lazygit.nix
     ./git.nix
     ./fonts.nix
     ./gpg.nix
