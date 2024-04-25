@@ -65,15 +65,12 @@ in
         monitor = lib.mkDefault (builtins.throw "monitor is required");
 
         # Execute your favorite apps at launch
-        exec-once =
-          [
-            "kwalletd5"
-            "nm-applet"
-            "swww init"
-            "hyprctl setcursor ${config.home.pointerCursor.name} ${builtins.toString config.home.pointerCursor.size}"
-          ]
-          ++ (lib.optional config.programs.waybar.enable "${config.programs.waybar.package}/bin/waybar")
-          ++ (lib.optional config.services.mako.enable "${config.services.mako.package}/bin/mako");
+        exec-once = [
+          "kwalletd5"
+          "nm-applet"
+          "swww init"
+          "hyprctl setcursor ${config.home.pointerCursor.name} ${builtins.toString config.home.pointerCursor.size}"
+        ] ++ (lib.optional config.services.mako.enable "${config.services.mako.package}/bin/mako");
 
         # Set programs that you use
         "$terminal" = "foot";
