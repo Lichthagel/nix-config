@@ -32,6 +32,8 @@ in
 
     services.playerctld.enable = true;
 
+    licht.autostart.systemd = lib.mkDefault true;
+
     wayland.windowManager.hyprland = {
       enable = true;
       catppuccin.enable = true;
@@ -67,7 +69,8 @@ in
             "hyprctl setcursor ${config.home.pointerCursor.name} ${builtins.toString config.home.pointerCursor.size}"
           ]
           ++ (lib.optional config.programs.waybar.enable "${config.programs.waybar.package}/bin/waybar")
-          ++ (lib.optional config.services.mako.enable "${config.services.mako.package}/bin/mako");
+          ++ (lib.optional config.services.mako.enable "${config.services.mako.package}/bin/mako")
+          ++ (lib.optional config.licht.autostart.systemctl "systemctl --user start autostart.target");
 
         # Set programs that you use
         "$terminal" = "foot";

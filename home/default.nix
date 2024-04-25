@@ -59,6 +59,7 @@
     ./programs
     ./services
 
+    ./autostart.nix
     ./nixpkgs.nix
 
     ./shell

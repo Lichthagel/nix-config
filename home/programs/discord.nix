@@ -40,6 +40,11 @@ in
       home.packages = [ discord ];
 
       licht.unfreePackages = map lib.getName [ discord ];
+
+      licht.autostart.entries.discord = {
+        description = "Discord";
+        command = "${discord}/bin/discord";
+      };
     }
   );
 }

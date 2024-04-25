@@ -36,6 +36,21 @@ in
       })
       {
         unfreePackages = map lib.getName [ pkgs.obsidian ];
+
+        autostart.entries = lib.mkMerge [
+          {
+            keepassxc = {
+              description = "KeePassXC";
+              command = "${pkgs.keepassxc}/bin/keepassxc";
+            };
+          }
+          (lib.mkIf (osConfig.services.mullvad-vpn.enable) {
+            mullvad-vpn = {
+              description = "Mullvad VPN";
+              command = "${pkgs.mullvad-vpn}/bin/mullvad-vpn";
+            };
+          })
+        ];
       }
     ];
 
