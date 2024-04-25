@@ -20,6 +20,12 @@ in
       type = lib.types.attrsOf (
         lib.types.submodule {
           options = {
+            enable = lib.mkOption {
+              type = lib.types.bool;
+              default = true;
+              description = "Whether to enable this entry";
+            };
+
             description = lib.mkOption {
               type = lib.types.str;
               description = "Description of the entry";
@@ -52,24 +58,27 @@ in
         };
       };
 
-      services = lib.mapAttrs (name: value: {
-        Unit = lib.mkMerge [
-          { Description = value.description; }
-          (lib.mkIf value.graphical {
-            After = [ "graphical-session.target" ];
-            Requires = [ "graphical-session.target" ];
-          })
-        ];
+      services = lib.mapAttrs (
+        name: value:
+        lib.mkIf value.enable {
+          Unit = lib.mkMerge [
+            { Description = value.description; }
+            (lib.mkIf value.graphical {
+              After = [ "graphical-session.target" ];
+              Requires = [ "graphical-session.target" ];
+            })
+          ];
 
-        Service = {
-          Type = "simple";
-          ExecStart = value.command;
-        };
+          Service = {
+            Type = "simple";
+            ExecStart = value.command;
+          };
 
-        Install = {
-          WantedBy = [ "autostart.target" ];
-        };
-      }) cfg.entries;
+          Install = {
+            WantedBy = [ "autostart.target" ];
+          };
+        }
+      ) cfg.entries;
     };
 
     home.activation = lib.mkIf cfg.forceNoXdg {
