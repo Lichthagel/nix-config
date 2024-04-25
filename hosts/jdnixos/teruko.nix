@@ -16,5 +16,9 @@
         "IMG_FOLDER=/mnt/d/teruko"
       ];
     };
+
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
   };
 }
