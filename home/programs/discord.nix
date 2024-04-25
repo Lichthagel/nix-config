@@ -42,6 +42,7 @@ in
       licht.unfreePackages = map lib.getName [ discord ];
 
       licht.autostart.entries.discord = {
+        enable = lib.mkDefault false;
         description = "Discord";
         command = "${discord}/bin/discord";
       };
