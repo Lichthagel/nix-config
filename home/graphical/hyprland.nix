@@ -165,8 +165,6 @@ in
           [
             "suppressevent maximize,class:.*" # You'll probably like this.
             "float,class:^org\.keepassxc\.KeePassXC$"
-            "opacity 0.85,focus:0,class:^foot$"
-            "opacity 0.9,focus:1,class:^foot$"
             "opacity 0.9,workspace:special:magic"
           ]
           ++ (
@@ -184,6 +182,20 @@ in
               };
             in
             lib.forEach rules ({ rule, window }: "${rule}, ${window}")
+          )
+          ++ (
+            let
+              matchers = [
+                "class:^foot$"
+                "class:^(org.wezfurlong.wezterm)$"
+              ];
+            in
+            (lib.concatLists (
+              lib.forEach matchers (matcher: [
+                "opacity 0.85,focus:0,${matcher}"
+                "opacity 0.9,focus:1,${matcher}"
+              ])
+            ))
           );
 
         layerrule = [
