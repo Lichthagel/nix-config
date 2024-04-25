@@ -54,6 +54,12 @@ in
       }
     ];
 
+    systemd.user.services = {
+      keepassxc = {
+        Unit.After = [ "ssh-agent.service" ];
+      };
+    };
+
     home.packages = with pkgs; [
       keepassxc
       yubioath-flutter
