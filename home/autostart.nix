@@ -74,6 +74,8 @@ in
           Service = {
             Type = "simple";
             ExecStart = value.command;
+            Restart = "on-failure";
+            RestartSec = "5s";
           };
 
           Install = {
