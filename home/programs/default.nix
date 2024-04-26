@@ -7,5 +7,6 @@
     ./firefox.nix
     ./foot.nix
     ./tofi.nix
+    ./rio.nix
   ];
 }
