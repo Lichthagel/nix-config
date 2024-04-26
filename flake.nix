@@ -75,7 +75,7 @@
     };
 
     split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces?rev=f7a306396da163422048fd38eecd92c68ce21e58";
+      url = "github:Duckonaut/split-monitor-workspaces?rev=b0ee3953eaeba70f3fba7c4368987d727779826a";
       inputs.hyprland.follows = "hyprland";
     };
 
