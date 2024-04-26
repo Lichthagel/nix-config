@@ -12,6 +12,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.tofi = {
       enable = true;
+      catppuccin.enable = true;
     };
   };
 }
