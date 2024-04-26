@@ -16,7 +16,6 @@ pkgs.stdenvNoCC.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/share/fcitx5/themes
-    ls $src/src
-    cp -r $src/src/* $out/share/fcitx5/themes/
+    cp -Tr $src/src $out/share/fcitx5/themes
   '';
 }
