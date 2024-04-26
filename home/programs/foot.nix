@@ -15,7 +15,7 @@ in
       catppuccin.enable = true;
       settings = {
         main = {
-          font = "Cascadia Code:size=11";
+          font = "CaskaydiaCove Nerd Font:size=11";
         };
       };
     };
