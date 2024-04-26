@@ -7,6 +7,12 @@ substitute:
 debug:
     nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose
 
+build:
+    nixos-rebuild build --flake .
+
+build-debug:
+    nixos-rebuild build --flake . --show-trace --verbose
+
 update:
     nix flake update
 
