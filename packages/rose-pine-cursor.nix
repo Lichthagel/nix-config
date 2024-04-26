@@ -81,7 +81,8 @@ pkgs.stdenvNoCC.mkDerivation rec {
     runHook preInstall
 
     mkdir -p $out/share/icons
-    cp -Tr themes $out/share/icons
+    cp -r themes/BreezeX-RoséPine $out/share/icons
+    cp -r themes/BreezeX-RoséPineDawn $out/share/icons
 
     runHook postInstall
   '';
