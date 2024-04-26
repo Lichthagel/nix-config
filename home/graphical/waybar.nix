@@ -16,8 +16,12 @@ in
     };
 
     # only launch in specific sessions
-    systemd.user.services.waybar.Install.WantedBy = lib.mkForce (
-      lib.optional config.licht.graphical.hyprland.enable "hyprland-session.target"
-    );
+    systemd.user.services.waybar = {
+      Install.WantedBy = lib.mkForce (
+        lib.optional config.licht.graphical.hyprland.enable "hyprland-session.target"
+      );
+
+      Unit.Before = lib.mkIf config.licht.autostart.systemd [ "autostart.target" ];
+    };
   };
 }
