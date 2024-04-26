@@ -55,6 +55,8 @@ in
         Unit = {
           Description = "Autostart target";
           RefuseManualStart = false;
+          After = [ "default.target" ];
+          BindsTo = [ "default.target" ];
         };
       };
 
@@ -65,7 +67,7 @@ in
             { Description = value.description; }
             (lib.mkIf value.graphical {
               After = [ "graphical-session.target" ];
-              Requires = [ "graphical-session.target" ];
+              BindsTo = [ "graphical-session.target" ];
             })
           ];
 
