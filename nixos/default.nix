@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./graphical
@@ -54,6 +50,13 @@
     programs.zsh.enable = true;
 
     programs.ssh.startAgent = true;
+
+    systemd.user.services.ssh-agent = {
+      serviceConfig = {
+        ExecStartPost = "${pkgs.systemd}/bin/systemctl --user set-environment SSH_AUTH_SOCK=%t/ssh-agent";
+        ExecStopPost = "${pkgs.systemd}/bin/systemctl --user unset-environment SSH_AUTH_SOCK";
+      };
+    };
 
     programs.nix-ld.enable = true;
 
