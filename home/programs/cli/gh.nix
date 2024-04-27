@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.licht.programs.cli.gh;
 in
@@ -19,7 +24,12 @@ in
           co = "pr checkout";
         };
       };
+      extensions = with pkgs; [
+        gh-copilot
+      ];
     };
+
+    licht.unfreePackages = map lib.getName [ pkgs.gh-copilot ];
 
     programs.gh-dash = {
       enable = true;
