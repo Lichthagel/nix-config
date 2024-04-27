@@ -21,6 +21,10 @@ in
       };
     };
 
+    programs.gh-dash = {
+      enable = true;
+    };
+
     programs.glamour.catppuccin.enable = true;
   };
 }
