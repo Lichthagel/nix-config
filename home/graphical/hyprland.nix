@@ -185,10 +185,7 @@ in
           )
           ++ (
             let
-              matchers = [
-                "class:^foot$"
-                "class:^(org.wezfurlong.wezterm)$"
-              ];
+              matchers = [ "class:^(org.wezfurlong.wezterm)$" ];
             in
             (lib.concatLists (
               lib.forEach matchers (matcher: [

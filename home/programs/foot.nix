@@ -17,6 +17,9 @@ in
         main = {
           font = "CaskaydiaCove Nerd Font:size=11";
         };
+        colors = {
+          alpha = 0.8;
+        };
       };
     };
   };
