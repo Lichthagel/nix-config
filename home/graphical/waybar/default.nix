@@ -12,7 +12,13 @@ in
   config = lib.mkIf cfg.enable {
     programs.waybar = {
       enable = true;
+      catppuccin = {
+        enable = true;
+        mode = "createLink";
+      };
       systemd.enable = true;
+      settings = import ./settings.nix { inherit lib; };
+      style = ./style.css;
     };
 
     # only launch in specific sessions

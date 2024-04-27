@@ -7,7 +7,7 @@
     ./hyprlock.nix
     ./kde.nix
     ./qt.nix
-    ./waybar.nix
+    ./waybar
   ];
 
   home.pointerCursor = {
