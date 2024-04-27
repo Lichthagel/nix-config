@@ -1,9 +1,9 @@
 { config, lib, ... }:
 let
-  cfg = config.licht.programs.mako;
+  cfg = config.licht.services.mako;
 in
 {
-  options.licht.programs.mako = {
+  options.licht.services.mako = {
     enable = lib.mkEnableOption "mako" // { default = config.licht.graphical.hyprland.enable; };
   };
 
