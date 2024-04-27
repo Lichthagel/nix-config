@@ -26,6 +26,7 @@ in
       };
       extensions = with pkgs; [
         gh-copilot
+        gh-poi
       ];
     };
 
