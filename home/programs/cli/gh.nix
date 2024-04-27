@@ -34,6 +34,7 @@ in
 
     programs.gh-dash = {
       enable = true;
+      catppuccin.enable = true;
     };
 
     programs.glamour.catppuccin.enable = true;
