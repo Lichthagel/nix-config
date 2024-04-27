@@ -85,7 +85,7 @@ in
       checkNoXdgAutostart = lib.hm.dag.entryBefore [ "writeBoundary" ] ''
         if [ -n "$(ls -A $HOME/.config/autostart/)" ]; then
           echo "error: $HOME/.config/autostart/ is not empty" >&2
-          exit 1
+          run exit 1
         fi
       '';
     };
