@@ -4,7 +4,7 @@ let
 in
 {
   options.licht.services.mako = {
-    enable = lib.mkEnableOption "mako" // { default = config.licht.graphical.hyprland.enable; };
+    enable = lib.mkEnableOption "mako";
   };
 
   config = lib.mkIf cfg.enable {
