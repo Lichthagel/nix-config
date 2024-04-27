@@ -1,1 +1,6 @@
-{ imports = [ ./mako.nix ]; }
+{
+  imports = [
+    ./mako.nix
+    ./swaync.nix
+  ];
+}
