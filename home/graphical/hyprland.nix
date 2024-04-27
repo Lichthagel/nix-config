@@ -208,6 +208,7 @@ in
             "$mainMod, C, killactive,"
             "$mainMod, M, exit,"
             "$mainMod, E, exec, $fileManager"
+            "$mainMod, F, exec, firefox"
             "$mainMod, V, togglefloating,"
             "$mainMod, R, exec, $menu"
             "$mainMod, P, pseudo," # dwindle
