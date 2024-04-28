@@ -24,10 +24,6 @@ in
         winDecStyles = [ "classic" ];
       })
       (pkgs.catppuccin-papirus-folders.override { inherit (ctp) flavor accent; })
-      (pkgs.catppuccin-gtk.override {
-        variant = ctp.flavor;
-        accents = [ ctp.accent ];
-      })
     ];
   };
 }

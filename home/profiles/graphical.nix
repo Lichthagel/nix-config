@@ -19,6 +19,10 @@ in
       (lib.mkDefault {
         profiles.base = true;
 
+        graphical = {
+          gtk.enable = true;
+        };
+
         editors = {
           vscode.enable = true;
         };
