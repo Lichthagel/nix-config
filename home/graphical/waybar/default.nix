@@ -28,6 +28,8 @@ in
       );
 
       Unit.Before = lib.mkIf config.licht.autostart.systemd [ "autostart.target" ];
+
+      Service.Type = "exec";
     };
   };
 }
