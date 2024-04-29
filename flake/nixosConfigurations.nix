@@ -67,6 +67,7 @@
                   ];
                 };
                 home-manager.extraSpecialArgs = mkArgs system;
+                home-manager.backupFileExtension = "backup";
               }
               (self + /nixos)
               (self + /hosts/${hostName})
