@@ -48,7 +48,7 @@ in
               command = "${pkgs.keepassxc}/bin/keepassxc";
             };
           }
-          (lib.mkIf (osConfig.services.mullvad-vpn.enable) {
+          (lib.mkIf osConfig.services.mullvad-vpn.enable {
             mullvad-vpn = {
               description = "Mullvad VPN";
               command = "${pkgs.mullvad-vpn}/bin/mullvad-vpn";

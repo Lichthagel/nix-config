@@ -15,7 +15,7 @@ in
 
   config = lib.mkIf cfg.enable (
     let
-      discord = (
+      discord =
         (pkgs.discord.override {
           withOpenASAR = true;
           withVencord = true;
@@ -33,8 +33,7 @@ in
                   ]
                   oldAttrs.installPhase;
             }
-          )
-      );
+          );
     in
     {
       home.packages = [ discord ];

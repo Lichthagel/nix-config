@@ -187,12 +187,12 @@ in
             let
               matchers = [ "class:^(org.wezfurlong.wezterm)$" ];
             in
-            (lib.concatLists (
+            lib.concatLists (
               lib.forEach matchers (matcher: [
                 "opacity 0.85,focus:0,${matcher}"
                 "opacity 0.9,focus:1,${matcher}"
               ])
-            ))
+            )
           );
 
         layerrule = [

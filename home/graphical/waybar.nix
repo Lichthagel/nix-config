@@ -17,7 +17,7 @@ in
 
     # only launch in specific sessions
     systemd.user.services.waybar.Install.WantedBy = lib.mkForce (
-      (lib.optional config.licht.graphical.hyprland.enable "hyprland-session.target")
+      lib.optional config.licht.graphical.hyprland.enable "hyprland-session.target"
     );
   };
 }
