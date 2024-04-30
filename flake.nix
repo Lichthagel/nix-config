@@ -6,6 +6,7 @@
     flake-parts.lib.mkFlake { inherit inputs; } (
       { lib, ... }:
       {
+        debug = true;
 
         imports = [
           ./flake/args.nix
