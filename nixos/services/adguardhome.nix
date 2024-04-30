@@ -28,7 +28,7 @@ in
   config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [
       (final: prev: {
-        adguardhome = prev.adguardhome.overrideAttrs (oldAttrs: rec {
+        adguardhome = prev.adguardhome.overrideAttrs (_: rec {
           version = "0.107.44";
 
           src =

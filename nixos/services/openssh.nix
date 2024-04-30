@@ -26,7 +26,7 @@ in
       };
     };
 
-    users.users = lib.mapAttrs (name: value: {
+    users.users = lib.mapAttrs (_: value: {
       openssh.authorizedKeys.keys = value;
     }) cfg.authorizedKeys;
   };

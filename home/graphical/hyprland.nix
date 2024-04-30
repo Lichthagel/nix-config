@@ -43,7 +43,7 @@ in
       catppuccin.enable = true;
 
       plugins = lib.optional cfg.perMonitorWorkspaces (
-        inputs'.split-monitor-workspaces.packages.split-monitor-workspaces.overrideAttrs (oldAttrs: {
+        inputs'.split-monitor-workspaces.packages.split-monitor-workspaces.overrideAttrs (_: {
           buildInputs =
             with pkgs;
             let

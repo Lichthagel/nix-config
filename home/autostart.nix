@@ -59,7 +59,7 @@ in
       };
 
       services = lib.mapAttrs (
-        name: value:
+        _: value:
         lib.mkIf value.enable {
           Unit = lib.mkMerge [
             { Description = value.description; }

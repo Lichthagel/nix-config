@@ -2,27 +2,24 @@
   description = "My NixOS configuration";
 
   outputs =
-    { self, flake-parts, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } (
-      { lib, ... }:
-      {
-        debug = true;
+    { flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      debug = true;
 
-        imports = [
-          ./flake/args.nix
-          ./flake/packages.nix
-          ./flake/dev.nix
-          ./flake/nixosConfigurations.nix
-        ];
+      imports = [
+        ./flake/args.nix
+        ./flake/packages.nix
+        ./flake/dev.nix
+        ./flake/nixosConfigurations.nix
+      ];
 
-        systems = [
-          "x86_64-linux"
-          "aarch64-linux"
-          "x86_64-darwin"
-          "aarch64-darwin"
-        ];
-      }
-    );
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+    };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
