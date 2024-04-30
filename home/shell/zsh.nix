@@ -1,8 +1,4 @@
-{
-  options,
-  pkgs,
-  ...
-}:
+{ options, pkgs, ... }:
 let
   catppuccin-zsh-fsh = pkgs.stdenvNoCC.mkDerivation {
     name = "catppuccin-zsh-fsh";

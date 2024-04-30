@@ -13,7 +13,7 @@ in
 {
   options.licht.sops = {
     enable = lib.mkEnableOption "sops";
-    
+
     user = lib.mkOption {
       type = lib.types.str;
       default = "licht";

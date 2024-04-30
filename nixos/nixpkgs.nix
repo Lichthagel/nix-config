@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 {
   options.licht.unfreePackages = lib.mkOption {
     type = lib.types.listOf lib.types.str;
