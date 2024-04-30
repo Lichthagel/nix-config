@@ -28,3 +28,4 @@ format:
 
 lint:
     statix check .
+    deadnix

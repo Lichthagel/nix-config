@@ -13,6 +13,7 @@
           sops
           age
           statix
+          deadnix
         ];
       };
 
