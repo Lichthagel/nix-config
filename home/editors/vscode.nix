@@ -46,6 +46,7 @@ in
     home.packages = [
       unstablePkgs.nixfmt-rfc-style
       pkgs.nil
+      pkgs.nixd
     ];
 
     licht.unfreePackages = map lib.getName [

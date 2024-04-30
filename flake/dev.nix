@@ -7,6 +7,7 @@
           unstablePkgs.nixfmt-rfc-style
           just
           nil
+          nixd
           nix-output-monitor
           nvd
           sops
