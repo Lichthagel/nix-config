@@ -5,6 +5,7 @@
   config,
   inputs,
   pkgs,
+  self,
   ...
 }:
 {
@@ -151,10 +152,11 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  sops.secrets."nix_cache/${config.networking.hostName}/private" = { };
+  age.secrets."nix_cache/${config.networking.hostName}/private".file =
+    self + /secrets/nix_cache/${config.networking.hostName}/private;
 
   nix.settings.secret-key-files =
-    config.sops.secrets."nix_cache/${config.networking.hostName}/private".path;
+    config.age.secrets."nix_cache/${config.networking.hostName}/private".path;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
@@ -170,7 +172,6 @@
   # networking.firewall.enable = false;
 
   licht = {
-    sops.enable = true;
     wireguard.enable = true;
     sound.enable = true;
 

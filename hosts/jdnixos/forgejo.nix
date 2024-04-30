@@ -2,6 +2,7 @@
   config,
   lib,
   unstablePkgs,
+  self,
   ...
 }:
 {
@@ -33,7 +34,7 @@
       createDatabase = false;
       name = "gitea";
       user = "gitea";
-      passwordFile = config.sops.secrets.forge_db.path;
+      passwordFile = config.age.secrets.forge_db.path;
       type = "postgres";
     };
   };
@@ -69,7 +70,7 @@
             instanceBase
             (removeAttrs args [ "tokenSecret" ])
             (lib.mkIf (args ? tokenSecret) {
-              tokenFile = config.sops.secrets."runner_token/${args.tokenSecret}".path;
+              tokenFile = config.age.secrets."runner_token/${args.tokenSecret}".path;
             })
           ];
       in
@@ -89,20 +90,26 @@
       };
   };
 
-  sops.secrets =
+  age.secrets =
     let
-      runnerConfig = {
+      runnerConfig = instance: {
+        file = self + /secrets/runner_token/${instance};
         mode = "0444"; # gitea runner module uses dynamic users, so we need to make the token readable by all users :/
       };
     in
     {
       forge_db = {
+        file = self + /secrets/forge_db;
         owner = config.services.forgejo.user;
         group = config.services.forgejo.group;
         mode = "0600";
       };
-      "runner_token/forge" = runnerConfig;
-      "runner_token/gitea" = runnerConfig;
-      "runner_token/codeberg" = runnerConfig;
-    };
+    }
+    // lib.mapAttrs' (name: value: lib.nameValuePair "runner_token/${name}" value) (
+      lib.genAttrs [
+        "forge"
+        "gitea"
+        "codeberg"
+      ] runnerConfig
+    );
 }

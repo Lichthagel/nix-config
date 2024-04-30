@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  self,
+  ...
+}:
 let
   cfg = config.licht.wireguard;
 in
@@ -40,12 +45,14 @@ in
       };
     in
     {
+      age.secrets."wireguard/${hostName}.env".file = self + /secrets/wireguard/${hostName}.env;
+
       networking.firewall = {
         allowedUDPPorts = [ 51820 ];
       };
 
       networking.networkmanager.ensureProfiles = {
-        environmentFiles = [ config.sops.secrets."wireguard/${hostName}.env".path ];
+        environmentFiles = [ config.age.secrets."wireguard/${hostName}.env".path ];
 
         profiles = {
           "wg0" = {

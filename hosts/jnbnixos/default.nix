@@ -87,7 +87,6 @@
   # networking.firewall.enable = false;
 
   licht = {
-    sops.enable = true;
     wireguard.enable = true;
     sound.enable = true;
 

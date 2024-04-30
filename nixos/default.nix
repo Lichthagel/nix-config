@@ -5,7 +5,6 @@
     ./services
 
     ./nixpkgs.nix
-    ./sops.nix
     ./sound.nix
     ./wireguard.nix
   ];

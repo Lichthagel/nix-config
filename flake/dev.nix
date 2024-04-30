@@ -1,6 +1,6 @@
 {
   perSystem =
-    { pkgs, unstablePkgs, ... }:
+    { pkgs, unstablePkgs, inputs', ... }:
     {
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
@@ -10,10 +10,9 @@
           nixd
           nix-output-monitor
           nvd
-          sops
-          age
           statix
           deadnix
+          inputs'.ragenix.packages.default
         ];
       };
 
