@@ -30,6 +30,9 @@
         ENABLED = true;
         DEFAULT_ACTIONS_URL = "https://github.com";
       };
+      repository = {
+        DEFAULT_REPO_UNITS = lib.concatStringsSep "," [ "repo.code" ];
+      };
     };
     database = {
       createDatabase = false;
