@@ -16,6 +16,7 @@
         DOMAIN = "desktop.licht";
         HTTP_ADDR = "0.0.0.0";
         HTTP_PORT = 3456;
+        LANDING_PAGE = "login";
       };
       service = {
         DISABLE_REGISTRATION = true;
