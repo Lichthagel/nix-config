@@ -40,10 +40,9 @@ in
 
     services.adguardhome = {
       enable = true;
+      host = "127.0.0.1";
+      port = 4567;
       settings = {
-        http.address = "127.0.0.1:4567";
-        bind_host = "127.0.0.1";
-        bind_port = 4567;
         users = [
           {
             name = "licht";
