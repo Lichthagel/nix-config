@@ -23,6 +23,22 @@ in
       {
         enable = true;
 
+        spicetifyPackage = pkgs.spicetify-cli.overrideAttrs (_: rec {
+          version = "2.36.11";
+
+          src = pkgs.fetchFromGitHub {
+            owner = "spicetify";
+            repo = "spicetify-cli";
+            rev = "v${version}";
+            sha256 = "sha256-ZqWGKuYDxuKVqz6cNxZ3cTcKTxkxuu42b48hlAialKc=";
+          };
+
+          ldflags = [
+            "-s -w"
+            "-X 'main.version=${version}'"
+          ];
+        });
+
         theme = spicePkgs.themes.catppuccin;
         colorScheme = config.catppuccin.flavor;
 
