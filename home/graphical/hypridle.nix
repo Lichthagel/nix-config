@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 let
   cfg = config.licht.graphical.hypridle;
 in
@@ -88,5 +84,7 @@ in
           });
       };
     };
+
+    systemd.user.services.hypridle.Install.WantedBy = lib.mkForce [ "hyprland-session.target" ];
   };
 }
