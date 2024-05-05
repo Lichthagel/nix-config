@@ -30,6 +30,7 @@ in
 
         # swaync config
         "swaync/config.json".text = builtins.toJSON {
+          "positionX" = "center";
           "notification-visibility" = {
             "spotify" = {
               "state" = "transient";
