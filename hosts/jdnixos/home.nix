@@ -15,6 +15,7 @@
 
   licht.profiles.graphical = true;
   licht.graphical.hyprland.perMonitorWorkspaces = true;
+  licht.graphical.hypridle.suspend.enable = false;
   licht.graphical.hypridle.suspend.timeout = 30 * 60;
   licht.autostart.entries.discord.enable = true;
 
