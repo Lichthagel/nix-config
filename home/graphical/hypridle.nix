@@ -1,16 +1,12 @@
 {
   config,
   lib,
-  pkgs,
-  inputs,
   ...
 }:
 let
   cfg = config.licht.graphical.hypridle;
 in
 {
-  imports = [ inputs.hypridle.homeManagerModules.default ];
-
   options.licht.graphical.hypridle = {
     enable = lib.mkEnableOption "hypridle" // {
       default = config.licht.graphical.hyprland.enable;
@@ -64,30 +60,33 @@ in
     services.hypridle = {
       enable = true;
 
-      package = pkgs.hypridle; # use nixpkgs
+      settings = {
+        general = {
+          before_sleep_cmd = "loginctl lock-session";
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+          ignore_dbus_inhibit = false;
+          lock_cmd =
+            if config.programs.hyprlock.enable then
+              lib.getExe config.programs.hyprlock.package
+            else
+              (builtins.throw "hyprlock not enabled");
+        };
 
-      lockCmd =
-        if config.programs.hyprlock.enable then
-          lib.getExe config.programs.hyprlock.package
-        else
-          (builtins.throw "hyprlock not enabled");
-      beforeSleepCmd = "loginctl lock-session";
-      afterSleepCmd = "hyprctl dispatch dpms on";
-
-      listeners =
-        (lib.optional cfg.lock.enable {
-          timeout = cfg.lock.timeout;
-          onTimeout = "loginctl lock-session";
-        })
-        ++ (lib.optional cfg.display.enable {
-          timeout = cfg.display.timeout;
-          onTimeout = "hyprctl dispatch dpms off";
-          onResume = "hyprctl dispatch dpms on";
-        })
-        ++ (lib.optional cfg.suspend.enable {
-          timeout = cfg.suspend.timeout;
-          onTimeout = "systemctl suspend";
-        });
+        listener =
+          (lib.optional cfg.lock.enable {
+            timeout = cfg.lock.timeout;
+            on-timeout = "loginctl lock-session";
+          })
+          ++ (lib.optional cfg.display.enable {
+            timeout = cfg.display.timeout;
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          })
+          ++ (lib.optional cfg.suspend.enable {
+            timeout = cfg.suspend.timeout;
+            on-timeout = "systemctl suspend";
+          });
+      };
     };
   };
 }
