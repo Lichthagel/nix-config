@@ -18,11 +18,11 @@
         monolisa-custom = monolisa.overrideAttrs (oldAttrs: {
           pname = "monolisa-custom";
 
-          # enable ss02, ss04, ss08, ss11, ss12 and set suffix to "Custom"
+          # enable ss02, ss04, ss08, ss11, ss12, ss13 and set suffix to "Custom"
           src = pkgs.requireFile {
             name = "MonoLisa-Custom-${oldAttrs.version}.zip";
             url = "https://www.monolisa.dev/orders";
-            sha256 = "sha256:0ilvvzg709l60l1cwdih729n71kdl83waaa23as94mnzln99z1rf";
+            sha256 = "sha256-Odr5Dbxsnp/mobRh7glgs81kMSxRxkFPSGJPZLxitTI=";
           };
         });
         monolisa-nerdfont = pkgs.callPackage (self + /packages/nerdfont.nix) { font = monolisa; };
