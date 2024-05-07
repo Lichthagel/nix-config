@@ -15,34 +15,38 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [ swaynotificationcenter ];
+    services.swaync = {
+      enable = true;
 
-    xdg.configFile =
-      let
-        serviceFile = "${pkgs.swaynotificationcenter}/share/systemd/user/swaync.service";
-      in
-      {
-        # enable swaync user service
-        "systemd/user/swaync.service".source = serviceFile;
-        "systemd/user/hyprland-session.target.wants/swaync.service" =
-          lib.mkIf config.licht.graphical.hyprland.enable
-            { source = serviceFile; };
-
-        # swaync config
-        "swaync/config.json".text = builtins.toJSON {
-          "positionX" = "center";
-          "control-center-positionX" = "right";
-          "notification-visibility" = {
-            "spotify" = {
-              "state" = "transient";
-              "app-name" = "Spotify";
-            };
+      settings = {
+        positionX = "center";
+        control-center-positionX = "right";
+        notification-visibility = {
+          spotify = {
+            state = "transient";
+            app-name = "Spotify";
           };
         };
       };
 
+      style = pkgs.substitute {
+        src = pkgs.fetchurl {
+          url = "https://github.com/catppuccin/swaync/releases/download/v0.2.2/${config.catppuccin.flavour}.css";
+          sha256 = "sha256-YFboTWj/hiJhmnMbGLtfcxKxvIpJxUCSVl2DgfpglfE=";
+        };
+
+        substitutions = [
+          "--replace-warn"
+          "Ubuntu Nerd Font"
+          "Gabarito"
+        ];
+      };
+    };
+
+    systemd.user.services.swaync.Install.WantedBy = lib.mkForce [ "hyprland-session.target" ];
+
     wayland.windowManager.hyprland.settings.bind = [
-      "$mainMod, N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw"
+      "$mainMod, N, exec, ${config.services.swaync.package}/bin/swaync-client -t -sw"
     ];
   };
 }
