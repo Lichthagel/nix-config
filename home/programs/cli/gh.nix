@@ -21,7 +21,7 @@ in
         git_protocol = "https";
         prompt = "enabled";
         aliases = {
-          co = "pr checkout";
+          "pr co" = "pr checkout";
         };
       };
       extensions = with pkgs; [
