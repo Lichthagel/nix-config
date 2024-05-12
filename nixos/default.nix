@@ -63,6 +63,7 @@
       neovim
       helix
       git
+      jq
     ];
 
     nix = {
