@@ -12,7 +12,7 @@
           nvd
           statix
           deadnix
-          inputs'.ragenix.packages.default
+          inputs'.agenix.packages.default
         ];
       };
 

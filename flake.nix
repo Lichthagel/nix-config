@@ -76,9 +76,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ragenix = {
-      url = "github:yaxitech/ragenix";
+    agenix = {
+      url = "http://rime.cx/v1/github/ryantm/agenix.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
   };
 

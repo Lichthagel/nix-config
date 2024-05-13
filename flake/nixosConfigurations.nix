@@ -50,7 +50,7 @@
             modules = [
               inputs.home-manager.nixosModules.home-manager
               inputs.catppuccin.nixosModules.catppuccin
-              inputs.ragenix.nixosModules.default
+              inputs.agenix.nixosModules.default
               {
                 networking.hostName = hostName;
                 catppuccin = {
