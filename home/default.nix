@@ -51,6 +51,7 @@
 
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.ragenix.homeManagerModules.default
 
     ./editors
     ./graphical
