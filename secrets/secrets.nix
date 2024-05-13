@@ -16,8 +16,6 @@ in
 
   "ssh/id_ed25519_shared".publicKeys = [
     licht
-    jdnixos
-    jnbnixos
   ];
 
   "nix_cache/jdnixos/private".publicKeys = [
