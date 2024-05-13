@@ -19,4 +19,6 @@
       co = "checkout";
     };
   };
+
+  home.packages = [ pkgs.git-crypt ];
 }
