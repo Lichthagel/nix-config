@@ -1,4 +1,10 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  self,
+  ...
+}:
 {
   imports = [ ./teruko.nix ];
 
@@ -28,4 +34,16 @@
   };
 
   services.mako.output = "DP-2";
+
+  age = {
+    secrets = {
+      "ssh/id_ed25519_shared" = {
+        file = self + /secrets/ssh/id_ed25519_shared;
+        path = "${config.home.homeDirectory}/.ssh/id_ed25519_shared";
+        mode = "0600";
+      };
+    };
+
+    identityPaths = [ "${config.home.homeDirectory}/.config/sops/age/keys.txt" ];
+  };
 }
