@@ -81,6 +81,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+    };
   };
 
   nixConfig = {
