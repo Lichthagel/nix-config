@@ -1,31 +1,26 @@
+---
 name: Bump Flake Inputs
-on:
+"on":
   workflow_dispatch:
   schedule:
     - cron: "0 0 * * 2,4,6"
-  
 jobs:
   lockfile:
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
       pull-requests: write
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
         with:
           logger: pretty
-      
       - name: Nix Magic Cache
         uses: DeterminateSystems/magic-nix-cache-action@main
-      
       - name: Update Lockfile
         uses: DeterminateSystems/update-flake-lock@main
         with:

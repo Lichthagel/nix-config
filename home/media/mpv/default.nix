@@ -410,7 +410,7 @@ in
             color =
               let
                 colors = lib.mapAttrs (
-                  name: value: builtins.replaceStrings [ "#" ] [ "" ] value.hex
+                  _: value: builtins.replaceStrings [ "#" ] [ "" ] value.hex
                 ) ctp.palette.colors;
               in
               "foreground=${colors.accent},foreground_text=${colors.surface0},background=${colors.base},background_text=${colors.text},curtain=${colors.mantle},success=${colors.green},error=${colors.red}"; # TODO use ctp parameters

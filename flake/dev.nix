@@ -52,7 +52,10 @@
               enable = true;
               excludes = [ "flake.lock" ];
             };
-            trim-trailing-whitespace.enable = true;
+            trim-trailing-whitespace = {
+              enable = true;
+              excludes = [ ".*\.patch" ];
+            };
           };
         };
       };

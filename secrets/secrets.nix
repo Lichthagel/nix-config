@@ -14,9 +14,7 @@ in
     jnbnixos
   ];
 
-  "ssh/id_ed25519_shared".publicKeys = [
-    licht
-  ];
+  "ssh/id_ed25519_shared".publicKeys = [ licht ];
 
   "nix_cache/jdnixos/private".publicKeys = [
     licht
