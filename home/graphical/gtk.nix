@@ -1,9 +1,7 @@
 {
   config,
   lib,
-  pkgs,
   selfPkgs,
-  ctp,
   ...
 }:
 let
@@ -20,14 +18,11 @@ in
       catppuccin = {
         enable = true;
         cursor.enable = false;
+        icon.enable = true;
       };
       font = {
         name = "Gabarito";
         package = selfPkgs.gabarito;
-      };
-      iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.catppuccin-papirus-folders.override { inherit (ctp) flavor accent; };
       };
     };
   };
