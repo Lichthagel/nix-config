@@ -50,7 +50,7 @@ pkgs.stdenvNoCC.mkDerivation rec {
     '';
 
     outputHashMode = "recursive";
-    outputHash = "sha256-CztpS/j5sX0bwtPaYC+EyznOuuTE6HsxnM1uthiNOXI=";
+    outputHash = "sha256-sz434np04MBsdCYOjBYJxq4Y0wRLhULdx4hp70qT774=";
     outputHashAlgo = "sha256";
   };
 
