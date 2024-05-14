@@ -1,0 +1,13 @@
+---
+builds:
+  exclude:
+    - "packages.*.cartograph-cf"
+    - "packages.*.cartograph-cf-nerdfont"
+    - "packages.*.monolisa"
+    - "packages.*.monolisa-nerdfont"
+    - "packages.*.monolisa-custom"
+    - "packages.*.monolisa-custom-nerdfont"
+    - "packages.*.recursive-nerdfont"
+  include:
+    - "packages.x86_64-linux.*"
+    - "checks.x86_64-linux.*"
