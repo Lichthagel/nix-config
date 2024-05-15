@@ -13,6 +13,11 @@
         ./flake/nixosConfigurations.nix
       ];
 
+      flake.templates.default = {
+        path = ./template;
+        description = "My flake template";
+      };
+
       systems = [
         "x86_64-linux"
         "aarch64-linux"

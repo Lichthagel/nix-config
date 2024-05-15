@@ -15,7 +15,10 @@
           src = "${self}";
           hooks = {
             # nix
-            deadnix.enable = true;
+            deadnix = {
+              enable = true;
+              excludes = [ "^template\/.*" ];
+            };
             nil.enable = true;
             nixfmt = {
               enable = true;
