@@ -8,7 +8,6 @@
         cartograph-cf = pkgs.callPackage (self + /packages/cartograph-cf.nix) { };
         cartograph-cf-nerdfont = pkgs.callPackage (self + /packages/nerdfont.nix) { font = cartograph-cf; };
         catppuccin-fcitx5 = pkgs.callPackage (self + /packages/catppuccin-fcitx5.nix) { };
-        catppuccin-sddm = pkgs.callPackage (self + /packages/catppuccin-sddm.nix) { };
         gabarito = pkgs.callPackage (self + /packages/gabarito.nix) { };
         kode-mono-nerdfont = pkgs.callPackage (self + /packages/nerdfont.nix) {
           font = unstablePkgs.kode-mono;

@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  selfPkgs,
   ...
 }:
 let
@@ -29,7 +28,7 @@ in
     };
 
     environment.systemPackages = [
-      selfPkgs.catppuccin-sddm
+      pkgs.catppuccin-sddm
       pkgs.vimix-cursors
     ];
   };
