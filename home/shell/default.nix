@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./atuin.nix
@@ -40,6 +40,7 @@
     fzf = {
       enable = true;
       catppuccin.enable = true;
+      colors.bg = lib.mkForce "";
       defaultCommand = "fd --type f --hidden --follow --exclude .git";
     };
 
