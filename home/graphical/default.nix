@@ -6,6 +6,7 @@
     ./hyprland.nix
     ./hyprlock.nix
     ./kde.nix
+    ./qt.nix
     ./waybar.nix
   ];
 

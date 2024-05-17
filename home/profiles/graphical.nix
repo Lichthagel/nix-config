@@ -21,6 +21,7 @@ in
 
         graphical = {
           gtk.enable = true;
+          qt.enable = true;
         };
 
         editors = {
