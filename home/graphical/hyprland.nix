@@ -68,16 +68,16 @@ in
 
         # Execute your favorite apps at launch
         exec-once = [
-          "kwalletd5"
-          "nm-applet"
-          "swww init"
+          "${pkgs.kdePackages.kwallet}/bin/kwalletd6"
+          "${pkgs.networkmanagerapplet}/bin/nm-applet"
+          "${pkgs.swww}/bin/swww init"
           "hyprctl setcursor ${config.home.pointerCursor.name} ${builtins.toString config.home.pointerCursor.size}"
         ] ++ (lib.optional config.services.mako.enable "${config.services.mako.package}/bin/mako");
 
         # Set programs that you use
-        "$terminal" = "foot";
-        "$fileManager" = "dolphin";
-        "$menu" = "tofi-drun --drun-launch=true";
+        "$terminal" = "${pkgs.foot}/bin/foot";
+        "$fileManager" = "${pkgs.dolphin}/bin/dolphin";
+        "$menu" = "${pkgs.tofi}/bin/tofi-drun --drun-launch=true";
 
         # Set default env vars.
         env = [
