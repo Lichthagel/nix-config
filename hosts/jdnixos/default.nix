@@ -177,7 +177,6 @@
 
     graphical = {
       enable = true;
-      plasma5.enable = true;
       hyprland.enable = true;
       sddm.enable = true;
     };
