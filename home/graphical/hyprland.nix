@@ -28,6 +28,8 @@ in
       wofi
       swww
       nwg-look
+      dolphin
+      glib
     ];
 
     services.playerctld.enable = true;
