@@ -46,4 +46,13 @@
 
     identityPaths = [ "${config.home.homeDirectory}/.config/sops/age/keys.txt" ];
   };
+
+  xdg.userDirs = {
+    enable = true;
+    documents = "/mnt/d/Documents";
+    download = "/mnt/d/Downloads";
+    music = "/mnt/d/Music";
+    pictures = "/mnt/d/Pictures";
+    videos = "/mnt/d/Videos";
+  };
 }
