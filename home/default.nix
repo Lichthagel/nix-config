@@ -2,6 +2,7 @@
   osConfig,
   ctp,
   inputs,
+  pkgs,
   ...
 }:
 {
@@ -33,6 +34,12 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
+
+  home.packages = with pkgs; [
+    protonvpn-gui
+    protonmail-bridge
+    protonmail-bridge-gui
+  ];
 
   programs = {
     # Let Home Manager install and manage itself.
