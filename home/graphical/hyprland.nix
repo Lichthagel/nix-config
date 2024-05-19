@@ -23,14 +23,25 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      kitty
-      wofi
-      swww
-      nwg-look
-      dolphin
-      glib
-    ];
+    home.packages =
+      with pkgs;
+      [
+        glib
+        kitty
+        nwg-look
+        swww
+        wofi
+      ]
+      ++ (with kdePackages; [
+        ark
+        dolphin
+        dolphin-plugins
+        ffmpegthumbs
+        gwenview
+        kdegraphics-thumbnailers
+        kimageformats
+        okular
+      ]);
 
     services.playerctld.enable = true;
 
@@ -76,7 +87,7 @@ in
 
         # Set programs that you use
         "$terminal" = "${pkgs.foot}/bin/foot";
-        "$fileManager" = "${pkgs.dolphin}/bin/dolphin";
+        "$fileManager" = "${pkgs.kdePackages.dolphin}/bin/dolphin";
         "$menu" = "${pkgs.tofi}/bin/tofi-drun --drun-launch=true";
 
         # Set default env vars.
