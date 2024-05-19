@@ -75,7 +75,17 @@ in
     services.power-profiles-daemon.enable = lib.mkDefault true;
     services.udisks2.enable = true;
 
-    security.pam.services.hyprlock = { };
+    security.pam.services = {
+      hyprlock = { };
+      login.kwallet = {
+        enable = true;
+        package = pkgs.kdePackages.kwallet-pam;
+      };
+      hyprland.kwallet = {
+        enable = true;
+        package = pkgs.kdePackages.kwallet-pam;
+      };
+    };
 
     xdg.portal = {
       enable = true;
