@@ -38,6 +38,8 @@ in
 
     services.pipewire.wireplumber.enable = true;
 
+    services.power-profiles-daemon.enable = lib.mkDefault true;
+
     security.pam.services.hyprlock = { };
 
     xdg.portal = {
