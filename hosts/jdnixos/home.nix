@@ -26,11 +26,21 @@
   licht.autostart.entries.discord.enable = true;
 
   wayland.windowManager.hyprland.settings = {
-    env = [ "WLR_NO_HARDWARE_CURSORS,1" ];
+    env = [
+      "WLR_NO_HARDWARE_CURSORS,1"
+      "WLR_DRM_DEVICES,$XDG_CONFIG_HOME/hypr/card"
+    ];
     monitor = [
       "DP-2,3440x1440@144,1920x0,1"
       "DP-3,1920x1080@60,0x180,1"
     ];
+  };
+
+  home.activation = {
+    hyprCardLink = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      run ln -sf $VERBOSE_ARG \
+          /dev/dri/by-path/pci-0000:26:00.0-card $XDG_CONFIG_HOME/hypr/card
+    '';
   };
 
   services.mako.output = "DP-2";
