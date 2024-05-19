@@ -91,17 +91,27 @@
         lichtForge = mkInstance {
           url = lib.removeSuffix "/" config.services.forgejo.settings.server.ROOT_URL;
           tokenSecret = "forge";
+          settings.cache.port = 11211;
         };
         gitea = mkInstance {
           url = "https://gitea.com";
           tokenSecret = "gitea";
+          settings.cache.port = 11212;
         };
         codeberg = mkInstance {
           url = "https://codeberg.org";
           tokenSecret = "codeberg";
+          settings.cache.port = 11213;
         };
       };
   };
+
+  # TODO is this always podman0?
+  networking.firewall.interfaces.podman0.allowedTCPPorts = [
+    11211
+    11212
+    11213
+  ];
 
   age.secrets =
     let
