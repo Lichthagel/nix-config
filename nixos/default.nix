@@ -57,6 +57,10 @@
       };
     };
 
+    services.dbus = {
+      implementation = "broker";
+    };
+
     programs.nix-ld.enable = true;
 
     environment.systemPackages = with pkgs; [
