@@ -22,5 +22,9 @@ in
         };
       };
     };
+
+    home.sessionVariables = {
+      TERMINAL = "foot";
+    };
   };
 }
