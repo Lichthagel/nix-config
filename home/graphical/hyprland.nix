@@ -23,25 +23,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages =
-      with pkgs;
-      [
-        glib
-        kitty
-        nwg-look
-        swww
-        wofi
-      ]
-      ++ (with kdePackages; [
-        ark
-        dolphin
-        dolphin-plugins
-        ffmpegthumbs
-        gwenview
-        kdegraphics-thumbnailers
-        kimageformats
-        okular
-      ]);
+    home.packages = with pkgs; [
+      swww
+      nwg-look
+    ];
 
     services.playerctld.enable = true;
 

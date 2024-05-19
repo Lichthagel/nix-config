@@ -13,14 +13,26 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      libsForQt5.polkit-kde-agent
-      libsForQt5.qtwayland
-      qt6.qtwayland
-      libsForQt5.qt5ct
-      qt6Packages.qt6ct
-      networkmanagerapplet
-    ];
+    environment.systemPackages =
+      with pkgs;
+      [
+        kitty
+        libsForQt5.qt5ct
+        networkmanagerapplet
+      ]
+      ++ (with kdePackages; [
+        ark
+        dolphin
+        dolphin-plugins
+        ffmpegthumbs
+        gwenview
+        kdegraphics-thumbnailers
+        kimageformats
+        okular
+        polkit-kde-agent
+        qt6ct
+        qtwayland
+      ]);
 
     programs.hyprland.enable = true;
 
