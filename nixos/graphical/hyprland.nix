@@ -39,6 +39,7 @@ in
     services.pipewire.wireplumber.enable = true;
 
     services.power-profiles-daemon.enable = lib.mkDefault true;
+    services.udisks2.enable = true;
 
     security.pam.services.hyprlock = { };
 
