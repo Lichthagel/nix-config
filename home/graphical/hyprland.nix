@@ -81,7 +81,7 @@ in
         # Set default env vars.
         env = [
           "XCURSOR_SIZE,24"
-          "QT_QPA_PLATFORMTHEME,qt5ct"
+          "QT_QPA_PLATFORMTHEME,qt6ct"
         ];
 
         # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
