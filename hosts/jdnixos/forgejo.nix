@@ -12,11 +12,15 @@
     lfs.enable = true;
     settings = {
       default.APP_NAME = "lichtForge";
-      server = {
-        DOMAIN = "desktop.licht";
+      server = rec {
+        PROTOCOL = "https";
+        DOMAIN = "${config.networking.hostName}.licht.moe";
         HTTP_ADDR = "0.0.0.0";
         HTTP_PORT = 3456;
+        ROOT_URL = "${PROTOCOL}://${config.networking.hostName}.licht.moe:${toString HTTP_PORT}";
         LANDING_PAGE = "login";
+        CERT_FILE = config.age.secrets."tls/_.licht.moe.crt".path;
+        KEY_FILE = config.age.secrets."tls/_.licht.moe.key".path;
       };
       service = {
         DISABLE_REGISTRATION = true;
@@ -80,7 +84,7 @@
       in
       {
         lichtForge = mkInstance {
-          url = "http://desktop.licht:3456";
+          url = lib.removeSuffix "/" config.services.forgejo.settings.server.ROOT_URL;
           tokenSecret = "forge";
         };
         gitea = mkInstance {
@@ -104,6 +108,20 @@
     {
       forge_db = {
         file = self + /secrets/forge_db;
+        owner = config.services.forgejo.user;
+        group = config.services.forgejo.group;
+        mode = "0600";
+      };
+
+      "tls/_.licht.moe.crt" = {
+        file = self + /secrets/tls/_.licht.moe.crt;
+        owner = config.services.forgejo.user;
+        group = config.services.forgejo.group;
+        mode = "0600";
+      };
+
+      "tls/_.licht.moe.key" = {
+        file = self + /secrets/tls/_.licht.moe.key;
         owner = config.services.forgejo.user;
         group = config.services.forgejo.group;
         mode = "0600";
