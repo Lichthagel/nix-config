@@ -6,6 +6,12 @@
 }:
 let
   cfg = config.licht.graphical.hyprland;
+
+  # taken from plasma6 nixos module
+  activationScript = ''
+    # will be rebuilt automatically
+    rm -fv $HOME/.cache/ksycoca*
+  '';
 in
 {
   options.licht.graphical.hyprland = {
@@ -27,12 +33,35 @@ in
         ffmpegthumbs
         gwenview
         kdegraphics-thumbnailers
+        kfilemetadata
         kimageformats
+        kio
+        kio-admin
+        kio-extras
+        kio-fuse
+        kservice
+        libheif
         okular
         polkit-kde-agent
+        plasma-workspace
         qt6ct
+        qtimageformats
         qtwayland
       ]);
+
+    # fix file associations
+    environment.variables = {
+      XDG_MENU_PREFIX = "plasma-";
+    };
+
+    # taken from plasma6 nixos module
+    system.userActivationScripts.rebuildSycoca = activationScript;
+    systemd.user.services.nixos-rebuild-sycoca = {
+      description = "Rebuild KDE system configuration cache";
+      wantedBy = [ "graphical-session-pre.target" ];
+      serviceConfig.Type = "oneshot";
+      script = activationScript;
+    };
 
     programs.hyprland.enable = true;
 
