@@ -56,6 +56,25 @@
         )
       ];
 
+    environment.etc."gai.conf".text = ''
+      # default table
+
+      label  ::1/128       0 # loopback
+      label  ::/0          1 # any ipv6
+      label  2002::/16     2 # 6to4
+      label ::/96          3 # ipv4 compat (deprecated)
+      label ::ffff:0:0/96  4 # ipv4 mapped
+      precedence  ::1/128       50 # loopback
+      precedence  ::/0          40 # any ipv6
+      precedence  2002::/16     30 # 6to4
+      precedence ::/96          20 # ipv4 compat (deprecated)
+      precedence ::ffff:0:0/96  10 # ipv4 mapped
+
+      # extra
+
+      precedence ::ffff:192.168.1.0/120 45 # home ipv4
+    '';
+
     # Select internationalisation properties.
     i18n = {
       defaultLocale = "de_DE.UTF-8";
