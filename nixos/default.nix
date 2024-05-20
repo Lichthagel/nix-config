@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     ./graphical
@@ -18,6 +23,11 @@
 
     # Set your time zone.
     time.timeZone = "Europe/Berlin";
+
+    networking.hosts = {
+      "127.0.0.1" = [ "${config.networking.hostName}.licht.moe" ];
+      "::1" = [ "${config.networking.hostName}.licht.moe" ];
+    };
 
     # Select internationalisation properties.
     i18n = {
