@@ -55,7 +55,7 @@
                 networking.hostName = hostName;
                 catppuccin = {
                   enable = true;
-                  # accent = ctpBase.accent;
+                  accent = ctpBase.accent;
                   flavour = ctpBase.flavor;
                 };
                 home-manager.useGlobalPkgs = true;
