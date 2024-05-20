@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   ...
@@ -24,10 +25,36 @@
     # Set your time zone.
     time.timeZone = "Europe/Berlin";
 
-    networking.hosts = {
-      "127.0.0.1" = [ "${config.networking.hostName}.licht.moe" ];
-      "::1" = [ "${config.networking.hostName}.licht.moe" ];
-    };
+    networking.hosts =
+      let
+        hostName = config.networking.hostName;
+      in
+      lib.mkMerge [
+        {
+          "127.0.0.1" = [ "${hostName}.licht.moe" ];
+          "::1" = [ "${hostName}.licht.moe" ];
+        }
+        (
+          let
+            homeNetwork = {
+              jdnixos = [ "192.168.1.178" ];
+              jnbnixos = [ "192.168.1.75" ];
+            };
+          in
+          lib.mkIf (homeNetwork ? ${hostName}) (
+            lib.mkMerge (
+              lib.flatten (
+                lib.mapAttrsToList (
+                  hostname: addresses:
+                  lib.forEach addresses (address: {
+                    ${address} = [ "${hostname}.licht.moe" ];
+                  })
+                ) homeNetwork
+              )
+            )
+          )
+        )
+      ];
 
     # Select internationalisation properties.
     i18n = {
