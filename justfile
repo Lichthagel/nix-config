@@ -29,3 +29,14 @@ format:
 lint:
     statix check .
     deadnix
+
+renew-cert:
+    #!/usr/bin/env bash
+    read -p "cloudflare token: " -s cf_token
+    CF_DNS_API_TOKEN=$cf_token lego --domains="*.licht.moe" --email="lichthagel@tuta.io" --dns cloudflare renew
+
+encrypt-cert:
+    #!/usr/bin/env bash
+    cd secrets
+    cat ../.lego/certificates/_.licht.moe.crt | agenix -e "tls/_.licht.moe.crt" -i ~/.config/sops/age/keys.txt
+    cat ../.lego/certificates/_.licht.moe.key | agenix -e "tls/_.licht.moe.key" -i ~/.config/sops/age/keys.txt

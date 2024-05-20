@@ -76,6 +76,7 @@
             nix-output-monitor
             nvd
             inputs'.agenix.packages.default
+            lego
           ]
           ++ self'.checks.pre-commit-check.enabledPackages;
       };

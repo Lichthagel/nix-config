@@ -2,3 +2,4 @@
 result
 result-dev
 /.pre-commit-config.yaml
+/.lego
