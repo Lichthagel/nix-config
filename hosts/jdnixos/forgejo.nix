@@ -114,6 +114,7 @@ in
             };
             container = {
               network = "bridge";
+              options = "--add-host=${config.networking.hostName}.licht.moe:host-gateway";
             };
           };
         };
