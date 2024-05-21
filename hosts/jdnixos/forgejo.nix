@@ -68,8 +68,13 @@
             "ubuntu-22.04:docker://gitea/runner-images:ubuntu-22.04"
             "ubuntu-20.04:docker://gitea/runner-images:ubuntu-20.04"
           ];
-          settings.container = {
-            network = "bridge";
+          settings = {
+            runner = {
+              capacity = 5;
+            };
+            container = {
+              network = "bridge";
+            };
           };
         };
         mkInstance =
