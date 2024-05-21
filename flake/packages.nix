@@ -29,7 +29,6 @@
           font = monolisa-custom;
         };
         recursive-nerdfont = pkgs.callPackage (self + /packages/nerdfont.nix) { font = pkgs.recursive; };
-        rose-pine-cursor = pkgs.callPackage (self + /packages/rose-pine-cursor.nix) { };
         twilio-sans-mono = pkgs.callPackage (self + /packages/twilio-sans-mono.nix) { };
         twilio-sans-mono-nerdfont = pkgs.callPackage (self + /packages/nerdfont.nix) {
           font = twilio-sans-mono;
