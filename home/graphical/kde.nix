@@ -3,7 +3,6 @@
   osConfig,
   lib,
   pkgs,
-  ctp,
   ...
 }:
 let
@@ -19,11 +18,11 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = [
       (pkgs.catppuccin-kde.override {
-        flavour = [ ctp.flavor ];
-        accents = [ ctp.accent ];
+        flavour = [ config.catppuccin.flavor ];
+        accents = [ config.catppuccin.accent ];
         winDecStyles = [ "classic" ];
       })
-      (pkgs.catppuccin-papirus-folders.override { inherit (ctp) flavor accent; })
+      (pkgs.catppuccin-papirus-folders.override { inherit (config.catppuccin) flavor accent; })
     ];
   };
 }

@@ -31,7 +31,7 @@ in
 
       style = pkgs.substitute {
         src = pkgs.fetchurl {
-          url = "https://github.com/catppuccin/swaync/releases/download/v0.2.2/${config.catppuccin.flavour}.css";
+          url = "https://github.com/catppuccin/swaync/releases/download/v0.2.2/${config.catppuccin.flavor}.css";
           sha256 = "sha256-YFboTWj/hiJhmnMbGLtfcxKxvIpJxUCSVl2DgfpglfE=";
         };
 

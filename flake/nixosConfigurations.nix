@@ -22,23 +22,6 @@
               stablePkgs
               unstablePkgs
               ;
-
-            ctp = rec {
-              inherit (ctpBase) accent flavor;
-
-              accentCapitalized = palette.name;
-              flavorCapitalized = palette.colors.accent.name;
-
-              palettes = lib.importJSON (
-                builtins.fetchurl {
-                  url = "https://raw.githubusercontent.com/catppuccin/palette/563cdbccc813ae6716ef8242391e6f9dca8d7596/palette.json";
-                  sha256 = "sha256:1vzg1x2f1j869ggpsjixi4wdw58zxv8641d04vv33ijmdj1d5p8c";
-                }
-              );
-              palette = lib.recursiveUpdate palettes.${flavor} {
-                colors.accent = palettes.${flavor}.colors.${accent};
-              };
-            };
           });
         mkHost =
           { hostName, system }:
@@ -55,8 +38,7 @@
                 networking.hostName = hostName;
                 catppuccin = {
                   enable = true;
-                  accent = ctpBase.accent;
-                  flavour = ctpBase.flavor;
+                  inherit (ctpBase) accent flavor;
                 };
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;

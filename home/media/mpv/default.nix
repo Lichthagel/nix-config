@@ -3,7 +3,6 @@
   lib,
   pkgs,
   unstablePkgs,
-  ctp,
   ...
 }:
 let
@@ -409,11 +408,14 @@ in
             #           success=a5e075,error=ff616e
             color =
               let
-                colors = lib.mapAttrs (
-                  _: value: builtins.replaceStrings [ "#" ] [ "" ] value.hex
-                ) ctp.palette.colors;
+                palette =
+                  (lib.importJSON "${config.catppuccin.sources.palette}/palette.json").${config.catppuccin.flavor};
+
+                colors = lib.mapAttrs (_: value: builtins.replaceStrings [ "#" ] [ "" ] value.hex) (
+                  palette.colors // { accent = palette.colors.${config.catppuccin.accent}; }
+                );
               in
-              "foreground=${colors.accent},foreground_text=${colors.surface0},background=${colors.base},background_text=${colors.text},curtain=${colors.mantle},success=${colors.green},error=${colors.red}"; # TODO use ctp parameters
+              "foreground=${colors.accent},foreground_text=${colors.surface0},background=${colors.base},background_text=${colors.text},curtain=${colors.mantle},success=${colors.green},error=${colors.red}";
             # A comma delimited list of opacity overrides for various UI element backgrounds and shapes.
             # This does not affect any text, which is always rendered fully opaque.
             # Defaults: timeline=0.9,position=1,chapters=0.8,slider=0.9,slider_gauge=1,speed=0.6,menu=1,submenu=0.4,

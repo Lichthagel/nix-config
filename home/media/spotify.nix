@@ -24,7 +24,7 @@ in
         enable = true;
 
         theme = spicePkgs.themes.catppuccin;
-        colorScheme = config.catppuccin.flavour;
+        colorScheme = config.catppuccin.flavor;
 
         enabledExtensions = with spicePkgs.extensions; [ shuffle ];
 

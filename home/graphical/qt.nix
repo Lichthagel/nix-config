@@ -17,7 +17,7 @@ in
       capitalize =
         str:
         (lib.toUpper (builtins.substring 0 1 str)) + (builtins.substring 1 (builtins.stringLength str) str);
-      flavorCapitalized = capitalize config.catppuccin.flavour;
+      flavorCapitalized = capitalize config.catppuccin.flavor;
       accentCapitalized = capitalize config.catppuccin.accent;
       theme = pkgs.catppuccin-kvantum.override {
         accent = accentCapitalized;

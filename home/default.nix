@@ -1,6 +1,6 @@
 {
   osConfig,
-  ctp,
+  self,
   inputs,
   pkgs,
   ...
@@ -50,11 +50,14 @@
 
   xdg.enable = osConfig.services.xserver.enable;
 
-  catppuccin = {
-    enable = true;
-    accent = ctp.accent;
-    flavour = ctp.flavor;
-  };
+  catppuccin =
+    let
+      ctpBase = (builtins.fromTOML (builtins.readFile (self + /config.toml))).catppuccin;
+    in
+    {
+      enable = true;
+      inherit (ctpBase) accent flavor;
+    };
 
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
