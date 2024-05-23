@@ -38,7 +38,7 @@ in
         substitutions = [
           "--replace-warn"
           "Ubuntu Nerd Font"
-          "Gabarito"
+          "Noto Sans"
         ];
       };
     };

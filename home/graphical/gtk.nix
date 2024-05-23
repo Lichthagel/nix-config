@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  selfPkgs,
+  pkgs,
   ...
 }:
 let
@@ -21,8 +21,8 @@ in
         icon.enable = true;
       };
       font = {
-        name = "Gabarito";
-        package = selfPkgs.gabarito;
+        name = "Noto Sans";
+        package = pkgs.noto-fonts;
       };
     };
   };

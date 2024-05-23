@@ -13,7 +13,7 @@ in
       catppuccin.enable = true;
 
       anchor = "top-center";
-      font = "Gabarito 10";
+      font = "Noto Sans 10";
       width = 500;
       height = 100;
       borderRadius = 10;

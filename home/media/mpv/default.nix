@@ -42,7 +42,7 @@ in
           osd-bar = false;
           osd-duration = 2000;
           osd-font-size = 25;
-          osd-font = "Gabarito";
+          osd-font = "Noto Sans";
           profile = "gpu-hq";
           scale = "ewa_lanczos";
           scale-blur = 0.981251;
