@@ -53,19 +53,19 @@
     catppuccin.url = "github:catppuccin/nix";
 
     hyprland = {
-      url = "http://rime.cx/v1/github/hyprwm/Hyprland.tar.gz";
+      url = "https://flakehub.com/f/hyprwm/Hyprland/*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hypridle = {
-      url = "http://rime.cx/v1/github/hyprwm/hypridle.tar.gz";
+      url = "github:hyprwm/hypridle?ref=v0.1.2";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "hyprland/systems";
       inputs.hyprlang.follows = "hyprland/hyprlang";
     };
 
     hyprlock = {
-      url = "http://rime.cx/v1/github/hyprwm/hyprlock.tar.gz";
+      url = "github:hyprwm/hyprlock?ref=v0.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "hyprland/systems";
       inputs.hyprlang.follows = "hyprland/hyprlang";
@@ -82,7 +82,7 @@
     };
 
     agenix = {
-      url = "http://rime.cx/v1/github/ryantm/agenix.tar.gz";
+      url = "https://flakehub.com/f/ryantm/agenix/*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
