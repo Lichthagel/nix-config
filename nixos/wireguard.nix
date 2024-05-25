@@ -85,22 +85,22 @@ in
         };
       };
 
-      networking.hosts = lib.zipAttrs (
-        lib.flatten (
-          lib.mapAttrsToList (
-            hostname: hostconfig:
-            lib.forEach hostconfig.ips (
-              ip_prefix:
-              let
-                ip = builtins.head (builtins.split "\/" ip_prefix);
-              in
-              {
-                ${ip} = "${hostname}.licht.moe";
-              }
-            )
-          ) hosts
-        )
-      );
+      networking.hosts = lib.pipe hosts [
+        (lib.mapAttrsToList (
+          hostname: hostconfig:
+          lib.forEach hostconfig.ips (
+            ip_prefix:
+            let
+              ip = builtins.head (builtins.split "\/" ip_prefix);
+            in
+            {
+              ${ip} = "${hostname}.licht.moe";
+            }
+          )
+        ))
+        lib.flatten
+        lib.zipAttrs
+      ];
     }
   );
 }
