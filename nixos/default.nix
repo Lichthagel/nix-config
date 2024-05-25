@@ -11,6 +11,7 @@
     ./services
 
     ./nixpkgs.nix
+    ./podman.nix
     ./sound.nix
     ./wireguard.nix
   ];

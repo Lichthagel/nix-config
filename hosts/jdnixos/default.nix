@@ -115,13 +115,7 @@
     shell = pkgs.zsh;
   };
 
-  virtualisation.podman = {
-    enable = true;
-
-    dockerCompat = true;
-
-    defaultNetwork.settings.dns_enabled = true;
-  };
+  virtualisation.podman.licht.enable = true;
 
   services.postgresql = {
     enable = true;
