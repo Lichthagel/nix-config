@@ -1,12 +1,12 @@
 { config, lib, ... }:
 let
-  cfg = config.licht.programs.firefox;
+  cfg = config.programs.firefox.licht;
 in
 {
-  options = {
-    licht.programs.firefox = {
-      enable = lib.mkEnableOption "my firefox config";
-    };
+  imports = [ ./edge-frfox.nix ];
+
+  options.programs.firefox.licht = {
+    enable = lib.mkEnableOption "my firefox config";
   };
 
   config = lib.mkIf cfg.enable {

@@ -195,6 +195,7 @@
   "browser.display.focus_ring_width" = 0;
   "layout.css.prefers-color-scheme.content-override" = 2;
   "browser.privateWindowSeparation.enabled" = false; # WINDOWS
+  "svg.context-properties.content.enabled" = true;
 
   # COOKIE BANNER HANDLING
   "cookiebanners.service.mode" = 1;

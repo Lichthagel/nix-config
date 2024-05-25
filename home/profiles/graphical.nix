@@ -35,7 +35,6 @@ in
 
         programs = {
           discord.enable = true;
-          firefox.enable = true;
           wezterm.enable = true;
         };
       })
@@ -58,6 +57,10 @@ in
         ];
       }
     ];
+
+    programs = {
+      firefox.licht.enable = true;
+    };
 
     systemd.user.services = {
       keepassxc = {
