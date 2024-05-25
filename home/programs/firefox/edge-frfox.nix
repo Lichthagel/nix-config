@@ -16,9 +16,7 @@ let
 in
 {
   options.programs.firefox.licht = {
-    edge-frfox = lib.mkEnableOption "edge-frfox" // {
-      default = config.programs.firefox.licht.enable;
-    };
+    edge-frfox = lib.mkEnableOption "edge-frfox";
   };
 
   config = lib.mkIf enable {

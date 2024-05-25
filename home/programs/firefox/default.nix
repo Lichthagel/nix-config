@@ -3,7 +3,10 @@ let
   cfg = config.programs.firefox.licht;
 in
 {
-  imports = [ ./edge-frfox.nix ];
+  imports = [
+    ./edge-frfox.nix
+    ./edgyarc-fr.nix
+  ];
 
   options.programs.firefox.licht = {
     enable = lib.mkEnableOption "my firefox config";

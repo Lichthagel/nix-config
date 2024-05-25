@@ -59,7 +59,10 @@ in
     ];
 
     programs = {
-      firefox.licht.enable = true;
+      firefox.licht = {
+        enable = true;
+        edge-frfox = true;
+      };
     };
 
     systemd.user.services = {
