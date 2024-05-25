@@ -62,6 +62,9 @@ in
       firefox.licht = {
         enable = true;
         chrome = {
+          small_sidebar_header = true;
+          no_sidebar_border = true;
+
           csshacks = [
             "window_control_placeholder_support"
             "hide_tabs_toolbar"
