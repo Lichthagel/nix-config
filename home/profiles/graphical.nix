@@ -61,7 +61,12 @@ in
     programs = {
       firefox.licht = {
         enable = true;
-        chrome.edge-frfox = true;
+        chrome = {
+          csshacks = [
+            "window_control_placeholder_support"
+            "hide_tabs_toolbar"
+          ];
+        };
       };
     };
 
