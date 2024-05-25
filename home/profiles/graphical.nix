@@ -61,7 +61,7 @@ in
     programs = {
       firefox.licht = {
         enable = true;
-        edge-frfox = true;
+        chrome.edge-frfox = true;
       };
     };
 
