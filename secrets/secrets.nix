@@ -24,12 +24,6 @@ in
     jdnixos
   ];
 
-  # DATABASE
-  "forge_db".publicKeys = [
-    licht
-    jdnixos
-  ];
-
   # RUNNER TOKENS
   "runner_token/forge".publicKeys = [
     licht
@@ -50,6 +44,17 @@ in
     jdnixos
   ];
   "tls/_.licht.moe.key".publicKeys = [
+    licht
+    jdnixos
+  ];
+
+  # SECRETS
+  "forge_db".publicKeys = [
+    licht
+    jdnixos
+  ];
+
+  "renovate".publicKeys = [
     licht
     jdnixos
   ];
