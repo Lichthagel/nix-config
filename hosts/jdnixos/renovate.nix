@@ -31,7 +31,7 @@ in
       "renovate-tmp:/tmp/renovate"
     ];
     environment = {
-      LOG_LEVEL = "debug";
+      LOG_LEVEL = "info";
     };
     environmentFiles = [ config.age.secrets.renovate.path ];
     extraOptions = [ "--network=host" ];
