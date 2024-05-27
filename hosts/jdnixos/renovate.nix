@@ -22,6 +22,10 @@ let
     };
   '';
 
+  hosts = pkgs.writeText "hosts" ''
+    10.0.2.2 ${config.networking.hostName}.licht.moe
+  '';
+
   backend = config.virtualisation.oci-containers.backend;
 in
 {
@@ -31,12 +35,13 @@ in
     volumes = [
       "${renovate-config}:/usr/src/app/config.js"
       "renovate-tmp:/tmp/renovate"
+      "${hosts}:/etc/hosts"
     ];
     environment = {
       LOG_LEVEL = "info";
     };
     environmentFiles = [ config.age.secrets.renovate.path ];
-    extraOptions = [ "--network=host" ];
+    extraOptions = [ "--network=slirp4netns:allow_host_loopback=true" ];
   };
 
   systemd.services."${backend}-renovate" = {
