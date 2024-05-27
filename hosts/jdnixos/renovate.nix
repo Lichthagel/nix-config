@@ -21,6 +21,8 @@ let
       persistRepoData: true,
     };
   '';
+
+  backend = config.virtualisation.oci-containers.backend;
 in
 {
   virtualisation.oci-containers.containers.renovate = {
@@ -37,7 +39,7 @@ in
     extraOptions = [ "--network=host" ];
   };
 
-  systemd.services.podman-renovate = {
+  systemd.services."${backend}-renovate" = {
     requires = [ "forgejo.service" ];
     after = [ "forgejo.service" ];
     serviceConfig = {
@@ -45,13 +47,13 @@ in
     };
   };
 
-  systemd.timers.podman-renovate = {
+  systemd.timers."${backend}-renovate" = {
     description = "Renovate";
     wantedBy = [ "multi-user.target" ];
     timerConfig = {
       OnBootSec = "1min";
       OnUnitActiveSec = "1h";
-      Unit = "podman-renovate.service";
+      Unit = "${backend}-renovate.service";
     };
   };
 
