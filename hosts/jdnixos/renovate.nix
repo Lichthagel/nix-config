@@ -13,7 +13,7 @@ let
         extends: ["config:recommended"],
       },
       autodiscover: true,
-      gitAuthor: "renovate <renovate@example.com>",
+      gitAuthor: "Renovate <renovate@renovate.invalid>",
       endpoint: "https://${config.networking.hostName}.licht.moe:3456",
       baseDir: "/tmp/renovate/baseDir",
       cacheDir: "/tmp/renovate/cacheDir",
