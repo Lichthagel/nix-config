@@ -28,6 +28,7 @@ in
       in
       {
         enable = true;
+        catppuccin.enable = true;
         config = {
           border = true;
           cscale = "ewa_lanczossharp";
