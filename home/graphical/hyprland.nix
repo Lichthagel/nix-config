@@ -38,6 +38,9 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
+      xwayland.enable = true;
+      package = osConfig.programs.hyprland.package;
+
       catppuccin.enable = true;
 
       plugins = lib.optional cfg.perMonitorWorkspaces (

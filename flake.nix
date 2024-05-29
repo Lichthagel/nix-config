@@ -53,26 +53,26 @@
     catppuccin.url = "github:catppuccin/nix";
 
     hyprland = {
-      url = "https://flakehub.com/f/hyprwm/Hyprland/*.tar.gz";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hypridle = {
-      url = "github:hyprwm/hypridle?ref=v0.1.2";
+      url = "github:hyprwm/hypridle";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "hyprland/systems";
       inputs.hyprlang.follows = "hyprland/hyprlang";
     };
 
     hyprlock = {
-      url = "github:hyprwm/hyprlock?ref=v0.3.0";
+      url = "github:hyprwm/hyprlock";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "hyprland/systems";
       inputs.hyprlang.follows = "hyprland/hyprlang";
     };
 
     split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces?rev=05b878f11ba40e4cf4748004a9bf4d08c52f7a01";
+      url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
 
@@ -82,7 +82,7 @@
     };
 
     agenix = {
-      url = "https://flakehub.com/f/ryantm/agenix/*.tar.gz";
+      url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
@@ -112,6 +112,7 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.garnix.io"
+      "https://hyprland.cachix.org"
     ];
 
     trusted-substituters = [
@@ -124,6 +125,7 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "jdnixos:Hij0WitMIbRrp5zUXc70y9VvzIuBroTp1l8hmguEbjQ="
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
   };
 }

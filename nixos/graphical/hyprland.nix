@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs',
   ...
 }:
 let
@@ -63,7 +64,11 @@ in
       script = activationScript;
     };
 
-    programs.hyprland.enable = true;
+    programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
+      package = inputs'.hyprland.packages.default;
+    };
 
     services.pipewire.wireplumber.enable = true;
 

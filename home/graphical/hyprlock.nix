@@ -3,6 +3,7 @@
   osConfig,
   lib,
   pkgs,
+  inputs',
   ...
 }:
 let
@@ -29,6 +30,7 @@ in
 
     programs.hyprlock = {
       enable = true;
+      package = inputs'.hyprlock.packages.default;
 
       settings = {
         general = {
