@@ -17,6 +17,10 @@
     };
     aliases = {
       co = "checkout";
+      pullm = "pull --no-rebase";
+      pullr = "pull --rebase=i";
+      pullff = "pull --ff-only";
+      pushf = "push --force-with-lease";
     };
   };
 
