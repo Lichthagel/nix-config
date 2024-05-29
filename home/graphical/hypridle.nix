@@ -63,7 +63,7 @@ in
           ignore_dbus_inhibit = false;
           lock_cmd =
             if config.programs.hyprlock.enable then
-              lib.getExe config.programs.hyprlock.package
+              "pidof hyprlock || hyprlock"
             else
               (builtins.throw "hyprlock not enabled");
         };
