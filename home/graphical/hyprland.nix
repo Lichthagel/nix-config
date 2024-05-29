@@ -100,8 +100,8 @@ in
         };
 
         general = {
-          gaps_in = 5;
-          gaps_out = 20;
+          gaps_in = 2;
+          gaps_out = 2;
           border_size = 2;
           "col.active_border" = "rgba($pinkAlphaee) rgba($tealAlphaee) 45deg";
           "col.inactive_border" = "rgba($crustAlphaaa)";
@@ -113,7 +113,7 @@ in
         };
 
         decoration = {
-          rounding = 10;
+          rounding = 5;
 
           blur = {
             enabled = true;
