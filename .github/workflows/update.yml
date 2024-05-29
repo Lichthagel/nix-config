@@ -3,7 +3,7 @@ name: Bump Flake Inputs
 "on":
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * 2,4,6"
+    - cron: "0 0 * * *"
 jobs:
   lockfile:
     runs-on: ubuntu-latest
@@ -25,3 +25,4 @@ jobs:
         uses: DeterminateSystems/update-flake-lock@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          pr-title: "chore(flake): update inputs"
