@@ -3,6 +3,7 @@
   osConfig,
   lib,
   pkgs,
+  selfPkgs,
   inputs',
   ...
 }:
@@ -23,10 +24,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      swww
-      nwg-look
-    ];
+    home.packages = with pkgs; [ nwg-look ];
 
     services.playerctld.enable = true;
 
@@ -69,7 +67,6 @@ in
         exec-once = [
           "${pkgs.kdePackages.kwallet}/bin/kwalletd6"
           "${pkgs.networkmanagerapplet}/bin/nm-applet"
-          "${pkgs.swww}/bin/swww init"
           "hyprctl setcursor ${config.home.pointerCursor.name} ${builtins.toString config.home.pointerCursor.size}"
         ] ++ (lib.optional config.services.mako.enable "${config.services.mako.package}/bin/mako");
 
@@ -294,6 +291,23 @@ in
           ",XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
         ];
       };
+    };
+
+    services.hyprpaper = {
+      enable = true;
+      settings =
+        let
+          wallpaper = "${selfPkgs.topographical-catppuccin}";
+        in
+        {
+          ipc = "on";
+          splash = false;
+          splash_offset = 2.0;
+
+          preload = [ "${wallpaper}" ];
+
+          wallpaper = [ ",${wallpaper}" ];
+        };
     };
   };
 }

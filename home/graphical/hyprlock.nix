@@ -2,8 +2,8 @@
   config,
   osConfig,
   lib,
-  pkgs,
   inputs',
+  selfPkgs,
   ...
 }:
 let
@@ -37,14 +37,7 @@ in
           grace = 5;
         };
 
-        background = [
-          {
-            path = "${pkgs.fetchurl {
-              url = "https://raw.githubusercontent.com/rose-pine/wallpapers/main/rose_pine_contourline.png";
-              sha256 = "sha256-8OQCXMy27IImp1Oc/X4i14/8k9XjuuU+6clh0rRcAQY=";
-            }}";
-          }
-        ];
+        background = [ { path = "${selfPkgs.topographical-catppuccin}"; } ];
       };
     };
   };

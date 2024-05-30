@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  selfPkgs,
   ...
 }:
 let
@@ -28,7 +29,14 @@ in
     };
 
     environment.systemPackages = [
-      pkgs.catppuccin-sddm
+      (pkgs.catppuccin-sddm.override {
+        flavor = config.catppuccin.flavor;
+        font = "Noto Sans";
+        fontSize = "9";
+        background = "${selfPkgs.topographical-catppuccin}";
+        loginBackground = true;
+      })
+      pkgs.noto-fonts
       pkgs.vimix-cursors
     ];
   };
