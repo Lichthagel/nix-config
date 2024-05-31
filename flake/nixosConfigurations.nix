@@ -44,6 +44,7 @@
                 home-manager.useUserPackages = true;
                 home-manager.users.licht = {
                   imports = [
+                    (self + /common)
                     (self + /home)
                     (self + /hosts/${hostName}/home.nix)
                   ];
@@ -51,6 +52,7 @@
                 home-manager.extraSpecialArgs = mkArgs system;
                 home-manager.backupFileExtension = "backup";
               }
+              (self + /common)
               (self + /nixos)
               (self + /hosts/${hostName})
             ];

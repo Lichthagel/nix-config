@@ -3,7 +3,6 @@
   osConfig,
   lib,
   inputs',
-  selfPkgs,
   ...
 }:
 let
@@ -37,7 +36,7 @@ in
           grace = 5;
         };
 
-        background = [ { path = "${selfPkgs.topographical-catppuccin}"; } ];
+        background = [ { path = config.licht.wallpaper; } ];
       };
     };
   };

@@ -3,7 +3,6 @@
   osConfig,
   lib,
   pkgs,
-  selfPkgs,
   inputs',
   ...
 }:
@@ -297,7 +296,7 @@ in
       enable = true;
       settings =
         let
-          wallpaper = "${selfPkgs.topographical-catppuccin}";
+          wallpaper = config.licht.wallpaper;
         in
         {
           ipc = "on";

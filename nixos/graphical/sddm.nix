@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  selfPkgs,
   ...
 }:
 let
@@ -33,7 +32,7 @@ in
         flavor = config.catppuccin.flavor;
         font = "Noto Sans";
         fontSize = "9";
-        background = "${selfPkgs.topographical-catppuccin}";
+        background = config.licht.wallpaper;
         loginBackground = true;
       })
       pkgs.noto-fonts
