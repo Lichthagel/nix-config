@@ -8,3 +8,4 @@ hyprland
 Hyprland
 nixpkgs
 ryantm
+getchoo
