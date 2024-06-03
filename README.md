@@ -41,6 +41,7 @@
 [nekowinston](https://github.com/nekowinston/dotfiles)
 [NotAShelf](https://github.com/NotAShelf/nyx)
 [ryan4yin](https://github.com/ryan4yin/nix-config)
+[getchoo](https://github.com/getchoo/flake)
 
 ### Other Resources
 

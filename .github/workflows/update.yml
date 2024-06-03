@@ -26,3 +26,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pr-title: "chore(flake): update inputs"
+      - name: Enable auto-merge
+        shell: bash
+        run: gh pr merge --auto --rebase "$PR_ID"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_ID: ${{ steps.update.outputs.pull-request-number }}
