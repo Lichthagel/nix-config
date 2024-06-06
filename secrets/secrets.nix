@@ -49,7 +49,16 @@ in
   ];
 
   # SECRETS
-  "forge_db".publicKeys = [
+  "db/forge".publicKeys = [
+    licht
+    jdnixos
+  ];
+  "db/freshrss".publicKeys = [
+    licht
+    jdnixos
+  ];
+
+  "password/freshrss".publicKeys = [
     licht
     jdnixos
   ];

@@ -7,6 +7,8 @@
   ...
 }:
 let
+  cfg = config.services.forgejo;
+
   theme = pkgs.fetchzip {
     url = "https://github.com/catppuccin/gitea/releases/download/v0.4.1/catppuccin-gitea.tar.gz";
     sha256 = "sha256-14XqO1ZhhPS7VDBSzqW55kh6n5cFZGZmvRCtMEh8JPI=";
@@ -27,8 +29,8 @@ in
         HTTP_PORT = 3456;
         ROOT_URL = "${PROTOCOL}://${config.networking.hostName}.licht.moe:${toString HTTP_PORT}";
         LANDING_PAGE = "login";
-        CERT_FILE = config.age.secrets."tls/_.licht.moe.crt".path;
-        KEY_FILE = config.age.secrets."tls/_.licht.moe.key".path;
+        CERT_FILE = config.age.secrets."forgejo/tls/_.licht.moe.crt".path;
+        KEY_FILE = config.age.secrets."forgejo/tls/_.licht.moe.key".path;
       };
       service = {
         DISABLE_REGISTRATION = true;
@@ -67,16 +69,16 @@ in
       createDatabase = false;
       name = "gitea";
       user = "gitea";
-      passwordFile = config.age.secrets.forge_db.path;
+      passwordFile = config.age.secrets."forgejo/db/forge".path;
       type = "postgres";
     };
   };
 
   systemd.services.forgejo.preStart =
     let
-      customDir = config.services.forgejo.customDir;
+      customDir = cfg.customDir;
       baseDir =
-        if lib.versionAtLeast config.services.forgejo.package.version "1.21.0" then
+        if lib.versionAtLeast cfg.package.version "1.21.0" then
           "${customDir}/public/assets"
         else
           "${customDir}/public";
@@ -90,11 +92,11 @@ in
   services.postgresql = {
     ensureUsers = [
       {
-        name = "gitea";
+        name = cfg.database.user;
         ensureDBOwnership = true;
       }
     ];
-    ensureDatabases = [ "gitea" ];
+    ensureDatabases = [ cfg.database.name ];
   };
 
   services.gitea-actions-runner = {
@@ -156,33 +158,30 @@ in
 
   age.secrets =
     let
+      mkSecret = secret: {
+        file = self + /secrets/${secret};
+        owner = cfg.user;
+        group = cfg.group;
+        mode = "0600";
+      };
+      mkSecrets =
+        secrets:
+        lib.mergeAttrsList (
+          lib.forEach secrets (secret: {
+            "forgejo/${secret}" = mkSecret secret;
+          })
+        );
+
       runnerConfig = instance: {
         file = self + /secrets/runner_token/${instance};
         mode = "0444"; # gitea runner module uses dynamic users, so we need to make the token readable by all users :/
       };
     in
-    {
-      forge_db = {
-        file = self + /secrets/forge_db;
-        owner = config.services.forgejo.user;
-        group = config.services.forgejo.group;
-        mode = "0600";
-      };
-
-      "tls/_.licht.moe.crt" = {
-        file = self + /secrets/tls/_.licht.moe.crt;
-        owner = config.services.forgejo.user;
-        group = config.services.forgejo.group;
-        mode = "0600";
-      };
-
-      "tls/_.licht.moe.key" = {
-        file = self + /secrets/tls/_.licht.moe.key;
-        owner = config.services.forgejo.user;
-        group = config.services.forgejo.group;
-        mode = "0600";
-      };
-    }
+    (mkSecrets [
+      "db/forge"
+      "tls/_.licht.moe.crt"
+      "tls/_.licht.moe.key"
+    ])
     // lib.mapAttrs' (name: value: lib.nameValuePair "runner_token/${name}" value) (
       lib.genAttrs [
         "forge"
