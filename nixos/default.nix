@@ -29,6 +29,8 @@
     # Set your time zone.
     time.timeZone = "Europe/Berlin";
 
+    networking.nftables.enable = true;
+
     networking.hosts =
       let
         hostName = config.networking.hostName;
