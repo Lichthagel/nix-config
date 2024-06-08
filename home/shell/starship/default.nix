@@ -1,10 +1,20 @@
+{ config, lib, ... }:
+let
+  cfg = config.programs.starship.licht;
+in
 {
-  programs.starship = {
-    enable = true;
-    catppuccin.enable = false;
+  options.programs.starship.licht = {
+    enable = lib.mkEnableOption "starship";
   };
 
-  xdg.configFile = {
-    "starship.toml".source = ./starship.toml;
+  config = lib.mkIf cfg.enable {
+    programs.starship = {
+      enable = true;
+      catppuccin.enable = false;
+    };
+
+    xdg.configFile = {
+      "starship.toml".source = ./starship.toml;
+    };
   };
 }

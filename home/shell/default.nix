@@ -2,6 +2,7 @@
 {
   imports = [
     ./atuin.nix
+    ./oh-my-posh.nix
     ./starship
     ./zsh.nix
   ];

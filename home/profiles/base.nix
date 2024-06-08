@@ -20,6 +20,10 @@ in
       };
     };
 
+    programs = {
+      oh-my-posh.licht.enable = true;
+    };
+
     home = {
       sessionVariables = lib.mkIf config.licht.editors.helix.enable {
         EDITOR = "hx";
