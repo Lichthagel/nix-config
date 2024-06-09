@@ -14,6 +14,7 @@ in
     ./plasma5.nix
     ./plasma6.nix
     ./sddm.nix
+    ./sway.nix
   ];
 
   options.licht.graphical = {

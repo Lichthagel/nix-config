@@ -8,6 +8,7 @@
     ./kde.nix
     ./qt.nix
     ./waybar
+    ./sway.nix
   ];
 
   home.pointerCursor = {

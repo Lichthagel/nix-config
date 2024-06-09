@@ -96,6 +96,10 @@
     };
   };
 
+  programs = {
+    sway.licht.enable = true;
+  };
+
   services = {
     avahi.licht.enable = true;
   };
