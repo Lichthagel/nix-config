@@ -87,7 +87,7 @@ in
                   fetch_upstream_icon = true;
                 };
                 style = "plain";
-                template = "{{ .UpstreamIcon }} {{ .HEAD }} {{ if .BranchStatus }}{{ .BranchStatus }} {{ end }}{{ if .Working.Changed }}{{ .Working.String }} {{ end }}{{ if .Staging.Changed }}{{ .Staging.String }} {{ end }}";
+                template = "{{ .UpstreamIcon }}{{ .HEAD }} {{ if .BranchStatus }}{{ .BranchStatus }} {{ end }}{{ if .Working.Changed }}{{ .Working.String }} {{ end }}{{ if .Staging.Changed }}{{ .Staging.String }} {{ end }}";
                 type = "git";
               }
               {
