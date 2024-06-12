@@ -82,10 +82,12 @@ in
                   revert_icon = " ";
                   merge_icon = "󰘭 ";
                   no_commits_icon = " ";
+
                   fetch_status = true;
+                  fetch_upstream_icon = true;
                 };
                 style = "plain";
-                template = "{{ .HEAD }} {{ if .BranchStatus }}{{ .BranchStatus }} {{ end }}{{ if .Working.Changed }}{{ .Working.String }} {{ end }}{{ if .Staging.Changed }}{{ .Staging.String }} {{ end }}";
+                template = "{{ .UpstreamIcon }} {{ .HEAD }} {{ if .BranchStatus }}{{ .BranchStatus }} {{ end }}{{ if .Working.Changed }}{{ .Working.String }} {{ end }}{{ if .Staging.Changed }}{{ .Staging.String }} {{ end }}";
                 type = "git";
               }
               {
