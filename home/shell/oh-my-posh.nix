@@ -104,19 +104,25 @@ in
                 foreground = "p:green";
                 style = "plain";
                 properties = {
-                  extensions = [ "deno.json" ];
+                  extensions = [ "package.json" ];
                 };
-                template = "🦕 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ";
-                type = "deno";
+                template = "{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}󰎙 {{ .Full }} ";
+                type = "node";
               }
               {
                 foreground = "p:green";
                 style = "plain";
                 properties = {
-                  extensions = [ "package.json" ];
+                  extensions = [ "deno.json" ];
                 };
-                template = "{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}󰎙 {{ .Full }} ";
-                type = "node";
+                template = "󰪰 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ";
+                type = "deno";
+              }
+              {
+                foreground = "p:flamingo";
+                style = "plain";
+                template = " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}";
+                type = "bun";
               }
               {
                 foreground = "p:lavender";
