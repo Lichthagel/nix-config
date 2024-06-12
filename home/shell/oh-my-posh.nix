@@ -151,7 +151,7 @@ in
               {
                 foreground = "p:overlay0";
                 style = "plain";
-                template = "{{ .FormattedMs }} ";
+                template = "󰥔 {{ .FormattedMs }} ";
                 type = "executiontime";
               }
             ];
