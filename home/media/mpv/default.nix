@@ -59,7 +59,8 @@ in
           vo = "gpu-next";
           volume = 70;
         };
-        package = pkgs.wrapMpv (pkgs.mpv-unwrapped.override { lua = pkgs.luajit; }) {
+        package = pkgs.mpv-unwrapped.wrapper {
+          mpv = pkgs.mpv-unwrapped.override { lua = pkgs.luajit; };
           scripts = with pkgs.mpvScripts; [
             (unstablePkgs.mpvScripts.uosc.overrideAttrs (finalAttrs: {
               version = "5.2.0";
