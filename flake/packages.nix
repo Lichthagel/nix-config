@@ -13,6 +13,7 @@
           font = unstablePkgs.kode-mono;
         };
         lilex = pkgs.callPackage (self + /packages/lilex.nix) { };
+        maple-mono-nerdfont = pkgs.callPackage (self + /packages/nerdfont.nix) { font = pkgs.maple-mono; };
         monolisa = pkgs.callPackage (self + /packages/monolisa.nix) { };
         monolisa-custom = monolisa.overrideAttrs (oldAttrs: {
           pname = "monolisa-custom";

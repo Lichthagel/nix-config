@@ -21,6 +21,7 @@ config.font = wezterm.font_with_fallback({
 	-- { family = "JetBrains Mono", harfbuzz_features = { "cv14=1" } },
 	-- { family = "Lilex", harfbuzz_features = { "cv09=1", "ss03=1" } },
 	-- { family = "MonoLisa", harfbuzz_features = { "ss02=1", "ss04=1", "ss08=1", "ss11=1", "ss12=1" } },
+	-- { family = "Maple Mono", harfbuzz_features = { "cv03=1", "ss01=1", "ss02=1", "ss04=1" } },
 	"Symbols Nerd Font",
 })
 
