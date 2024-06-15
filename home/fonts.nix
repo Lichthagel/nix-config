@@ -66,6 +66,7 @@
       selfPkgs.kode-mono-nerdfont
       selfPkgs.lilex
       martian-mono
+      miracode
       monaspace
       selfPkgs.monolisa
       selfPkgs.monolisa-custom
