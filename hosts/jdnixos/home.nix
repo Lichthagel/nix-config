@@ -6,8 +6,6 @@
   ...
 }:
 {
-  imports = [ ./teruko.nix ];
-
   home.packages = with pkgs; [
     calibre
     anki

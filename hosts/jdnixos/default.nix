@@ -13,6 +13,7 @@
     ./forgejo.nix
     ./renovate.nix
     ./rss.nix
+    ./teruko_os.nix
 
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
@@ -157,7 +158,6 @@
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
-    3030
     3456
     22000
   ];

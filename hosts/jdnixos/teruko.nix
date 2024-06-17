@@ -1,6 +1,6 @@
 { inputs', ... }:
 {
-  systemd.user.services.teruko = {
+  home-manager.users.licht.systemd.user.services.teruko = {
     Unit = {
       Description = "Teruko";
       After = [ "network.target" ];
@@ -21,4 +21,11 @@
       WantedBy = [ "default.target" ];
     };
   };
+
+  networking.nftables.tables.nixos-fw.content = ''
+    chain input-allow {
+      iifname wg0 tcp dport { 3030 } accept
+      ip saddr 192.168.1.0/24 tcp dport { 3030 } accept
+    }
+  '';
 }
