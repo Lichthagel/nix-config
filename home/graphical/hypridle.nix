@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  inputs',
-  ...
-}:
+{ config, lib, ... }:
 let
   cfg = config.licht.graphical.hypridle;
 in
@@ -60,7 +55,6 @@ in
 
     services.hypridle = {
       enable = true;
-      package = inputs'.hypridle.packages.default;
 
       settings = {
         general = {

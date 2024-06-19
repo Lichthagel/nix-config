@@ -57,22 +57,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hypridle = {
-      url = "github:hyprwm/hypridle";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "hyprland/systems";
-      inputs.hyprlang.follows = "hyprland/hyprlang";
-    };
-
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "hyprland/systems";
-      inputs.hyprlang.follows = "hyprland/hyprlang";
-    };
-
     split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces?rev=6a77ffc86fb4b6051e9fa8f935edff4be2329716";
+      url = "github:Duckonaut/split-monitor-workspaces?rev=81adb1c51b2db8a9073dd24f8ac3cb23c9d96dac";
       inputs.hyprland.follows = "hyprland";
     };
 
