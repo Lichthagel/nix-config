@@ -29,12 +29,12 @@ in
               }
             )).overrideAttrs
             rec {
-              version = "1.90.1";
+              version = "1.90.2";
 
               src = pkgs.fetchurl {
                 name = "VSCode_${version}_linux-x64.tar.gz";
                 url = "https://update.code.visualstudio.com/${version}/linux-x64/stable";
-                sha256 = "sha256-n9q14COlOmnEzLDF7ZkHwu3Y76lOb/fG9fqxTXZYPg0=";
+                sha256 = "sha256-vBXEv0l8VprwcmwhgyjG/+haIYn1RIl75SFXp6J+DDQ=";
               };
             }
           ).fhs
