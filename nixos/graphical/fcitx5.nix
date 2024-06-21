@@ -22,12 +22,16 @@ in
 
       inputMethod = {
         enabled = "fcitx5";
-        fcitx5.addons = with pkgs; [
-          fcitx5-mozc
-          fcitx5-gtk
-          libsForQt5.fcitx5-qt
-          selfPkgs.catppuccin-fcitx5
-        ];
+        fcitx5 = {
+          plasma6Support = true;
+          waylandFrontend = true;
+          addons = with pkgs; [
+            fcitx5-mozc
+            fcitx5-gtk
+            kdePackages.fcitx5-qt
+            selfPkgs.catppuccin-fcitx5
+          ];
+        };
       };
     };
   };
