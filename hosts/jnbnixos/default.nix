@@ -41,7 +41,7 @@
     package = pkgs.mullvad-vpn;
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
   };
 
