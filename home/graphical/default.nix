@@ -9,6 +9,7 @@
     ./qt.nix
     ./waybar
     ./sway.nix
+    ./swayidle.nix
   ];
 
   home.pointerCursor = {
