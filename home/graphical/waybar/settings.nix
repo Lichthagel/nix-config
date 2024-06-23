@@ -29,6 +29,7 @@
     modules-left = [
       "mpris"
       # "hyprland/window"
+        "sway/mode"
       ];
       modules-center = [
         "hyprland/workspaces"
