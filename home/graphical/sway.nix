@@ -31,6 +31,7 @@ in
         enable = true;
         xdgAutostart = true;
       };
+      xwayland = true;
 
       config = {
         startup = [
