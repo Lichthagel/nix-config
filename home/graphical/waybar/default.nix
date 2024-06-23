@@ -24,7 +24,8 @@ in
     # only launch in specific sessions
     systemd.user.services.waybar = {
       Install.WantedBy = lib.mkForce (
-        lib.optional config.licht.graphical.hyprland.enable "hyprland-session.target"
+        (lib.optional config.licht.graphical.hyprland.enable "hyprland-session.target")
+        ++ (lib.optional config.wayland.windowManager.sway.licht.enable "sway-session.target")
       );
 
       Unit.Before = lib.mkIf config.licht.autostart.systemd [ "autostart.target" ];

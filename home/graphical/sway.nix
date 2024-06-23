@@ -48,21 +48,7 @@ in
           };
         };
         modifier = "Mod4";
-        bars = [
-          {
-            position = "top";
-            statusCommand = "while date +'%Y-%m-%d %X'; do sleep 1; done";
-            colors = {
-              statusline = "#ffffff";
-              background = "#323232";
-              inactiveWorkspace = {
-                border = "#32323200";
-                background = "#32323200";
-                text = "#5c5c5c";
-              };
-            };
-          }
-        ];
+        bars = [ ];
       };
     };
   };
