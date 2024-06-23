@@ -101,20 +101,21 @@ button:hover {
 
 #battery.charging,
 #battery.plugged {
-  background-color: alpha(@green, 0.5);
+  background-color: @green;
+  color: @base;
 }
 
 @keyframes blink {
   to {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: @subtext0;
+    color: @base;
   }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
+  background-color: @red;
+  color: @base;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: steps(12);
@@ -156,10 +157,6 @@ label:focus {
 
 #disk {
   background-color: #964b00;
-}
-
-#backlight {
-  background-color: #90b1b1;
 }
 
 #network.disconnected {
