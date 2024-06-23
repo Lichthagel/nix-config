@@ -19,7 +19,10 @@ in
       package = pkgs.kdePackages.sddm;
       enable = true;
       wayland.enable = true;
-      theme = "catppuccin-mocha";
+      catppuccin = {
+        enable = true;
+        background = config.licht.wallpaper;
+      };
       settings = {
         Theme = {
           CursorTheme = "Vimix-white-cursors";
@@ -27,16 +30,6 @@ in
       };
     };
 
-    environment.systemPackages = [
-      (pkgs.catppuccin-sddm.override {
-        flavor = config.catppuccin.flavor;
-        font = "Noto Sans";
-        fontSize = "9";
-        background = config.licht.wallpaper;
-        loginBackground = true;
-      })
-      pkgs.noto-fonts
-      pkgs.vimix-cursors
-    ];
+    environment.systemPackages = [ pkgs.vimix-cursors ];
   };
 }
