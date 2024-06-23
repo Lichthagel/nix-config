@@ -26,6 +26,7 @@ in
 
     wayland.windowManager.sway = {
       enable = true;
+      catppuccin.enable = true;
       systemd = {
         enable = true;
         xdgAutostart = true;
