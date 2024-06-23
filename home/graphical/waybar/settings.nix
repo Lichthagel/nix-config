@@ -1,13 +1,39 @@
 { lib }:
 {
-  mainBar = {
+  mainBar =
+    let
+      workspacesCommon = {
+        "active-only" = false;
+        "all-outputs" = false;
+        "format" = "{icon}";
+        "on-click" = "activate";
+        "format-icons" = lib.fold (elem: acc: acc // elem) { } (
+          lib.forEach (lib.range 0 4) (i: {
+            "${builtins.toString ((10 * i) + 1)}" = "一";
+            "${builtins.toString ((10 * i) + 2)}" = "二";
+            "${builtins.toString ((10 * i) + 3)}" = "三";
+            "${builtins.toString ((10 * i) + 4)}" = "四";
+            "${builtins.toString ((10 * i) + 5)}" = "五";
+            "${builtins.toString ((10 * i) + 6)}" = "六";
+            "${builtins.toString ((10 * i) + 7)}" = "七";
+            "${builtins.toString ((10 * i) + 8)}" = "八";
+            "${builtins.toString ((10 * i) + 9)}" = "九";
+            "${builtins.toString ((10 * i) + 10)}" = "十";
+          })
+        );
+      };
+    in
+    {
     layer = "top";
     position = "top";
     modules-left = [
       "mpris"
       # "hyprland/window"
+      ];
+      modules-center = [
+        "hyprland/workspaces"
+        "sway/workspaces"
     ];
-    modules-center = [ "hyprland/workspaces" ];
     modules-right = [
       "custom/notification"
       "backlight"
@@ -27,28 +53,16 @@
       "clock"
     ];
 
-    "hyprland/workspaces" = {
-      "active-only" = false;
-      "all-outputs" = false;
-      "format" = "{icon}";
-      "on-click" = "activate";
+      "hyprland/workspaces" = workspacesCommon // {
       "on-scroll-up" = "hyprctl dispatch workspace e+1";
       "on-scroll-down" = "hyprctl dispatch workspace e-1";
       "show-special" = false;
-      "format-icons" = lib.fold (elem: acc: acc // elem) { } (
-        lib.forEach (lib.range 0 4) (i: {
-          "${builtins.toString ((10 * i) + 1)}" = "一";
-          "${builtins.toString ((10 * i) + 2)}" = "二";
-          "${builtins.toString ((10 * i) + 3)}" = "三";
-          "${builtins.toString ((10 * i) + 4)}" = "四";
-          "${builtins.toString ((10 * i) + 5)}" = "五";
-          "${builtins.toString ((10 * i) + 6)}" = "六";
-          "${builtins.toString ((10 * i) + 7)}" = "七";
-          "${builtins.toString ((10 * i) + 8)}" = "八";
-          "${builtins.toString ((10 * i) + 9)}" = "九";
-          "${builtins.toString ((10 * i) + 10)}" = "十";
-        })
-      );
+      };
+
+      "sway/workspaces" = workspacesCommon // {
+        "on-scroll-up" = "swaymsg workspace next";
+        "on-scroll-down" = "swaymsg workspace prev";
+        "show-special" = true;
     };
 
     "mpris" = {
