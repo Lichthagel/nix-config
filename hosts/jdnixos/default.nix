@@ -37,7 +37,15 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      gutenprint
+      hplip
+      splix
+      samsung-unified-linux-driver
+    ];
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -108,6 +116,8 @@
     "nvidia-settings"
     "nvidia-x11"
     "libXNVCtrl"
+    "samsung-UnifiedLinuxDriver"
+    "samsung-UnifiedLinuxDriver-4.01.17"
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
