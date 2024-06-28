@@ -17,7 +17,6 @@ in
       enable = true;
       catppuccin = {
         enable = true;
-        cursor.enable = false;
         icon.enable = true;
       };
       font = {

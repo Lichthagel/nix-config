@@ -19,4 +19,6 @@
     gtk.enable = true;
     x11.enable = true;
   };
+
+  catppuccin.pointerCursor.enable = false;
 }
