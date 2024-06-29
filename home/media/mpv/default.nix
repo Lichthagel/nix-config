@@ -60,7 +60,10 @@ in
           volume = 70;
         };
         package = pkgs.mpv-unwrapped.wrapper {
-          mpv = pkgs.mpv-unwrapped.override { lua = pkgs.luajit; };
+          mpv = pkgs.mpv-unwrapped.override {
+            ffmpeg = pkgs.ffmpeg-full;
+            lua = pkgs.luajit;
+          };
           scripts = import ./scripts.nix {
             inherit
               pkgs
