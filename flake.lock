@@ -538,11 +538,11 @@
         "nixpkgs-23-05": "nixpkgs-23-05"
       },
       "locked": {
-        "lastModified": 1716457039,
-        "narHash": "sha256-hezUFvyrpmrfDyi/Eaz7tz+1ys9ihyFGZCjd1rrJvww=",
+        "lastModified": 1719758577,
+        "narHash": "sha256-n0K5AzbMAqmqUxD8FK7X69Rqc8fQ3QHW6cBUI36i/AQ=",
         "owner": "Lichthagel",
         "repo": "teruko-legacy",
-        "rev": "aeedadedcdd8834e48949fa5eb0d14deccdec3a2",
+        "rev": "90ff8e03c35d06963858d5a825d8d0dc7561dad8",
         "type": "github"
       },
       "original": {
