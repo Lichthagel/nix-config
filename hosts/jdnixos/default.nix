@@ -56,11 +56,6 @@
 
   services.pcscd.enable = true;
 
-  services.mullvad-vpn = {
-    enable = true;
-    package = pkgs.mullvad-vpn;
-  };
-
   boot.kernelModules = [ "sg" ];
 
   # Enable OpenGL
