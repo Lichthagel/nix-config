@@ -163,6 +163,14 @@ in
           };
           background = "$base";
         };
+        fonts = {
+          names = [
+            "Noto Sans"
+            "Noto Sans CJK JP"
+            "Symbols Nerd Font"
+          ];
+          size = 8.0;
+        };
       };
     };
   };
