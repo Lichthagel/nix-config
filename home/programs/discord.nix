@@ -18,7 +18,7 @@ in
       discord =
         (pkgs.discord.override {
           withOpenASAR = true;
-          withVencord = true;
+          withVencord = false;
         }).overrideAttrs
           (
             oldAttrs:
