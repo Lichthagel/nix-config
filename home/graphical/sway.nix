@@ -125,6 +125,44 @@ in
             }
           );
         bars = [ ];
+        colors = {
+          focused = {
+            border = "\$${config.catppuccin.accent}";
+            background = "$mantle";
+            text = "$text";
+            indicator = "$rosewater";
+            childBorder = "\$${config.catppuccin.accent}";
+          };
+          focusedInactive = {
+            border = "$base";
+            background = "$mantle";
+            text = "$text";
+            indicator = "$rosewater";
+            childBorder = "$base";
+          };
+          unfocused = {
+            border = "$base";
+            background = "$mantle";
+            text = "$text";
+            indicator = "$rosewater";
+            childBorder = "$base";
+          };
+          urgent = {
+            border = "$maroon";
+            background = "$mantle";
+            text = "$text";
+            indicator = "$overlay0";
+            childBorder = "$maroon";
+          };
+          placeholder = {
+            border = "$overlay0";
+            background = "$mantle";
+            text = "$text";
+            indicator = "$overlay0";
+            childBorder = "$overlay0";
+          };
+          background = "$base";
+        };
       };
     };
   };
