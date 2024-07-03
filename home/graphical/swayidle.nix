@@ -1,10 +1,15 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.services.swayidle.licht;
 
-  getSwayExe = lib.getExe' config.wayland.windowManager.sway.package;
-  swaymsg = getSwayExe "swaymsg";
-  swaylock = getSwayExe "swaylock";
+  swaymsg = lib.getExe' config.wayland.windowManager.sway.package "swaymsg";
+  swaylock = lib.getExe pkgs.swaylock;
+  systemctl = lib.getExe' pkgs.systemd "systemctl";
 in
 {
   options.services.swayidle.licht = {
@@ -74,7 +79,7 @@ in
       }
       {
         timeout = cfg.suspend.timeout;
-        command = "systemctl suspend";
+        command = "${systemctl} suspend";
       }
     ];
   };
