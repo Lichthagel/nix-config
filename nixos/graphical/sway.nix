@@ -46,6 +46,15 @@ in
 
     programs.sway.enable = true;
 
-    xdg.portal.wlr.enable = lib.mkForce true;
+    xdg.portal = {
+      wlr.enable = lib.mkForce true;
+      config.sway = {
+        default = [
+          "wlr"
+          "kde"
+        ];
+      };
+      extraPortals = with pkgs; [ xdg-desktop-portal-kde ];
+    };
   };
 }
