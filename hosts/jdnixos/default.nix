@@ -198,6 +198,10 @@
     avahi.licht.enable = true;
   };
 
+  programs = {
+    sway.licht.enable = true;
+  };
+
   system.switch = {
     enable = false;
     enableNg = true;
