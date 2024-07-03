@@ -166,7 +166,7 @@ in
           ]
           ++ (
             let
-              rules = lib.cartesianProductOfSets {
+              rules = lib.cartesianProduct {
                 rule = [
                   "float"
                   "keepaspectratio"
