@@ -32,6 +32,9 @@ in
         xdgAutostart = true;
       };
       xwayland = true;
+      wrapperFeatures = {
+        gtk = true;
+      };
 
       config = {
         startup = [
