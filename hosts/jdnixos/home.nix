@@ -34,17 +34,21 @@
     ];
   };
 
-  wayland.windowManager.sway.config = {
-    output = {
-      DP-1 = {
-        mode = "3440x1440@144Hz";
-        position = "1920 0";
-        scale = "1";
-      };
-      DP-3 = {
-        mode = "1920x1080@60Hz";
-        position = "0 180";
-        scale = "1";
+  wayland.windowManager.sway = {
+    licht.perMonitorWorkspaces = true;
+    extraOptions = [ "--unsupported-gpu" ];
+    config = {
+      output = {
+        DP-1 = {
+          mode = "3440x1440@144Hz";
+          position = "1920 0";
+          scale = "1";
+        };
+        DP-3 = {
+          mode = "1920x1080@60Hz";
+          position = "0 180";
+          scale = "1";
+        };
       };
     };
   };
