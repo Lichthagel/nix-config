@@ -72,58 +72,71 @@ in
             modifier = config.wayland.windowManager.sway.config.modifier;
             swaysome = lib.getExe pkgs.swaysome;
           in
-          lib.mkIf cfg.perMonitorWorkspaces (
-            lib.mkOptionDefault {
-              "${modifier}+1" = "exec ${swaysome} focus 1";
-              "${modifier}+2" = "exec ${swaysome} focus 2";
-              "${modifier}+3" = "exec ${swaysome} focus 3";
-              "${modifier}+4" = "exec ${swaysome} focus 4";
-              "${modifier}+5" = "exec ${swaysome} focus 5";
-              "${modifier}+6" = "exec ${swaysome} focus 6";
-              "${modifier}+7" = "exec ${swaysome} focus 7";
-              "${modifier}+8" = "exec ${swaysome} focus 8";
-              "${modifier}+9" = "exec ${swaysome} focus 9";
-              "${modifier}+0" = "exec ${swaysome} focus 0";
+          lib.mkMerge [
+            (lib.mkIf cfg.perMonitorWorkspaces (
+              lib.mkOptionDefault {
+                "${modifier}+1" = "exec ${swaysome} focus 1";
+                "${modifier}+2" = "exec ${swaysome} focus 2";
+                "${modifier}+3" = "exec ${swaysome} focus 3";
+                "${modifier}+4" = "exec ${swaysome} focus 4";
+                "${modifier}+5" = "exec ${swaysome} focus 5";
+                "${modifier}+6" = "exec ${swaysome} focus 6";
+                "${modifier}+7" = "exec ${swaysome} focus 7";
+                "${modifier}+8" = "exec ${swaysome} focus 8";
+                "${modifier}+9" = "exec ${swaysome} focus 9";
+                "${modifier}+0" = "exec ${swaysome} focus 0";
 
-              "${modifier}+Shift+1" = "exec ${swaysome} move 1";
-              "${modifier}+Shift+2" = "exec ${swaysome} move 2";
-              "${modifier}+Shift+3" = "exec ${swaysome} move 3";
-              "${modifier}+Shift+4" = "exec ${swaysome} move 4";
-              "${modifier}+Shift+5" = "exec ${swaysome} move 5";
-              "${modifier}+Shift+6" = "exec ${swaysome} move 6";
-              "${modifier}+Shift+7" = "exec ${swaysome} move 7";
-              "${modifier}+Shift+8" = "exec ${swaysome} move 8";
-              "${modifier}+Shift+9" = "exec ${swaysome} move 9";
-              "${modifier}+Shift+0" = "exec ${swaysome} move 0";
+                "${modifier}+Shift+1" = "exec ${swaysome} move 1";
+                "${modifier}+Shift+2" = "exec ${swaysome} move 2";
+                "${modifier}+Shift+3" = "exec ${swaysome} move 3";
+                "${modifier}+Shift+4" = "exec ${swaysome} move 4";
+                "${modifier}+Shift+5" = "exec ${swaysome} move 5";
+                "${modifier}+Shift+6" = "exec ${swaysome} move 6";
+                "${modifier}+Shift+7" = "exec ${swaysome} move 7";
+                "${modifier}+Shift+8" = "exec ${swaysome} move 8";
+                "${modifier}+Shift+9" = "exec ${swaysome} move 9";
+                "${modifier}+Shift+0" = "exec ${swaysome} move 0";
 
-              "${modifier}+Alt+1" = "exec ${swaysome} focus-group 1";
-              "${modifier}+Alt+2" = "exec ${swaysome} focus-group 2";
-              "${modifier}+Alt+3" = "exec ${swaysome} focus-group 3";
-              "${modifier}+Alt+4" = "exec ${swaysome} focus-group 4";
-              "${modifier}+Alt+5" = "exec ${swaysome} focus-group 5";
-              "${modifier}+Alt+6" = "exec ${swaysome} focus-group 6";
-              "${modifier}+Alt+7" = "exec ${swaysome} focus-group 7";
-              "${modifier}+Alt+8" = "exec ${swaysome} focus-group 8";
-              "${modifier}+Alt+9" = "exec ${swaysome} focus-group 9";
-              "${modifier}+Alt+0" = "exec ${swaysome} focus-group 0";
+                "${modifier}+Alt+1" = "exec ${swaysome} focus-group 1";
+                "${modifier}+Alt+2" = "exec ${swaysome} focus-group 2";
+                "${modifier}+Alt+3" = "exec ${swaysome} focus-group 3";
+                "${modifier}+Alt+4" = "exec ${swaysome} focus-group 4";
+                "${modifier}+Alt+5" = "exec ${swaysome} focus-group 5";
+                "${modifier}+Alt+6" = "exec ${swaysome} focus-group 6";
+                "${modifier}+Alt+7" = "exec ${swaysome} focus-group 7";
+                "${modifier}+Alt+8" = "exec ${swaysome} focus-group 8";
+                "${modifier}+Alt+9" = "exec ${swaysome} focus-group 9";
+                "${modifier}+Alt+0" = "exec ${swaysome} focus-group 0";
 
-              "${modifier}+Alt+Shift+1" = "exec ${swaysome} move-to-group 1";
-              "${modifier}+Alt+Shift+2" = "exec ${swaysome} move-to-group 2";
-              "${modifier}+Alt+Shift+3" = "exec ${swaysome} move-to-group 3";
-              "${modifier}+Alt+Shift+4" = "exec ${swaysome} move-to-group 4";
-              "${modifier}+Alt+Shift+5" = "exec ${swaysome} move-to-group 5";
-              "${modifier}+Alt+Shift+6" = "exec ${swaysome} move-to-group 6";
-              "${modifier}+Alt+Shift+7" = "exec ${swaysome} move-to-group 7";
-              "${modifier}+Alt+Shift+8" = "exec ${swaysome} move-to-group 8";
-              "${modifier}+Alt+Shift+9" = "exec ${swaysome} move-to-group 9";
-              "${modifier}+Alt+Shift+0" = "exec ${swaysome} move-to-group 0";
+                "${modifier}+Alt+Shift+1" = "exec ${swaysome} move-to-group 1";
+                "${modifier}+Alt+Shift+2" = "exec ${swaysome} move-to-group 2";
+                "${modifier}+Alt+Shift+3" = "exec ${swaysome} move-to-group 3";
+                "${modifier}+Alt+Shift+4" = "exec ${swaysome} move-to-group 4";
+                "${modifier}+Alt+Shift+5" = "exec ${swaysome} move-to-group 5";
+                "${modifier}+Alt+Shift+6" = "exec ${swaysome} move-to-group 6";
+                "${modifier}+Alt+Shift+7" = "exec ${swaysome} move-to-group 7";
+                "${modifier}+Alt+Shift+8" = "exec ${swaysome} move-to-group 8";
+                "${modifier}+Alt+Shift+9" = "exec ${swaysome} move-to-group 9";
+                "${modifier}+Alt+Shift+0" = "exec ${swaysome} move-to-group 0";
 
-              "${modifier}+o" = "exec ${swaysome} next-output";
-              "${modifier}+Shift+o" = "exec ${swaysome} prev-output";
-              "${modifier}+Alt+o" = "exec ${swaysome} workspace-group-next-output";
-              "${modifier}+Alt+Shift+o" = "exec ${swaysome} workspace-group-prev-output";
-            }
-          );
+                "${modifier}+o" = "exec ${swaysome} next-output";
+                "${modifier}+Shift+o" = "exec ${swaysome} prev-output";
+                "${modifier}+Alt+o" = "exec ${swaysome} workspace-group-next-output";
+                "${modifier}+Alt+Shift+o" = "exec ${swaysome} workspace-group-prev-output";
+              }
+            ))
+            (lib.mkOptionDefault {
+              "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+              "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+              "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+              "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+              "XF86AudioStop" = "exec ${pkgs.playerctl}/bin/playerctl stop";
+              "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
+              "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+              "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +5%";
+              "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 5%-";
+            })
+          ];
         bars = [ ];
         colors = {
           focused = {
