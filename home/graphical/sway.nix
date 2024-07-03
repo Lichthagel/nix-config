@@ -22,7 +22,12 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [ nwg-look ];
+    home.packages = with pkgs; [
+      nwg-look
+      sway-contrib.grimshot
+    ];
+
+    programs.swaylock.enable = true;
 
     licht.autostart.systemd = lib.mkDefault true;
 
@@ -67,7 +72,7 @@ in
             modifier = config.wayland.windowManager.sway.config.modifier;
             swaysome = lib.getExe pkgs.swaysome;
           in
-          lib.mkIf (cfg.perMonitorWorkspaces) (
+          lib.mkIf cfg.perMonitorWorkspaces (
             lib.mkOptionDefault {
               "${modifier}+1" = "exec ${swaysome} focus 1";
               "${modifier}+2" = "exec ${swaysome} focus 2";
