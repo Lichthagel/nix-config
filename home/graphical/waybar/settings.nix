@@ -24,93 +24,109 @@
       };
     in
     {
-    layer = "top";
-    position = "top";
-    modules-left = [
-      "mpris"
-      # "hyprland/window"
+      layer = "top";
+      position = "top";
+      modules-left = [
+        "mpris"
+        # "hyprland/window"
         "sway/mode"
       ];
       modules-center = [
         "hyprland/workspaces"
         "sway/workspaces"
-    ];
-    modules-right = [
-      "custom/notification"
-      "backlight"
-      "battery"
-      "bluetooth"
-      # power profiles
-      # "upower"
-      # "wlr/taskbar"
-      "tray"
-      # "cpu"
-      # "memory"
-      # "disk"
-      # "keyboard-state"
-      "wireplumber"
-      "network"
-      "privacy"
-      "clock"
-    ];
+      ];
+      modules-right = [
+        "custom/notification"
+        "backlight"
+        "battery"
+        "bluetooth"
+        # power profiles
+        # "upower"
+        # "wlr/taskbar"
+        "tray"
+        # "cpu"
+        # "memory"
+        # "disk"
+        # "keyboard-state"
+        "wireplumber"
+        "network"
+        "privacy"
+        "clock"
+      ];
 
       "hyprland/workspaces" = workspacesCommon // {
-      "on-scroll-up" = "hyprctl dispatch workspace e+1";
-      "on-scroll-down" = "hyprctl dispatch workspace e-1";
-      "show-special" = false;
+        "on-scroll-up" = "hyprctl dispatch workspace e+1";
+        "on-scroll-down" = "hyprctl dispatch workspace e-1";
+        "show-special" = false;
       };
 
       "sway/workspaces" = workspacesCommon // {
         "on-scroll-up" = "swaymsg workspace next";
         "on-scroll-down" = "swaymsg workspace prev";
         "show-special" = true;
-    };
-
-    "mpris" = {
-      "format" = "{player_icon} {artist} - {title}";
-      "format-paused" = "{status_icon}";
-      "player-icons" = {
-        "chromium" = " ";
-        "default" = " ";
-        "firefox" = " ";
-        "kdeconnect" = " ";
-        "mopidy" = " ";
-        "mpv" = "󰐹 ";
-        "spotify" = " ";
-        "vlc" = "󰕼 ";
       };
-      "status-icons" = {
-        "paused" = " ";
-        "playing" = " ";
-        "stopped" = " ";
+
+      "backlight" = {
+        format = "{percent}% {icon}";
+        # format-icons = [
+        #   "󰛩"
+        #   "󱩎"
+        #   "󱩏"
+        #   "󱩐"
+        #   "󱩑"
+        #   "󱩒"
+        #   "󱩓"
+        #   "󱩔"
+        #   "󱩕"
+        #   "󱩖"
+        # ];
+      };
+
+      "mpris" = {
+        "format" = "{player_icon} {artist} - {title}";
+        "format-paused" = "{status_icon}";
+        "player-icons" = {
+          "chromium" = " ";
+          "default" = " ";
+          "firefox" = " ";
+          "kdeconnect" = " ";
+          "mopidy" = " ";
+          "mpv" = "󰐹 ";
+          "spotify" = " ";
+          "vlc" = "󰕼 ";
+        };
+        "status-icons" = {
+          "paused" = " ";
+          "playing" = " ";
+          "stopped" = " ";
+        };
+      };
+
+      "network" = {
+        "format-ethernet" = "󰈀";
+        "format-wifi" = "{essid} ({signalStrength}%) ";
+        "tooltip-format" = "{ipaddr}/{cidr} via {gwaddr} on {ifname}";
+      };
+
+      "custom/notification" = {
+        "tooltip" = false;
+        "format" = " {icon} ";
+        "format-icons" = {
+          "notification" = "<span foreground='red'><sup></sup></span>";
+          "none" = "";
+          "dnd-notification" = "<span foreground='red'><sup></sup></span>";
+          "dnd-none" = "";
+          "inhibited-notification" = "<span foreground='red'><sup></sup></span>";
+          "inhibited-none" = "";
+          "dnd-inhibited-notification" = "<span foreground='red'><sup></sup></span>";
+          "dnd-inhibited-none" = "";
+        };
+        "return-type" = "json";
+        "exec-if" = "which swaync-client";
+        "exec" = "swaync-client -swb";
+        "on-click" = "swaync-client -t -sw";
+        "on-click-right" = "swaync-client -d -sw";
+        "escape" = true;
       };
     };
-
-    "network" = {
-      "format-ethernet" = "󰈀";
-      "format-wifi" = "{essid} ({signalStrength}%) ";
-      "tooltip-format" = "{ipaddr}/{cidr} via {gwaddr} on {ifname}";
-    };
-
-    "custom/notification" = {
-      "tooltip" = false;
-      "format" = " {icon} ";
-      "format-icons" = {
-        "notification" = "<span foreground='red'><sup></sup></span>";
-        "none" = "";
-        "dnd-notification" = "<span foreground='red'><sup></sup></span>";
-        "dnd-none" = "";
-        "inhibited-notification" = "<span foreground='red'><sup></sup></span>";
-        "inhibited-none" = "";
-        "dnd-inhibited-notification" = "<span foreground='red'><sup></sup></span>";
-        "dnd-inhibited-none" = "";
-      };
-      "return-type" = "json";
-      "exec-if" = "which swaync-client";
-      "exec" = "swaync-client -swb";
-      "on-click" = "swaync-client -t -sw";
-      "on-click-right" = "swaync-client -d -sw";
-      "escape" = true;
-    };
-  };
 }
