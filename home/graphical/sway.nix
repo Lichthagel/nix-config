@@ -184,6 +184,19 @@ in
           ];
           size = 8.0;
         };
+        window.commands = [
+          {
+            criteria = {
+              app_id = "firefox";
+              title = "Bild-im-Bild|Picture-in-Picture";
+            };
+            command = "floating enable, sticky enable";
+          }
+          {
+            criteria.app_id = "org.keepassxc.KeePassXC";
+            command = "floating enable";
+          }
+        ];
       };
     };
   };
