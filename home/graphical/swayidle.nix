@@ -59,7 +59,7 @@ in
     events = [
       {
         event = "before-sleep";
-        command = "${swaylock}; ${swaymsg} 'output * power on'";
+        command = "${swaylock} -f; ${swaymsg} 'output * power on'";
       }
       {
         event = "after-resume";
@@ -70,7 +70,7 @@ in
     timeouts = [
       {
         timeout = cfg.lock.timeout;
-        command = "${swaylock}";
+        command = "${swaylock} -f";
       }
       {
         timeout = cfg.display.timeout;
