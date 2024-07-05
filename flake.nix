@@ -41,7 +41,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix/018599450cec9598256d3354572d3d1909ef15e7";
+      url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

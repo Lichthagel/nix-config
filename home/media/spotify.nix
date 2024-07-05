@@ -28,19 +28,19 @@ in
 
         enabledExtensions = with spicePkgs.extensions; [ shuffle ];
 
-        xpui = {
-          Setting = {
-            overwrite_assets = true;
-            inject_theme_js = true;
-            inject_css = true;
-            replace_colors = true;
-          };
-          AdditionalOptions = {
-            sidebar_config = true;
-            home_config = true;
-            experimental_features = true;
-          };
-        };
+        # xpui = {
+        #   Setting = {
+        #     overwrite_assets = true;
+        #     inject_theme_js = true;
+        #     inject_css = true;
+        #     replace_colors = true;
+        #   };
+        #   AdditionalOptions = {
+        #     sidebar_config = true;
+        #     home_config = true;
+        #     experimental_features = true;
+        #   };
+        # };
       };
 
     licht.unfreePackages = map lib.getName [ pkgs.spotify ];

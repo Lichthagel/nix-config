@@ -464,17 +464,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1715400646,
-        "narHash": "sha256-5euIPIGA4v6JwaJJrJrfMXuRz64afLQiUXgkjdQFhfI=",
+        "lastModified": 1720152808,
+        "narHash": "sha256-bvWgpdHWjeIL8iw+NUoSi1OzKfr33ef+gHodivmiRPE=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "018599450cec9598256d3354572d3d1909ef15e7",
+        "rev": "28cf3d4dc0c4d725863646b9ec84a08e59aebb8b",
         "type": "github"
       },
       "original": {
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "018599450cec9598256d3354572d3d1909ef15e7",
         "type": "github"
       }
     },
