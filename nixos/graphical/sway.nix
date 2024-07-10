@@ -44,7 +44,24 @@ in
         qtwayland
       ]);
 
-    programs.sway.enable = true;
+    programs.sway = {
+      enable = true;
+      extraSessionCommands =
+        let
+          toShellVars = vars: lib.concatStringsSep "\n" (lib.mapAttrsToList (n: v: "export ${n}=${v}") vars);
+        in
+        toShellVars {
+          SDL_VIDEODRIVER = "wayland";
+          QT_QPA_PLATFORM = "wayland";
+          QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+          _JAVA_AWT_WM_NONREPARENTING = "1";
+          MOZ_ENABLE_WAYLAND = "1";
+          NIXOS_OZONE_WL = "1";
+          WLR_RENDERER = "vulkan";
+          WLR_NO_HARDWARE_CURSORS = "1";
+          XWAYLAND_NO_GLAMOR = "1";
+        };
+    };
 
     xdg.portal = {
       wlr.enable = lib.mkForce true;
