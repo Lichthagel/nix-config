@@ -60,7 +60,10 @@
     '';
   };
 
-  services.mako.output = "DP-2";
+  services = {
+    mako.output = "DP-2";
+    swayidle.licht.suspend.enable = false;
+  };
 
   age = {
     secrets = {
