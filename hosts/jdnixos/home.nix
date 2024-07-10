@@ -39,6 +39,9 @@
     extraOptions = [ "--unsupported-gpu" ];
     config = {
       output = {
+        Unknown-1 = {
+          disable = "";
+        };
         DP-1 = {
           mode = "3440x1440@144Hz";
           position = "1920 0";
