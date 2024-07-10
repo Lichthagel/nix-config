@@ -138,6 +138,10 @@ in
             })
           ];
         bars = [ ];
+        gaps = {
+          inner = 5;
+          outer = 5;
+        };
         colors = {
           focused = {
             border = "\$${config.catppuccin.accent}";
