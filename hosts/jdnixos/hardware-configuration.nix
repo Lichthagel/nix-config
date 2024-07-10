@@ -39,7 +39,7 @@
 
   fileSystems."/mnt/d" = {
     device = "/dev/disk/by-uuid/462E9B622E9B49B7";
-    fsType = "ntfs-3g";
+    fsType = "ntfs3";
     options = [
       "rw"
       "uid=1000"
@@ -54,7 +54,7 @@
 
   fileSystems."/mnt/e" = {
     device = "/dev/disk/by-uuid/66E8F3AFE8F37B9D";
-    fsType = "ntfs-3g";
+    fsType = "ntfs3";
     options = [
       "rw"
       "uid=1000"
