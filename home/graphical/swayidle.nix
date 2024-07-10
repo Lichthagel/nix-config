@@ -67,20 +67,26 @@ in
       }
     ];
 
-    timeouts = [
-      {
-        timeout = cfg.lock.timeout;
-        command = "${swaylock} -f";
-      }
-      {
-        timeout = cfg.display.timeout;
-        command = "${swaymsg} 'output * power off'";
-        resumeCommand = "${swaymsg} 'output * power on'";
-      }
-      {
-        timeout = cfg.suspend.timeout;
-        command = "${systemctl} suspend";
-      }
+    timeouts = lib.mkMerge [
+      (lib.mkIf cfg.lock.enable [
+        {
+          timeout = cfg.lock.timeout;
+          command = "${swaylock} -f";
+        }
+      ])
+      (lib.mkIf cfg.display.enable [
+        {
+          timeout = cfg.display.timeout;
+          command = "${swaymsg} 'output * power off'";
+          resumeCommand = "${swaymsg} 'output * power on'";
+        }
+      ])
+      (lib.mkIf cfg.suspend.enable [
+        {
+          timeout = cfg.suspend.timeout;
+          command = "${systemctl} suspend";
+        }
+      ])
     ];
   };
 }
