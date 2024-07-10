@@ -8,7 +8,7 @@ pkgs.stdenvNoCC.mkDerivation {
   src = pkgs.requireFile {
     name = "Cartograph-CF";
     url = "https://connary.com/cartograph.html";
-    sha256 = "sha256:1d6zbq0pmb9fzh87gasc4ks75fz3f6fc69gxlrzg09xfzhrlzzqj";
+    sha256 = "sha256-c5n9cRY9G1NduWvSsm7vVuxSNWJYvWdqalgqsX9bviw=";
     hashMode = "recursive";
   };
 
