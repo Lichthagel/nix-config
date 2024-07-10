@@ -23,16 +23,26 @@ in
         accent = accentCapitalized;
         variant = flavorCapitalized;
       };
+      themeName = "Catppuccin-${flavorCapitalized}-${accentCapitalized}";
     in
     {
       qt = {
         enable = true;
-        platformTheme.name = "kvantum";
-        style.name = "kvantum";
+        platformTheme.name = "qtct";
+        style = {
+          name = "kvantum";
+          catppuccin.enable = false;
+        };
       };
 
       xdg.configFile = {
-        "Kvantum/Catppuccin-${flavorCapitalized}-${accentCapitalized}".source = "${theme}/share/Kvantum/Catppuccin-${flavorCapitalized}-${accentCapitalized}";
+        "Kvantum/${themeName}".source = "${theme}/share/Kvantum/${themeName}";
+        "Kvantum/kvantum.kvconfig" = {
+          text = ''
+            [General]
+            theme=${themeName}
+          '';
+        };
       };
     }
   );
