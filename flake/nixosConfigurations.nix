@@ -34,6 +34,7 @@
               inputs.home-manager.nixosModules.home-manager
               inputs.catppuccin.nixosModules.catppuccin
               inputs.agenix.nixosModules.default
+              inputs.lix-module.nixosModules.default
               {
                 networking.hostName = hostName;
                 catppuccin = {
