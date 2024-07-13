@@ -48,7 +48,7 @@
         # "memory"
         # "disk"
         # "keyboard-state"
-        "wireplumber"
+        "pulseaudio"
         "network"
         "privacy"
         "clock"
