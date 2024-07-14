@@ -15,6 +15,17 @@ end
 -- For example, changing the color scheme:
 config.color_scheme = "Catppuccin Mocha"
 
+local color_scheme = wezterm.color.get_builtin_schemes()[config.color_scheme]
+
+config.background = {
+	{
+		source = { Color = color_scheme.background },
+		opacity = 0.8,
+		height = "100%",
+		width = "100%",
+	},
+}
+
 config.font = wezterm.font_with_fallback({
 	{ family = "Cascadia Code", harfbuzz_features = { "calt=1", "ss01=1" } },
 	-- { family = "Fira Code", harfbuzz_features = { "zero=1", "cv14=1", "ss04=1", "ss06" } },
