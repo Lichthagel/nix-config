@@ -37,7 +37,7 @@ in
           geometry = "50%+50%+50%";
           gpu-api = "vulkan";
           gpu-context = "waylandvk";
-          hwdec = "auto-copy-safe";
+          hwdec = "auto-safe";
           interpolation = true;
           keep-open = true;
           osc = false;

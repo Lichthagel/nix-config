@@ -7,7 +7,7 @@
 }:
 {
   blur_edges = {
-    active = true;
+    active = false;
     mode = "all";
     blur_radius = 20;
     blur_power = 3;
@@ -38,6 +38,9 @@
     socket_path = "/tmp/mpvsocket";
     use_static_socket_path = true;
     autohide_threshold = 0;
+  };
+  dynamic_crop = {
+    mode = 1;
   };
   # mpv_discordRPC = {
   #   rpc_wrapper = "lua-discordRPC";ssssssssssssssssssss
