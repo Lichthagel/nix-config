@@ -37,6 +37,8 @@ in
           fbo-format = "rgba16hf";
           geometry = "50%+50%+50%";
           gpu-api = "vulkan";
+          gpu-context = "waylandvk";
+          hwdec = "auto-copy-safe";
           interpolation = true;
           keep-open = true;
           osc = false;
