@@ -48,7 +48,7 @@ in
           profile = "gpu-hq";
           scale = "ewa_lanczos";
           scale-blur = 0.981251;
-          screenshot-directory = "~/Bilder/Screenshots"; # TODO
+          screenshot-directory = lib.mkDefault "~/Bilder/Screenshots"; # TODO
           screenshot-format = "webp";
           screenshot-template = "%tY-%tm/%tY-%tm-%td_%tH-%tM-%tS";
           screenshot-webp-compression = 6;

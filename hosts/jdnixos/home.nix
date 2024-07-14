@@ -68,7 +68,11 @@
     swayidle.licht.suspend.enable = false;
   };
 
-  programs.btop.package = pkgs.btop.override { cudaSupport = true; };
+  programs = {
+    btop.package = pkgs.btop.override { cudaSupport = true; };
+
+    mpv.config.screenshot-directory = "/mnt/d/Pictures/Screenshots";
+  };
 
   age = {
     secrets = {
