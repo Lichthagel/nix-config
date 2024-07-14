@@ -17,6 +17,7 @@
 
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+    inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -57,7 +58,11 @@
 
   services.pcscd.enable = true;
 
-  boot.kernelModules = [ "sg" ];
+  boot.kernelModules = [
+    "sg"
+    "nvidia_uvm"
+  ];
+  boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
 
   # Enable OpenGL
   hardware.graphics = {
@@ -76,6 +81,9 @@
   environment.variables = {
     VDPAU_DRIVER = "va_gl";
     LIBVA_DRIVER_NAME = "nvidia";
+    VK_DRIVER_FILES = "/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -98,7 +106,7 @@
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
+    open = true;
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
