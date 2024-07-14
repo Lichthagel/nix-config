@@ -68,6 +68,8 @@
     swayidle.licht.suspend.enable = false;
   };
 
+  programs.btop.package = pkgs.btop.override { cudaSupport = true; };
+
   age = {
     secrets = {
       "ssh/id_ed25519_shared" = {
