@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  unstablePkgs,
   ...
 }:
 let
@@ -66,14 +65,7 @@ in
             ffmpeg = pkgs.ffmpeg-full;
             lua = pkgs.luajit;
           };
-          scripts = import ./scripts.nix {
-            inherit
-              pkgs
-              unstablePkgs
-              mpv-discord-version
-              mpv-discord-src
-              ;
-          };
+          scripts = import ./scripts.nix { inherit pkgs mpv-discord-version mpv-discord-src; };
         };
         scriptOpts = import ./script-opts.nix {
           inherit

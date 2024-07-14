@@ -1,30 +1,19 @@
 {
   pkgs,
-  unstablePkgs,
   mpv-discord-version,
   mpv-discord-src,
 }:
-with pkgs.mpvScripts;
 [
-  (unstablePkgs.mpvScripts.uosc.overrideAttrs (finalAttrs: {
-    version = "5.2.0";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "tomasklaen";
-      repo = "uosc";
-      rev = finalAttrs.version;
-      hash = "sha256-+4k8T1yX3IRXK3XkUShsuJSH9w1Zla7CaRENcIqX4iM=";
-    };
-  }))
-  thumbfast
+  pkgs.mpvScripts.uosc
+  pkgs.mpvScripts.thumbfast
   (pkgs.stdenvNoCC.mkDerivation {
     name = "dynamic-crop";
 
     src = pkgs.fetchFromGitHub {
       owner = "Ashyni";
       repo = "mpv-scripts";
-      rev = "master";
-      sha256 = "sha256-W4Dj2tyJHeHLqAndrzllKs4iwMe3Tu8rfzEGBHuke6s=";
+      rev = "1fadd5ea3e31818db33c9372c40161db6fc1bdd3";
+      sha256 = "sha256-nC0Iw+9PSGxc3OdYhEmFVa49Sw+rIbuFhgZvAphP4cM=";
     };
 
     installPhase = ''
@@ -44,7 +33,7 @@ with pkgs.mpvScripts;
     src = pkgs.fetchFromGitHub {
       owner = "Arieleg";
       repo = "mpv-copyTime";
-      rev = "master";
+      rev = "10b53d507085ba2deda301b6fab3397eee275b71";
       sha256 = "sha256-7yYwHTpNo4UAaQdMVF5n//Hnk8+O+x1Q5MXG6rfFNpc=";
     };
 
@@ -65,7 +54,7 @@ with pkgs.mpvScripts;
     src = pkgs.fetchFromGitHub {
       owner = "occivink";
       repo = "mpv-scripts";
-      rev = "master";
+      rev = "d0390c8e802c2e888ff4a2e1d5e4fb040f855b89";
       sha256 = "sha256-pc2aaO7lZaoYMEXv5M0WI7PtmqgkNbdtNiLZZwVzppM=";
     };
 
