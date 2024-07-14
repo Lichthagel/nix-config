@@ -38,7 +38,9 @@ config.font = wezterm.font_with_fallback({
 
 config.font_size = 11.0
 -- config.line_height = 0.9
--- config.front_end = "WebGpu"
+
+config.enable_wayland = true
+config.front_end = "WebGpu"
 
 config.use_fancy_tab_bar = false
 
