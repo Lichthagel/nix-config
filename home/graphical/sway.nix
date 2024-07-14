@@ -56,6 +56,7 @@ in
           (lib.mkIf cfg.perMonitorWorkspaces [ { command = "${lib.getExe pkgs.swaysome} init 1"; } ])
         ];
         menu = "${pkgs.tofi}/bin/tofi-drun --drun-launch=true";
+        terminal = "${config.programs.wezterm.package}/bin/wezterm";
         input = {
           "type:keyboard" = {
             xkb_layout = "de";
