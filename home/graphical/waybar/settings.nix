@@ -67,19 +67,37 @@
       };
 
       "backlight" = {
-        format = "{percent}% {icon}";
-        # format-icons = [
-        #   "󰛩"
-        #   "󱩎"
-        #   "󱩏"
-        #   "󱩐"
-        #   "󱩑"
-        #   "󱩒"
-        #   "󱩓"
-        #   "󱩔"
-        #   "󱩕"
-        #   "󱩖"
-        # ];
+        format = "{icon}  {percent}%";
+        format-icons = [
+          "󰛩 " # outline
+          "󱩎 " # 10
+          "󱩏 " # 20
+          "󱩏 " # 30
+          "󱩐 " # 40
+          "󱩑 " # 50
+          "󱩒 " # 60
+          "󱩓 " # 70
+          "󱩔 " # 80
+          "󱩕 " # 90
+          "󱩖 " # full
+        ];
+      };
+
+      "battery" = {
+        format = "{icon}  {capacity}%";
+        format-icons = [
+          "󰂎 " # outline
+          "󰁺 " # 10
+          "󰁻 " # 20
+          "󰁼 " # 30
+          "󰁽 " # 40
+          "󰁾 " # 50
+          "󰁿 " # 60
+          "󰂀 " # 70
+          "󰂁 " # 80
+          "󰂂 " # 90
+          "󰁹 " # full
+        ];
       };
 
       "mpris" = {
@@ -106,6 +124,21 @@
         "format-ethernet" = "󰈀";
         "format-wifi" = "{essid} ({signalStrength}%) ";
         "tooltip-format" = "{ipaddr}/{cidr} via {gwaddr} on {ifname}";
+      };
+
+      "pulseaudio" = {
+        "format" = "{icon} {volume}%";
+        "format-bluetooth" = "{icon} {volume}%";
+        "format-muted" = "󰝟 ";
+        "format-icons" = {
+          "headphone" = " ";
+          "default" = [
+            "󰕿 "
+            "󰖀 "
+            "󰕾 "
+          ];
+        };
+        "scroll-step" = 1;
       };
 
       "custom/notification" = {
