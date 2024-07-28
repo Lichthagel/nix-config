@@ -10,69 +10,78 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [
-    "nvme"
-    "xhci_pci"
-    "ahci"
-    "usb_storage"
-    "usbhid"
-    "sd_mod"
-    "sr_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot = {
+    kernelModules = [ "kvm-amd" ];
+    extraModulePackages = [ ];
+    supportedFilesystems = [ "ntfs" ];
+    resumeDevice = "/dev/mapper/swapDevice";
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/d2144a34-ef9f-4969-baf6-efc62c7a0818";
-    fsType = "btrfs";
-    options = [ "subvol=@" ];
+    initrd = {
+      availableKernelModules = [
+        "nvme"
+        "xhci_pci"
+        "ahci"
+        "usb_storage"
+        "usbhid"
+        "sd_mod"
+        "sr_mod"
+      ];
+      kernelModules = [ ];
+      luks.devices = {
+        "rootDevice".device = "/dev/disk/by-uuid/aef8453d-65b8-4ade-bd05-948bfcd87b57";
+        "swapDevice" = {
+          device = "/dev/disk/by-uuid/3dc6df82-8e77-42b2-8480-8e2d715c4eed";
+          allowDiscards = true;
+          bypassWorkqueues = true;
+        };
+      };
+    };
   };
 
-  boot.initrd.luks.devices."luks-aef8453d-65b8-4ade-bd05-948bfcd87b57".device = "/dev/disk/by-uuid/aef8453d-65b8-4ade-bd05-948bfcd87b57";
+  fileSystems = {
+    "/" = {
+      device = "/dev/mapper/rootDevice";
+      fsType = "btrfs";
+      options = [ "subvol=@" ];
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/1475-F6A1";
-    fsType = "vfat";
+    "/boot" = {
+      device = "/dev/disk/by-uuid/1475-F6A1";
+      fsType = "vfat";
+    };
+
+    "/mnt/d" = {
+      device = "/dev/disk/by-uuid/462E9B622E9B49B7";
+      fsType = "ntfs3";
+      options = [
+        "rw"
+        "uid=1000"
+        "gid=1000"
+        "umask=022"
+        "fmask=133"
+        "dmask=022"
+        "prealloc"
+        "windows_names"
+      ];
+    };
+
+    "/mnt/e" = {
+      device = "/dev/disk/by-uuid/66E8F3AFE8F37B9D";
+      fsType = "ntfs3";
+      options = [
+        "rw"
+        "uid=1000"
+        "gid=1000"
+        "umask=022"
+        "fmask=133"
+        "dmask=022"
+        "prealloc"
+        "windows_names"
+      ];
+    };
   };
 
-  fileSystems."/mnt/d" = {
-    device = "/dev/disk/by-uuid/462E9B622E9B49B7";
-    fsType = "ntfs3";
-    options = [
-      "rw"
-      "uid=1000"
-      "gid=1000"
-      "umask=022"
-      "fmask=133"
-      "dmask=022"
-      "prealloc"
-      "windows_names"
-    ];
-  };
-
-  fileSystems."/mnt/e" = {
-    device = "/dev/disk/by-uuid/66E8F3AFE8F37B9D";
-    fsType = "ntfs3";
-    options = [
-      "rw"
-      "uid=1000"
-      "gid=1000"
-      "umask=022"
-      "fmask=133"
-      "dmask=022"
-      "prealloc"
-      "windows_names"
-    ];
-  };
-
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 16 * 1024;
-    }
-  ];
+  swapDevices = [ { device = "/dev/mapper/swapDevice"; } ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
