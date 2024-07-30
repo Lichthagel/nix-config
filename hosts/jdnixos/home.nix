@@ -13,9 +13,15 @@
     libreoffice-qt
     zoom-us
     rclone
+    makemkv
+    handbrake
+    vlc
   ];
 
-  licht.unfreePackages = map lib.getName [ pkgs.zoom-us ];
+  licht.unfreePackages = map lib.getName [
+    pkgs.makemkv
+    pkgs.zoom-us
+  ];
 
   licht.profiles.graphical = true;
   licht.graphical.hyprland.perMonitorWorkspaces = true;
