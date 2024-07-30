@@ -62,7 +62,7 @@ in
         };
         package = pkgs.mpv-unwrapped.wrapper {
           mpv = pkgs.mpv-unwrapped.override {
-            ffmpeg = pkgs.ffmpeg-full;
+            ffmpeg = pkgs.ffmpeg_7-full;
             lua = pkgs.luajit;
           };
           scripts = import ./scripts.nix { inherit pkgs mpv-discord-version mpv-discord-src; };
