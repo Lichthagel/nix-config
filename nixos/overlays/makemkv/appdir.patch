@@ -1,0 +1,15 @@
+diff --git a/makemkvgui/src/api_linux.cpp b/makemkvgui/src/api_linux.cpp
+index b6a0a05..7f601ea 100644
+--- a/makemkvgui/src/api_linux.cpp
++++ b/makemkvgui/src/api_linux.cpp
+@@ -36,9 +36,7 @@ char** SYS_posix_envp()
+ }
+ 
+ static const char* const app_locations[]={
+-    "/bin",
+-    "/usr/bin",
+-    "/usr/local/bin",
++    "%MAKEMKV_BIN%",
+     NULL };
+ 
+ const char* const* ApGetAppLocations()

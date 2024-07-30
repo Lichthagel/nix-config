@@ -64,10 +64,6 @@ in
           mpv = pkgs.mpv-unwrapped.override {
             ffmpeg = pkgs.ffmpeg-full;
             lua = pkgs.luajit;
-            libbluray = pkgs.libbluray.override {
-              withAACS = true;
-              withBDplus = true;
-            };
           };
           scripts = import ./scripts.nix { inherit pkgs mpv-discord-version mpv-discord-src; };
         };

@@ -8,6 +8,8 @@
     '';
   };
 
+  imports = [ ./overlays ];
+
   config = {
     nixpkgs.config = {
       allowUnfreePredicate =
