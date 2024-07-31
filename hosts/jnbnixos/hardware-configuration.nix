@@ -39,6 +39,16 @@
       fsType = "btrfs";
       options = [ "subvol=@" ];
     };
+    "/home" = {
+      device = "/dev/mapper/rootDevice";
+      fsType = "btrfs";
+      options = [ "subvol=@home" ];
+    };
+    "/nix/store" = {
+      device = "/dev/mapper/rootDevice";
+      fsType = "btrfs";
+      options = [ "subvol=@nixstore" ];
+    };
     "/boot" = {
       device = "/dev/disk/by-partuuid/69f08489-2067-864a-911b-06f874fe18f1";
       fsType = "vfat";
