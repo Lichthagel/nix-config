@@ -7,6 +7,7 @@
 let
   cfg = config.services.swayidle.licht;
 
+  notify-send = lib.getExe' pkgs.libnotify "notify-send";
   swaymsg = lib.getExe' config.wayland.windowManager.sway.package "swaymsg";
   swaylock = lib.getExe pkgs.swaylock;
   systemctl = lib.getExe' pkgs.systemd "systemctl";
@@ -69,6 +70,10 @@ in
 
     timeouts = lib.mkMerge [
       (lib.mkIf cfg.lock.enable [
+        {
+          timeout = cfg.lock.timeout - 30;
+          command = "${notify-send} -u low -t ${toString (30 * 1000)} -e 'Locking screen in 30 seconds'";
+        }
         {
           timeout = cfg.lock.timeout;
           command = "${swaylock} -f";
