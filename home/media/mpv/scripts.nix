@@ -6,27 +6,7 @@
 [
   pkgs.mpvScripts.uosc
   pkgs.mpvScripts.thumbfast
-  (pkgs.stdenvNoCC.mkDerivation {
-    name = "dynamic-crop";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "Ashyni";
-      repo = "mpv-scripts";
-      rev = "1fadd5ea3e31818db33c9372c40161db6fc1bdd3";
-      sha256 = "sha256-nC0Iw+9PSGxc3OdYhEmFVa49Sw+rIbuFhgZvAphP4cM=";
-    };
-
-    installPhase = ''
-      runHook preInstall
-
-      mkdir -p $out/share/mpv/scripts
-      cp dynamic-crop.lua $out/share/mpv/scripts
-
-      runHook postInstall
-    '';
-
-    passthru.scriptName = "dynamic-crop.lua";
-  })
+  pkgs.mpvScripts.dynamic-crop
   (pkgs.stdenvNoCC.mkDerivation {
     name = "mpv-copyTime";
 
