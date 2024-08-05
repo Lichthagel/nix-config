@@ -10,7 +10,7 @@ in
 {
   options.licht.services.swaync = {
     enable = lib.mkEnableOption "swaync" // {
-      default = config.licht.graphical.hyprland.enable;
+      default = config.licht.graphical.hyprland.enable || config.wayland.windowManager.sway.licht.enable;
     };
   };
 

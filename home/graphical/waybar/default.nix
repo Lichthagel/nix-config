@@ -5,7 +5,7 @@ in
 {
   options.licht.graphical.waybar = {
     enable = lib.mkEnableOption "waybar" // {
-      default = config.licht.graphical.hyprland.enable;
+      default = config.licht.graphical.hyprland.enable || config.wayland.windowManager.sway.licht.enable;
     };
   };
 

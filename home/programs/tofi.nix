@@ -5,7 +5,7 @@ in
 {
   options.licht.programs.tofi = {
     enable = lib.mkEnableOption "tofi" // {
-      default = config.licht.graphical.hyprland.enable;
+      default = config.licht.graphical.hyprland.enable || config.wayland.windowManager.sway.licht.enable;
     };
   };
 
