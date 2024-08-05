@@ -143,6 +143,11 @@ in
           inner = 5;
           outer = 5;
         };
+        output = {
+          "*" = {
+            "bg" = "${config.licht.wallpaper} fill";
+          };
+        };
         colors = {
           focused = {
             border = "\$${config.catppuccin.accent}";
