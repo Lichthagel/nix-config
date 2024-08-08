@@ -51,7 +51,7 @@
     };
 
     "/mnt/d" = {
-      device = "/dev/disk/by-uuid/462E9B622E9B49B7";
+      device = "/dev/disk/by-uuid/42AAFF97AAFF8627";
       fsType = "ntfs3";
       options = [
         "rw"
