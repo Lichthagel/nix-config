@@ -136,6 +136,31 @@ in
               "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
               "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +5%";
               "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 5%-";
+
+              "Print" =
+                let
+                  screenshot = pkgs.writeShellScript "screenshot" ''
+                    filename=$(date +"%Y-%m-%d_%H-%M-%S").png
+                    folder=~/Pictures/Screenshots/$(date +"%Y-%m")
+                    mkdir -p $folder
+                    file=$folder/$filename
+
+                    ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save anything $file
+                  '';
+                in
+                "exec ${screenshot}";
+              "Shift+Print" =
+                let
+                  screenshot = pkgs.writeShellScript "screenshot" ''
+                    filename=$(date +"%Y-%m-%d_%H-%M-%S").png
+                    folder=~/Pictures/Screenshots/$(date +"%Y-%m")
+                    mkdir -p $folder
+                    file=$folder/$filename
+
+                    ${pkgs.grim}/bin/grim -g "2360,0 2560x1440" $file
+                  '';
+                in
+                "exec ${screenshot}";
             })
           ];
         bars = [ ];
