@@ -50,7 +50,10 @@ in
       };
     };
 
-    systemd.user.services.swaync.Install.WantedBy = lib.mkForce [ "hyprland-session.target" ];
+    systemd.user.services.swaync.Install.WantedBy = lib.mkForce (
+      (lib.optional config.licht.graphical.hyprland.enable "hyprland-session.target")
+      ++ (lib.optional config.wayland.windowManager.sway.licht.enable "sway-session.target")
+    );
 
     wayland.windowManager.hyprland.settings.bind = [
       "$mainMod, N, exec, ${config.services.swaync.package}/bin/swaync-client -t -sw"
