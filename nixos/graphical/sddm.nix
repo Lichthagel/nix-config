@@ -16,7 +16,7 @@ in
 
   config = lib.mkIf cfg.enable {
     services.displayManager.sddm = {
-      package = pkgs.kdePackages.sddm;
+      package = lib.mkDefault pkgs.kdePackages.sddm;
       enable = true;
       wayland.enable = true;
       catppuccin = {
