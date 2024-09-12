@@ -1,8 +1,7 @@
-{ inputs', ... }:
-{
-  home-manager.users.licht.systemd.user.services.teruko = {
+{ inputs', ... }: {
+  home-manager.users.licht.systemd.user.services.teruko-legacy = {
     Unit = {
-      Description = "Teruko";
+      Description = "Teruko (legacy)";
       After = [ "network.target" ];
     };
 
@@ -17,9 +16,7 @@
       ];
     };
 
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
+    Install = { WantedBy = [ "default.target" ]; };
   };
 
   networking.nftables.tables.nixos-fw.content = ''

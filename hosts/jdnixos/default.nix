@@ -1,19 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  config,
-  inputs,
-  pkgs,
-  self,
-  ...
-}:
-{
+{ config, inputs, pkgs, self, ... }: {
   imports = [
     ./forgejo.nix
     ./renovate.nix
     ./rss.nix
-    ./teruko.nix
+    ./teruko-legacy.nix
 
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
@@ -58,30 +51,22 @@
 
   services.pcscd.enable = true;
 
-  boot.kernelModules = [
-    "sg"
-    "nvidia_uvm"
-  ];
+  boot.kernelModules = [ "sg" "nvidia_uvm" ];
   boot.kernelParams = [ "nvidia-drm.fbdev=1" ];
 
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-    extraPackages32 = with pkgs.pkgsi686Linux; [
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
+    extraPackages = with pkgs; [ vaapiVdpau libvdpau-va-gl ];
+    extraPackages32 = with pkgs.pkgsi686Linux; [ vaapiVdpau libvdpau-va-gl ];
   };
 
   environment.variables = {
     VDPAU_DRIVER = "va_gl";
     LIBVA_DRIVER_NAME = "nvidia";
-    VK_DRIVER_FILES = "/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.x86_64.json";
+    VK_DRIVER_FILES =
+      "/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.x86_64.json";
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
@@ -128,11 +113,7 @@
   users.users.licht = {
     isNormalUser = true;
     description = "Jens";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "input"
-    ];
+    extraGroups = [ "networkmanager" "wheel" "input" ];
     shell = pkgs.zsh;
   };
 
@@ -148,10 +129,7 @@
       host all all 127.0.0.1/32 scram-sha-256
       host all all ::1/128 scram-sha-256
     '';
-    initdbArgs = [
-      "--locale=C"
-      "--encoding=UTF8"
-    ];
+    initdbArgs = [ "--locale=C" "--encoding=UTF8" ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -167,21 +145,15 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  age.secrets."nix_cache/${config.networking.hostName}/private".file =
-    self + /secrets/nix_cache/${config.networking.hostName}/private;
+  age.secrets."nix_cache/${config.networking.hostName}/private".file = self
+    + /secrets/nix_cache/${config.networking.hostName}/private;
 
   nix.settings.secret-key-files =
     config.age.secrets."nix_cache/${config.networking.hostName}/private".path;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [
-    3456
-    22000
-  ];
-  networking.firewall.allowedUDPPorts = [
-    21027
-    22000
-  ];
+  networking.firewall.allowedTCPPorts = [ 3456 22000 ];
+  networking.firewall.allowedUDPPorts = [ 21027 22000 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
@@ -202,13 +174,9 @@
     };
   };
 
-  services = {
-    avahi.licht.enable = true;
-  };
+  services = { avahi.licht.enable = true; };
 
-  programs = {
-    sway.licht.enable = true;
-  };
+  programs = { sway.licht.enable = true; };
 
   system.switch = {
     enable = false;
