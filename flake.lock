@@ -175,11 +175,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726222338,
-        "narHash": "sha256-KuA8ciNR8qCF3dQaCaeh0JWyQUgEwkwDHr/f49Q5/e8=",
+        "lastModified": 1726357542,
+        "narHash": "sha256-p4OrJL2weh0TRtaeu1fmNYP6+TOp/W2qdaIJxxQay4c=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "503af483e1b328691ea3a434d331995595fb2e3d",
+        "rev": "e524c57b1fa55d6ca9d8354c6ce1e538d2a1f47f",
         "type": "github"
       },
       "original": {
@@ -533,11 +533,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726201008,
-        "narHash": "sha256-qiW2nZ6yo2NdkoH0+K2/p4eUElEtWIOo711dOB4rJhg=",
+        "lastModified": 1726287383,
+        "narHash": "sha256-20DoHPEml+by2U2yja09tprLDFcimQAeL7kDIjLtyeo=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "856a4212b354cfa1f1c747691e1ddf37ff9b1984",
+        "rev": "bb37104c197760c5cfca571036a1d011c4c92754",
         "type": "github"
       },
       "original": {
@@ -621,11 +621,11 @@
         "nixpkgs-23-05": "nixpkgs-23-05"
       },
       "locked": {
-        "lastModified": 1726265613,
-        "narHash": "sha256-r/wkSUP6qHHchVodGIKiGLovRlBbemSjfdYU9w7EUu4=",
+        "lastModified": 1726327381,
+        "narHash": "sha256-HGy23TWJhYT0+6Irrl96jJbDTWk2MdRd/iiw0X3JCDA=",
         "owner": "Lichthagel",
         "repo": "teruko-legacy",
-        "rev": "974101ee299945bde405f2eef1b74414f4698748",
+        "rev": "006cde0668bb4dc537cd2e9657b4efb206bdce6f",
         "type": "github"
       },
       "original": {
