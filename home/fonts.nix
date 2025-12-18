@@ -65,8 +65,7 @@
       unstablePkgs.kode-mono
       selfPkgs.kode-mono-nerdfont
       selfPkgs.lilex
-      maple-mono
-      selfPkgs.maple-mono-nerdfont
+      maple-mono.NF-CN-unhinted
       martian-mono
       miracode
       monaspace
