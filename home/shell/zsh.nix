@@ -23,67 +23,66 @@ let
   };
 in
 {
-  programs.zsh =
-    {
-      enable = true;
-      dotDir = ".config/zsh";
-      enableCompletion = true;
-      defaultKeymap = "emacs";
-      plugins = [
-        {
-          name = "zsh-you-should-use";
-          src = pkgs.zsh-you-should-use;
-          file = "share/zsh/plugins/you-should-use/you-should-use.plugin.zsh";
-        }
-        {
-          name = "zsh-nix-shell";
-          src = pkgs.zsh-nix-shell;
-          file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
-        }
-        {
-          name = "fzf-tab";
-          src = pkgs.zsh-fzf-tab;
-          file = "share/fzf-tab/fzf-tab.plugin.zsh";
-        }
-        {
-          name = "zsh-fast-syntax-highlighting";
-          src = pkgs.zsh-fast-syntax-highlighting;
-          file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
-        }
-        {
-          name = "gitfast";
-          src = ohmyzsh-src;
-          file = "plugins/gitfast/gitfast.plugin.zsh";
-        }
-        {
-          name = "podman";
-          src = ohmyzsh-src;
-          file = "plugins/podman/podman.plugin.zsh";
-        }
-      ];
-      initExtra = ''
-        # disable sort when completing `git checkout`
-        zstyle ':completion:*:git-checkout:*' sort false
-        # set descriptions format to enable group support
-        # NOTE: don't use escape sequences here, fzf-tab will ignore them
-        zstyle ':completion:*:descriptions' format '[%d]'
-        # set list-colors to enable filename colorizing
-        zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
-        # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
-        zstyle ':completion:*' menu no
-        # preview directory's content with eza when completing cd or zoxide
-        zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-        zstyle ':fzf-tab:complete:z:*' fzf-preview 'eza -1 --color=always $realpath'
-        # switch group using `<` and `>`
-        zstyle ':fzf-tab:*' switch-group '<' '>'
-      '';
-    }
-    // (
-      if (options.programs.zsh ? autosuggestion) then
-        { autosuggestion.enable = true; }
-      else
-        { enableAutosuggestions = true; }
-    );
+  programs.zsh = {
+    enable = true;
+    dotDir = ".config/zsh";
+    enableCompletion = true;
+    defaultKeymap = "emacs";
+    plugins = [
+      {
+        name = "zsh-you-should-use";
+        src = pkgs.zsh-you-should-use;
+        file = "share/zsh/plugins/you-should-use/you-should-use.plugin.zsh";
+      }
+      {
+        name = "zsh-nix-shell";
+        src = pkgs.zsh-nix-shell;
+        file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
+      }
+      {
+        name = "fzf-tab";
+        src = pkgs.zsh-fzf-tab;
+        file = "share/fzf-tab/fzf-tab.plugin.zsh";
+      }
+      {
+        name = "zsh-fast-syntax-highlighting";
+        src = pkgs.zsh-fast-syntax-highlighting;
+        file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
+      }
+      {
+        name = "gitfast";
+        src = ohmyzsh-src;
+        file = "plugins/gitfast/gitfast.plugin.zsh";
+      }
+      {
+        name = "podman";
+        src = ohmyzsh-src;
+        file = "plugins/podman/podman.plugin.zsh";
+      }
+    ];
+    initExtra = ''
+      # disable sort when completing `git checkout`
+      zstyle ':completion:*:git-checkout:*' sort false
+      # set descriptions format to enable group support
+      # NOTE: don't use escape sequences here, fzf-tab will ignore them
+      zstyle ':completion:*:descriptions' format '[%d]'
+      # set list-colors to enable filename colorizing
+      zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+      # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+      zstyle ':completion:*' menu no
+      # preview directory's content with eza when completing cd or zoxide
+      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+      zstyle ':fzf-tab:complete:z:*' fzf-preview 'eza -1 --color=always $realpath'
+      # switch group using `<` and `>`
+      zstyle ':fzf-tab:*' switch-group '<' '>'
+    '';
+  }
+  // (
+    if (options.programs.zsh ? autosuggestion) then
+      { autosuggestion.enable = true; }
+    else
+      { enableAutosuggestions = true; }
+  );
 
   xdg.configFile = {
     "fsh".source = "${catppuccin-zsh-fsh}/share/zsh/site-functions/themes";

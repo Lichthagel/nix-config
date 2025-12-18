@@ -67,7 +67,8 @@ in
           "${pkgs.kdePackages.kwallet}/bin/kwalletd6"
           "${pkgs.networkmanagerapplet}/bin/nm-applet"
           "hyprctl setcursor ${config.home.pointerCursor.name} ${builtins.toString config.home.pointerCursor.size}"
-        ] ++ (lib.optional config.services.mako.enable "${config.services.mako.package}/bin/mako");
+        ]
+        ++ (lib.optional config.services.mako.enable "${config.services.mako.package}/bin/mako");
 
         # Set programs that you use
         "$terminal" = "${pkgs.foot}/bin/foot";
@@ -158,39 +159,38 @@ in
           force_default_wallpaper = 0; # Set to 0 to disable the anime mascot wallpapers
         };
 
-        windowrulev2 =
-          [
-            "suppressevent maximize,class:.*" # You'll probably like this.
-            "float,class:^org\.keepassxc\.KeePassXC$"
-            "opacity 0.9,workspace:special:magic"
-          ]
-          ++ (
-            let
-              rules = lib.cartesianProduct {
-                rule = [
-                  "float"
-                  "keepaspectratio"
-                  "pin"
-                ];
-                window = [
-                  "class:^firefox$,title:Bild-im-Bild"
-                  "class:^firefox$,title:Picture-in-Picture"
-                ];
-              };
-            in
-            lib.forEach rules ({ rule, window }: "${rule}, ${window}")
+        windowrulev2 = [
+          "suppressevent maximize,class:.*" # You'll probably like this.
+          "float,class:^org\.keepassxc\.KeePassXC$"
+          "opacity 0.9,workspace:special:magic"
+        ]
+        ++ (
+          let
+            rules = lib.cartesianProduct {
+              rule = [
+                "float"
+                "keepaspectratio"
+                "pin"
+              ];
+              window = [
+                "class:^firefox$,title:Bild-im-Bild"
+                "class:^firefox$,title:Picture-in-Picture"
+              ];
+            };
+          in
+          lib.forEach rules ({ rule, window }: "${rule}, ${window}")
+        )
+        ++ (
+          let
+            matchers = [ "class:^(org.wezfurlong.wezterm)$" ];
+          in
+          lib.concatLists (
+            lib.forEach matchers (matcher: [
+              "opacity 0.85,focus:0,${matcher}"
+              "opacity 0.9,focus:1,${matcher}"
+            ])
           )
-          ++ (
-            let
-              matchers = [ "class:^(org.wezfurlong.wezterm)$" ];
-            in
-            lib.concatLists (
-              lib.forEach matchers (matcher: [
-                "opacity 0.85,focus:0,${matcher}"
-                "opacity 0.9,focus:1,${matcher}"
-              ])
-            )
-          );
+        );
 
         layerrule = [
           "blur,waybar"
@@ -199,75 +199,74 @@ in
 
         "$mainMod" = "SUPER";
 
-        bind =
+        bind = [
+          "$mainMod, Q, exec, $terminal"
+          "$mainMod, C, killactive,"
+          "$mainMod, M, exit,"
+          "$mainMod, E, exec, $fileManager"
+          "$mainMod, F, exec, firefox"
+          "$mainMod, V, togglefloating,"
+          "$mainMod, R, exec, $menu"
+          "$mainMod, P, pseudo," # dwindle
+          "$mainMod, J, togglesplit," # dwindle
+
+          # Move focus with mainMod + arrow keys
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
+        ]
+        ++ (
+          let
+            cmd = if cfg.perMonitorWorkspaces then "split-workspace" else "workspace";
+          in
           [
-            "$mainMod, Q, exec, $terminal"
-            "$mainMod, C, killactive,"
-            "$mainMod, M, exit,"
-            "$mainMod, E, exec, $fileManager"
-            "$mainMod, F, exec, firefox"
-            "$mainMod, V, togglefloating,"
-            "$mainMod, R, exec, $menu"
-            "$mainMod, P, pseudo," # dwindle
-            "$mainMod, J, togglesplit," # dwindle
+            # Switch workspaces with mainMod + [0-9]
+            "$mainMod, 1, ${cmd}, 1"
+            "$mainMod, 2, ${cmd}, 2"
+            "$mainMod, 3, ${cmd}, 3"
+            "$mainMod, 4, ${cmd}, 4"
+            "$mainMod, 5, ${cmd}, 5"
+            "$mainMod, 6, ${cmd}, 6"
+            "$mainMod, 7, ${cmd}, 7"
+            "$mainMod, 8, ${cmd}, 8"
+            "$mainMod, 9, ${cmd}, 9"
+            "$mainMod, 0, ${cmd}, 10"
 
-            # Move focus with mainMod + arrow keys
-            "$mainMod, left, movefocus, l"
-            "$mainMod, right, movefocus, r"
-            "$mainMod, up, movefocus, u"
-            "$mainMod, down, movefocus, d"
+            # Scroll through existing workspaces with mainMod + scroll
+            "$mainMod, mouse_down, ${cmd}, e+1"
+            "$mainMod, mouse_up, ${cmd}, e-1"
           ]
-          ++ (
-            let
-              cmd = if cfg.perMonitorWorkspaces then "split-workspace" else "workspace";
-            in
-            [
-              # Switch workspaces with mainMod + [0-9]
-              "$mainMod, 1, ${cmd}, 1"
-              "$mainMod, 2, ${cmd}, 2"
-              "$mainMod, 3, ${cmd}, 3"
-              "$mainMod, 4, ${cmd}, 4"
-              "$mainMod, 5, ${cmd}, 5"
-              "$mainMod, 6, ${cmd}, 6"
-              "$mainMod, 7, ${cmd}, 7"
-              "$mainMod, 8, ${cmd}, 8"
-              "$mainMod, 9, ${cmd}, 9"
-              "$mainMod, 0, ${cmd}, 10"
+        )
+        ++ (
+          let
+            cmd = if cfg.perMonitorWorkspaces then "split-movetoworkspace" else "movetoworkspace";
+          in
+          [
+            # Move active window to a workspace with mainMod + SHIFT + [0-9]
+            "$mainMod SHIFT, 1, ${cmd}, 1"
+            "$mainMod SHIFT, 2, ${cmd}, 2"
+            "$mainMod SHIFT, 3, ${cmd}, 3"
+            "$mainMod SHIFT, 4, ${cmd}, 4"
+            "$mainMod SHIFT, 5, ${cmd}, 5"
+            "$mainMod SHIFT, 6, ${cmd}, 6"
+            "$mainMod SHIFT, 7, ${cmd}, 7"
+            "$mainMod SHIFT, 8, ${cmd}, 8"
+            "$mainMod SHIFT, 9, ${cmd}, 9"
+            "$mainMod SHIFT, 0, ${cmd}, 10"
+          ]
+        )
+        ++ [
+          # Example special workspace (scratchpad)
+          "$mainMod, S, togglespecialworkspace, magic"
+          "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
-              # Scroll through existing workspaces with mainMod + scroll
-              "$mainMod, mouse_down, ${cmd}, e+1"
-              "$mainMod, mouse_up, ${cmd}, e-1"
-            ]
-          )
-          ++ (
-            let
-              cmd = if cfg.perMonitorWorkspaces then "split-movetoworkspace" else "movetoworkspace";
-            in
-            [
-              # Move active window to a workspace with mainMod + SHIFT + [0-9]
-              "$mainMod SHIFT, 1, ${cmd}, 1"
-              "$mainMod SHIFT, 2, ${cmd}, 2"
-              "$mainMod SHIFT, 3, ${cmd}, 3"
-              "$mainMod SHIFT, 4, ${cmd}, 4"
-              "$mainMod SHIFT, 5, ${cmd}, 5"
-              "$mainMod SHIFT, 6, ${cmd}, 6"
-              "$mainMod SHIFT, 7, ${cmd}, 7"
-              "$mainMod SHIFT, 8, ${cmd}, 8"
-              "$mainMod SHIFT, 9, ${cmd}, 9"
-              "$mainMod SHIFT, 0, ${cmd}, 10"
-            ]
-          )
-          ++ [
-            # Example special workspace (scratchpad)
-            "$mainMod, S, togglespecialworkspace, magic"
-            "$mainMod SHIFT, S, movetoworkspace, special:magic"
-
-            # Resize windows with mainMod + SHIFT + arrow keys
-            "$mainMod SHIFT, left, resizeactive, -10% 0%"
-            "$mainMod SHIFT, right, resizeactive, 10% 0%"
-            "$mainMod SHIFT, up, resizeactive, 0% -10%"
-            "$mainMod SHIFT, down, resizeactive, 0% 10%"
-          ];
+          # Resize windows with mainMod + SHIFT + arrow keys
+          "$mainMod SHIFT, left, resizeactive, -10% 0%"
+          "$mainMod SHIFT, right, resizeactive, 10% 0%"
+          "$mainMod SHIFT, up, resizeactive, 0% -10%"
+          "$mainMod SHIFT, down, resizeactive, 0% 10%"
+        ];
 
         bindm = [
           # Move/resize windows with mainMod + LMB/RMB and dragging
